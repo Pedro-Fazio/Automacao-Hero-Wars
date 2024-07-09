@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.0.1 (Python 3.12.4 on win32)" generated="2024-07-09T17:33:41.570257" rpa="false" schemaversion="5">
+<suite id="s1" name="Abrir" source="C:\Users\pedroca\Documents\GitHub\Automacao-Hero-Wars\Abrir.robot">
+<test id="s1-t1" name="Abrir o site do Hero Wars" line="15">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2024-07-09T17:33:41.808180" level="INFO">Opening browser 'Chrome' to base url 'https://www.hero-wars.com'.</msg>
+<arg>https://www.hero-wars.com</arg>
+<arg>browser=${BROWSER}</arg>
+<arg>options=${CHROME_OPT}</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2024-07-09T17:33:41.808180" elapsed="2.739930"/>
+</kw>
+<status status="PASS" start="2024-07-09T17:33:41.807181" elapsed="2.741925"/>
+</test>
+<test id="s1-t2" name="Fechar a propaganda" line="18">
+<kw name="Pause Execution" owner="Dialogs">
+<doc>Pauses execution until user clicks ``Ok`` button.</doc>
+<status status="PASS" start="2024-07-09T17:33:44.552101" elapsed="62.313882"/>
+</kw>
+<kw name="Click Element At Coordinates" owner="SeleniumLibrary">
+<msg time="2024-07-09T17:34:46.867979" level="INFO">Clicking element 'id:canvas' at coordinates x=500, y=500.</msg>
+<msg time="2024-07-09T17:34:46.871967" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=126.0.6478.127)
+Stacktrace:
+	GetHandleVerifier [0x00007FF60AE8EEA2+31554]
+	(No symbol) [0x00007FF60AE07ED9]
+	(No symbol) [0x00007FF60ACC872A]
+	(No symbol) [0x00007FF60AC9D995]
+	(No symbol) [0x00007FF60AD444D7]
+	(No symbol) [0x00007FF60AD5C051]
+	(No symbol) [0x00007FF60AD3CDD3]
+	(No symbol) [0x00007FF60AD0A33B]
+	(No symbol) [0x00007FF60AD0AED1]
+	GetHandleVerifier [0x00007FF60B198B1D+3217341]
+	GetHandleVerifier [0x00007FF60B1E5AE3+3532675]
+	GetHandleVerifier [0x00007FF60B1DB0E0+3489152]
+	GetHandleVerifier [0x00007FF60AF3E776+750614]
+	(No symbol) [0x00007FF60AE1375F]
+	(No symbol) [0x00007FF60AE0EB14]
+	(No symbol) [0x00007FF60AE0ECA2]
+	(No symbol) [0x00007FF60ADFE16F]
+	BaseThreadInitThunk [0x00007FF9FBA27344+20]
+	RtlUserThreadStart [0x00007FF9FC5DCC91+33]
+</msg>
+<msg time="2024-07-09T17:34:46.874959" level="FAIL">NoSuchWindowException: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=126.0.6478.127)
+Stacktrace:
+	GetHandleVerifier [0x00007FF60AE8EEA2+31554]
+	(No symbol) [0x00007FF60AE07ED9]
+	(No symbol) [0x00007FF60ACC872A]
+	(No symbol) [0x00007FF60AC9D995]
+	(No symbol) [0x00007FF60AD444D7]
+	(No symbol) [0x00007FF60AD5C051]
+	(No symbol) [0x00007FF60AD3CDD3]
+	(No symbol) [0x00007FF60AD0A33B]
+	(No symbol) [0x00007FF60AD0AED1]
+	GetHandleVerifier [0x00007FF60B198B1D+3217341]
+	GetHandleVerifier [0x00007FF60B1E5AE3+3532675]
+	GetHandleVerifier [0x00007FF60B1DB0E0+3489152]
+	GetHandleVerifier [0x00007FF60AF3E776+750614]
+	(No symbol) [0x00007FF60AE1375F]
+	(No symbol) [0x00007FF60AE0EB14]
+	(No symbol) [0x00007FF60AE0ECA2]
+	(No symbol) [0x00007FF60ADFE16F]
+	BaseThreadInitThunk [0x00007FF9FBA27344+20]
+	RtlUserThreadStart [0x00007FF9FC5DCC91+33]
+</msg>
+<arg>id:canvas</arg>
+<arg>500</arg>
+<arg>500</arg>
+<doc>Click the element ``locator`` at ``xoffset/yoffset``.</doc>
+<status status="FAIL" start="2024-07-09T17:34:46.866979" elapsed="0.011969">NoSuchWindowException: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=126.0.6478.127)
+Stacktrace:
+	GetHandleVerifier [0x00007FF60AE8EEA2+31554]
+	(No symbol) [0x00007FF60AE07ED9]
+	(No symbol) [0x00007FF60ACC872A]
+	(No symbol) [0x00007FF60AC9D995]
+	(No symbol) [0x00007FF60AD444D7]
+	(No symbol) [0x00007FF60AD5C051]
+	(No symbol) [0x00007FF60AD3CDD3]
+	(No symbol) [0x00007FF60AD0A33B]
+	(No symbol) [0x00007FF60AD0AED1]
+	GetHandleVerifier [0x00007FF60B198B1D+3217341]
+	GetHandleVerifier [0x00007FF60B1E5AE3+3532675]
+	GetHandleVerifier [0x00007FF60B1DB0E0+3489152]
+	GetHandleVerifier [0x00007FF60AF3E776+750614]
+	(No symbol) [0x00007FF60AE1375F]
+	(No symbol) [0x00007FF60AE0EB14]
+	(No symbol) [0x00007FF60AE0ECA2]
+	(No symbol) [0x00007FF60ADFE16F]
+	BaseThreadInitThunk [0x00007FF9FBA27344+20]
+	RtlUserThreadStart [0x00007FF9FC5DCC91+33]
+</status>
+</kw>
+<status status="FAIL" start="2024-07-09T17:33:44.551102" elapsed="62.328845">NoSuchWindowException: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=126.0.6478.127)
+Stacktrace:
+	GetHandleVerifier [0x00007FF60AE8EEA2+31554]
+	(No symbol) [0x00007FF60AE07ED9]
+	(No symbol) [0x00007FF60ACC872A]
+	(No symbol) [0x00007FF60AC9D995]
+	(No symbol) [0x00007FF60AD444D7]
+	(No symbol) [0x00007FF60AD5C051]
+	(No symbol) [0x00007FF60AD3CDD3]
+	(No symbol) [0x00007FF60AD0A33B]
+	(No symbol) [0x00007FF60AD0AED1]
+	GetHandleVerifier [0x00007FF60B198B1D+3217341]
+	GetHandleVerifier [0x00007FF60B1E5AE3+3532675]
+	GetHandleVerifier [0x00007FF60B1DB0E0+3489152]
+	GetHandleVerifier [0x00007FF60AF3E776+750614]
+	(No symbol) [0x00007FF60AE1375F]
+	(No symbol) [0x00007FF60AE0EB14]
+	(No symbol) [0x00007FF60AE0ECA2]
+	(No symbol) [0x00007FF60ADFE16F]
+	BaseThreadInitThunk [0x00007FF9FBA27344+20]
+	RtlUserThreadStart [0x00007FF9FC5DCC91+33]
+</status>
+</test>
+<status status="FAIL" start="2024-07-09T17:33:41.571222" elapsed="65.313711"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat pass="1" fail="1" skip="0" id="s1" name="Abrir">Abrir</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2024-07-09T17:34:46.871967" level="WARN">Keyword 'Capture Page Screenshot' could not be run on failure: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=126.0.6478.127)
+Stacktrace:
+	GetHandleVerifier [0x00007FF60AE8EEA2+31554]
+	(No symbol) [0x00007FF60AE07ED9]
+	(No symbol) [0x00007FF60ACC872A]
+	(No symbol) [0x00007FF60AC9D995]
+	(No symbol) [0x00007FF60AD444D7]
+	(No symbol) [0x00007FF60AD5C051]
+	(No symbol) [0x00007FF60AD3CDD3]
+	(No symbol) [0x00007FF60AD0A33B]
+	(No symbol) [0x00007FF60AD0AED1]
+	GetHandleVerifier [0x00007FF60B198B1D+3217341]
+	GetHandleVerifier [0x00007FF60B1E5AE3+3532675]
+	GetHandleVerifier [0x00007FF60B1DB0E0+3489152]
+	GetHandleVerifier [0x00007FF60AF3E776+750614]
+	(No symbol) [0x00007FF60AE1375F]
+	(No symbol) [0x00007FF60AE0EB14]
+	(No symbol) [0x00007FF60AE0ECA2]
+	(No symbol) [0x00007FF60ADFE16F]
+	BaseThreadInitThunk [0x00007FF9FBA27344+20]
+	RtlUserThreadStart [0x00007FF9FC5DCC91+33]
+</msg>
+</errors>
+</robot>

@@ -1,6 +1,6 @@
 import pyautogui
-import Arena.arena as Arena
-import Vidente_Astral.vidente_astral as Vidente_Astral
+import Componentes_Hero_Wars.Arena.arena as Arena
+import Componentes_Hero_Wars.Vidente_Astral.vidente_astral as Vidente_Astral
 
 def main():
     abrir_navegador(510, 1050)

@@ -1,7 +1,4 @@
-import pyautogui
 import Util.funcoes_suporte as FS
-
-pyautogui.PAUSE = 1
 
 def completar_uma_vez():
     # Clica na Guilda

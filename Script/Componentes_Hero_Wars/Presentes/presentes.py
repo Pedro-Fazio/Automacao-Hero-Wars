@@ -1,21 +1,18 @@
-import pyautogui
 import Util.funcoes_suporte as FS
-
-pyautogui.PAUSE = 1
 
 #Aumentar isso: 780, 210
 def presentear():
-    # Clica em presentes
+    # Clica em Presentes
     FS.mover_e_clicar(3910, 1060, 2)
 
-    # Clica em enviar
+    # Clica em Enviar
     FS.mover_e_clicar(3450, 875, 2)
 
-    # Enviar os presentes
+    # Envia os presentes
     FS.mover_e_clicar(3625, 810, 2)
 
     # Fecha tela de envio dos presentes
     FS.mover_e_clicar(4010, 475, 2)
 
-    # Fechar tela de presentes
+    # Fecha tela de Presentes
     FS.mover_e_clicar(3990, 540, 2)

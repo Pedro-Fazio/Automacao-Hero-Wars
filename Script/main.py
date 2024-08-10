@@ -2,6 +2,7 @@ import pyautogui
 import Componentes_Hero_Wars.Arena.arena as Arena
 import Componentes_Hero_Wars.Vidente_Astral.vidente_astral as Vidente_Astral
 import Componentes_Hero_Wars.Presentes.presentes as Presentes
+import Componentes_Hero_Wars.Dirigivel.dirigivel as Dirigivel
 
 def main():
     #abrir_navegador(510, 1050)
@@ -10,6 +11,7 @@ def main():
 
     # presentes()
     # vidente_astral()
+    dirigivel()
 
 
 def menu():
@@ -40,6 +42,10 @@ def vidente_astral():
 
 def presentes():
     Presentes.presentear()
+
+
+def dirigivel():
+    Dirigivel.pega_recompensa_valquiria()
 
 
 

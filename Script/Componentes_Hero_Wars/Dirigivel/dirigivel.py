@@ -1,6 +1,6 @@
 import Util.funcoes_suporte as FS
 
-def pega_recompensa_valquiria():
+def pegar_recompensa_valquiria():
     # Clica no Dirigível
     FS.mover_e_clicar(3500, 500, 3)
 

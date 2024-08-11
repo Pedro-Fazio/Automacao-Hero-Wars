@@ -4,22 +4,22 @@ def pegar_recompensas():
     # Clica em Terralém
     FS.mover_e_clicar(3890, 530, 3)
 
-    rotina1()
+    abrir_bau()
 
     # Clica no próximo chefe
     FS.mover_e_clicar(3125, 1000, 3)
 
-    rotina1()
+    abrir_bau()
 
     # Clica no próximo chefe
     FS.mover_e_clicar(3125, 1000, 3)
 
-    rotina1()
+    abrir_bau()
 
     # Clica no X do Terralém
     FS.mover_e_clicar(4450, 400, 3)
 
-def rotina1():
+def abrir_bau():
     # Clica em Abrir Baús
     FS.mover_e_clicar(3250, 760, 3)
 

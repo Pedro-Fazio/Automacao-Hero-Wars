@@ -10,23 +10,15 @@ def completar_torre():
     # Clica em Escolher Baús
     FS.mover_e_clicar(3410, 925, 2)
 
-    rotina1()
-    rotina1()
-    rotina1()
-    rotina1()
-    rotina1()
-    rotina1()
-    rotina1()
-    rotina1()
-    rotina1()
-    rotina1()
+    for _ in range(10):
+        coletar_recompensa()
 
-    rotina2()
-    rotina2()
+    for _ in range(2):
+        coletar_recompensa_alternativo()
 
-    rotina1()
-    rotina1()
-
+    for _ in range(2):
+        coletar_recompensa()
+    
     FS.mover_e_clicar(4000, 790, 1)
 
     FS.mover_e_clicar(3300, 860, 1)
@@ -46,7 +38,7 @@ def completar_torre():
     FS.mover_e_clicar(4440, 400, 1)
 
 
-def rotina1():
+def coletar_recompensa():
     # Clica no baú
     FS.mover_e_clicar(3875, 810, 1)
 
@@ -56,7 +48,7 @@ def rotina1():
     # Clica em Continuar
     FS.mover_e_clicar(4060, 1040, 1)
 
-def rotina2():
+def coletar_recompensa_alternativo():
     # Clica no baú
     FS.mover_e_clicar(3410, 790, 1)
 

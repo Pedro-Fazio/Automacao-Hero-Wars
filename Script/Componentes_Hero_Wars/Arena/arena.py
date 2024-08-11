@@ -4,18 +4,15 @@ def batalhar():
     # Clica na Arena
     FS.mover_e_clicar(4000, 770, 3)
 
-    rotina1()
-    rotina1()
-    rotina1()
-    rotina1()
-    rotina1()
+    for _ in range(5):
+        lutar_uma_vez()
 
     # Clica no X da Arena
     FS.mover_e_clicar(4140, 450, 1)
 
 
 
-def rotina1():
+def lutar_uma_vez():
     # Clica para atacar o primeiro jogador
     FS.mover_e_clicar(3240, 825, 2)
 

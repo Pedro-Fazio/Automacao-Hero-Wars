@@ -7,6 +7,7 @@ import Componentes_Hero_Wars.Grande_Arena.grande_arena as Grande_Arena
 import Componentes_Hero_Wars.Terralem.terralem as Terralem
 import Componentes_Hero_Wars.Masmorra.masmorra as Masmorra
 import Componentes_Hero_Wars.Atrio_Animico.atrio_animico as Atrio_Animico
+import Componentes_Hero_Wars.Torre.torre as Torre
 
 def main():
     #abrir_navegador(510, 1050)
@@ -19,7 +20,8 @@ def main():
     # grande_arena()
     # terralem()
     # masmorra()
-    atrio_animico()
+    # atrio_animico()
+    # torre()
 
 
 def menu():
@@ -70,6 +72,10 @@ def masmorra():
 
 def atrio_animico():
     Atrio_Animico.resgatar_recompensa()
+
+
+def torre():
+    Torre.completar_torre()
 
 
 

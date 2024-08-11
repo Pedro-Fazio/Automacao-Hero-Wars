@@ -9,6 +9,7 @@ import Componentes_Hero_Wars.Masmorra.masmorra as Masmorra
 import Componentes_Hero_Wars.Atrio_Animico.atrio_animico as Atrio_Animico
 import Componentes_Hero_Wars.Torre.torre as Torre
 import Componentes_Hero_Wars.Mensagens.mensagens as Mensagens
+import Componentes_Hero_Wars.Eventos_Especiais.eventos_especiais as Eventos_Especiais
 
 def main():
     #abrir_navegador(510, 1050)
@@ -25,6 +26,7 @@ def main():
     # torre()
 
     #mensagens()
+    #eventos_especiais()
 
 
 def menu():
@@ -83,8 +85,13 @@ def torre():
 
 
 
+
 def mensagens():
     Mensagens.coletar_mensagens()
+
+
+def eventos_especiais():
+    Eventos_Especiais.coletar_recompensas_imutaveis()
 
 
 

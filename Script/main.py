@@ -8,6 +8,7 @@ import Componentes_Hero_Wars.Terralem.terralem as Terralem
 import Componentes_Hero_Wars.Masmorra.masmorra as Masmorra
 import Componentes_Hero_Wars.Atrio_Animico.atrio_animico as Atrio_Animico
 import Componentes_Hero_Wars.Torre.torre as Torre
+import Componentes_Hero_Wars.Mensagens.mensagens as Mensagens
 
 def main():
     #abrir_navegador(510, 1050)
@@ -22,6 +23,8 @@ def main():
     # masmorra()
     # atrio_animico()
     # torre()
+
+    #mensagens()
 
 
 def menu():
@@ -76,6 +79,12 @@ def atrio_animico():
 
 def torre():
     Torre.completar_torre()
+
+
+
+
+def mensagens():
+    Mensagens.coletar_mensagens()
 
 
 

@@ -2,7 +2,7 @@ import Util.funcoes_suporte as FS
 
 def resgatar_recompensa():
     # Clica no Átrio Anímico
-    FS.mover_e_clicar(3695, 500, 2)
+    FS.mover_e_clicar(3695, 500, 3)
 
     # Clica em Resgatar
     FS.mover_e_clicar(4410, 500, 1)

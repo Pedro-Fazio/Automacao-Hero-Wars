@@ -10,6 +10,7 @@ import Componentes_Hero_Wars.Atrio_Animico.atrio_animico as Atrio_Animico
 import Componentes_Hero_Wars.Torre.torre as Torre
 import Componentes_Hero_Wars.Mensagens.mensagens as Mensagens
 import Componentes_Hero_Wars.Eventos_Especiais.eventos_especiais as Eventos_Especiais
+import Componentes_Hero_Wars.Missoes_Diarias.missoes_diarias as Missoes_Diarias
 
 def main():
     #abrir_navegador(510, 1050)
@@ -27,6 +28,7 @@ def main():
 
     #mensagens()
     #eventos_especiais()
+    missoes_diarias()
 
 
 def menu():
@@ -92,6 +94,9 @@ def mensagens():
 
 def eventos_especiais():
     Eventos_Especiais.coletar_recompensas_imutaveis()
+
+def missoes_diarias():
+    Missoes_Diarias.coletar_diarias()
 
 
 

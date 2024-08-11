@@ -11,13 +11,13 @@ def completar_torre():
     FS.mover_e_clicar(3410, 925, 2)
 
     for _ in range(10):
-        coletar_recompensa()
+        _coletar_recompensa()
 
     for _ in range(2):
         coletar_recompensa_alternativo()
 
     for _ in range(2):
-        coletar_recompensa()
+        _coletar_recompensa()
     
     FS.mover_e_clicar(4000, 790, 1)
 
@@ -38,7 +38,7 @@ def completar_torre():
     FS.mover_e_clicar(4440, 400, 1)
 
 
-def coletar_recompensa():
+def _coletar_recompensa():
     # Clica no baú
     FS.mover_e_clicar(3875, 810, 1)
 

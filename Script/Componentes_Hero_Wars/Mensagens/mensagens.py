@@ -14,10 +14,10 @@ def coletar_mensagens():
     FS.mover_e_clicar(3635, 970, 1)
 
     for _ in range(10):
-        coletar_mensagem()
+        _coletar_mensagem()
 
     # Clica no X das Mensagens
     FS.mover_e_clicar(4020, 440, 1)
 
-def coletar_mensagem():
+def _coletar_mensagem():
     FS.mover_e_clicar(0, 0, 1)

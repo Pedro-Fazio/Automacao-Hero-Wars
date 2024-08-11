@@ -11,9 +11,9 @@ import Componentes_Hero_Wars.Torre.torre as Torre
 
 def main():
     #abrir_navegador(510, 1050)
-    #arena()
     menu()
 
+    arena()
     # presentes()
     # vidente_astral()
     # dirigivel()
@@ -43,7 +43,7 @@ def abrir_navegador(coord_x, coord_y):
 
 
 def arena():
-    Arena.jogar_completo()
+    Arena.batalhar()
 
 
 def grande_arena():

@@ -1,10 +1,26 @@
-import pyautogui
-import time
+import Util.funcoes_suporte as FS
 
-pyautogui.PAUSE = 1
+def batalhar():
+    # Clica na Arena
+    FS.mover_e_clicar(4000, 770, 3)
 
-def jogar_completo():
-    coord_x = 1
-    coord_y = 1
-    pyautogui.click(coord_x, coord_y)
-    time.sleep(1)
+    rotina1()
+    rotina1()
+    rotina1()
+    rotina1()
+    rotina1()
+
+    # Clica no X da Arena
+    FS.mover_e_clicar(4140, 450, 1)
+
+
+
+def rotina1():
+    # Clica para atacar o primeiro jogador
+    FS.mover_e_clicar(3240, 825, 2)
+
+    # Clica em Para a Batalha!
+    FS.mover_e_clicar(4080, 1075, 130)
+
+    # Clica em OK
+    FS.mover_e_clicar(3640, 1000, 2)

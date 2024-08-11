@@ -13,7 +13,7 @@ def main():
     #abrir_navegador(510, 1050)
     menu()
 
-    arena()
+    # arena()
     # presentes()
     # vidente_astral()
     # dirigivel()

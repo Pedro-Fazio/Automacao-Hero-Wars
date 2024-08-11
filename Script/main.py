@@ -5,6 +5,7 @@ import Componentes_Hero_Wars.Presentes.presentes as Presentes
 import Componentes_Hero_Wars.Dirigivel.dirigivel as Dirigivel
 import Componentes_Hero_Wars.Grande_Arena.grande_arena as Grande_Arena
 import Componentes_Hero_Wars.Terralem.terralem as Terralem
+import Componentes_Hero_Wars.Masmorra.masmorra as Masmorra
 
 def main():
     #abrir_navegador(510, 1050)
@@ -15,7 +16,8 @@ def main():
     # vidente_astral()
     # dirigivel()
     # grande_arena()
-    terralem()
+    # terralem()
+    masmorra()
 
 
 def menu():
@@ -58,6 +60,10 @@ def dirigivel():
 
 def terralem():
     Terralem.pegar_recompensas()
+
+
+def masmorra():
+    Masmorra.percorrer_masmorra()
 
 
 

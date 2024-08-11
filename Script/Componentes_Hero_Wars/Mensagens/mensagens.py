@@ -20,4 +20,8 @@ def coletar_mensagens():
     FS.mover_e_clicar(4020, 440, 1)
 
 def _coletar_mensagem():
-    FS.mover_e_clicar(0, 0, 1)
+    # Clica na mensagem
+    FS.mover_e_clicar(3900, 550, 1)
+
+    # Clica em Coletar
+    FS.mover_e_clicar(3630, 1000, 1)

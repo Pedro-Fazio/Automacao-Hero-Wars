@@ -88,9 +88,6 @@ def torre():
     Torre.completar_torre()
 
 
-
-
-
 def mensagens():
     Mensagens.coletar_mensagens()
 

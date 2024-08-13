@@ -13,7 +13,7 @@ def coletar_mensagens():
     # Clica em Coletar Tudo
     FS.mover_e_clicar(3635, 970, 1)
 
-    for _ in range(10):
+    for _ in range(15):
         _coletar_mensagem()
 
     # Clica no X das Mensagens

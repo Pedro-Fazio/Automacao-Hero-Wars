@@ -1,7 +1,7 @@
 import Util.funcoes_suporte as FS
 
 def percorrer_masmorra():
-    # Clica em Guilda
+        # Clica em Guilda
     FS.mover_e_clicar(2825, 1025, 10)
 
     # Clica em Ilha da Guilda
@@ -28,7 +28,7 @@ def percorrer_masmorra():
     # Clica em Para a Batalha!
     FS.mover_e_clicar(3875, 625, 1)
 
-    for _ in range(3):
+    for _ in range(4):
         batalhar()
 
     batalhar_escolhendo_adversario()
@@ -61,7 +61,7 @@ def batalhar():
     FS.mover_e_clicar(3625, 625, 2)
 
     # Clica em Aceitar o Destino!
-    FS.mover_e_clicar(3685, 940, 3)
+    FS.mover_e_clicar(3685, 940, 4)
 
 
 def batalhar_escolhendo_adversario():
@@ -72,7 +72,7 @@ def batalhar_escolhendo_adversario():
     FS.mover_e_clicar(3375, 935, 2)
 
     # Clica em Aceitar o Destino!
-    FS.mover_e_clicar(3685, 940, 3)
+    FS.mover_e_clicar(3685, 940, 4)
 
 
 def batalhar_escolhendo_adversario_variacao():
@@ -83,7 +83,7 @@ def batalhar_escolhendo_adversario_variacao():
     FS.mover_e_clicar(3375, 935, 2)
 
     # Clica em Aceitar o Destino!
-    FS.mover_e_clicar(3685, 940, 3)
+    FS.mover_e_clicar(3685, 940, 4)
 
 
 def batalhar_variacao():
@@ -91,4 +91,4 @@ def batalhar_variacao():
     FS.mover_e_clicar(3875, 625, 2)
 
     # Clica em Aceitar o Destino!
-    FS.mover_e_clicar(3685, 935, 3)
+    FS.mover_e_clicar(3685, 935, 4)

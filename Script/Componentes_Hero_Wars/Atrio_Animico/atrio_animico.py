@@ -11,7 +11,7 @@ def resgatar_recompensa():
     FS.mover_e_clicar(3625, 1060, 1)
 
     # Clica na tela para pular animação de invocação
-    FS.mover_e_clicar(3625, 1060, 2)
+    FS.mover_e_clicar(3625, 1060, 3)
 
     # Clica em Ótimo!
     FS.mover_e_clicar(3500, 1100, 2)

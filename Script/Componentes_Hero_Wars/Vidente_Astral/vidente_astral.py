@@ -23,4 +23,4 @@ def completar_uma_vez():
     FS.mover_e_clicar(4450, 400, 1)
 
     # Clica em Para a Cidade
-    FS.mover_e_clicar(2825, 1025, 5)
+    FS.mover_e_clicar(2825, 1025, 3)

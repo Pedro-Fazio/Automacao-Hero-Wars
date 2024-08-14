@@ -17,7 +17,7 @@ def _lutar_uma_vez():
     FS.mover_e_clicar(3240, 825, 2)
 
     # Clica em Para a Batalha!
-    FS.mover_e_clicar(4080, 1075, 1)
+    FS.mover_e_clicar(4080, 1075, 130)
 
     # Clica em OK
-    FS.mover_e_clicar(3640, 1010, 130)
+    FS.mover_e_clicar(3640, 1005, 1)

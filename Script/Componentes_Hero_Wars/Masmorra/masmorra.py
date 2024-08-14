@@ -14,10 +14,10 @@ def percorrer_masmorra():
     FS.mover_e_clicar(2800, 410, 1)
 
     # Clica em Confirmar para recompensa nivel 100
-    FS.mover_e_clicar(4025, 710, 1)
+    FS.mover_e_clicar(4025, 710, 0)
 
     # Clica em Confirmar para recompensa nivel 1000
-    FS.mover_e_clicar(4025, 810, 1)
+    FS.mover_e_clicar(4025, 810, 0)
 
     # Clica em Confirmar para recompensa nivel 2000
     FS.mover_e_clicar(4025, 915, 1)
@@ -53,7 +53,7 @@ def percorrer_masmorra():
     FS.mover_e_clicar(4450, 400, 3)
 
     # Clica em Para a Cidade
-    FS.mover_e_clicar(2825, 1025, 1)
+    FS.mover_e_clicar(2825, 1025, 3)
 
 
 def batalhar():

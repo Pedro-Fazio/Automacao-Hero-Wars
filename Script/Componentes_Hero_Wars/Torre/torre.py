@@ -32,7 +32,7 @@ def completar_torre():
     FS.mover_e_clicar(2810, 400, 1)
 
     # Clica em Troque moedas de crânio
-    FS.mover_e_clicar(3625, 870, 1)
+    FS.mover_e_clicar(3625, 870, 2)
 
     # Clica em Pontos de Torre
     FS.mover_e_clicar(3140, 1090, 1)

@@ -1,24 +1,10 @@
 import os
 
-def cria_rotina():
+def cria_rotina(tarefas):
     nomeRotina = input("\nDê um nome para sua rotina: ")
     caminho_pasta = 'Configuracoes/Rotinas'
     caminho = f'{caminho_pasta}/{nomeRotina}.txt'
     tarefasAdicionadas = []
-    tarefas = [    
-        'arena',
-        'grande_arena',
-        'vidente_astral',
-        'presentes',
-        'dirigivel',
-        'terralem',
-        'atrio_animico',
-        'torre',
-        'masmorra',
-        'mensagens',
-        'eventos_especiais',
-        'missoes_diarias'
-    ]
     
     # Verifica se a pasta "Rotinas" existe, caso contrário, cria a pasta
     if not os.path.exists(caminho_pasta):
@@ -27,8 +13,7 @@ def cria_rotina():
     with open(caminho, 'w') as arquivo:
         while True:
             print('\n')
-            for indice, valor in enumerate(tarefas):
-                print(f'Tarefa {indice}: {valor}')
+            mostrar_tarefas(tarefas)
             
             tarefaAdicionada = input('\nAdicione uma tarefa na sua rotina: ').strip()
 
@@ -74,5 +59,10 @@ def le_dados_rotina(rotinaEscolhida):
     with open(caminhoArquivo, 'r') as arquivo:
         linhas = arquivo.readlines()
     return [linha.strip() for linha in linhas]  # Remove o caractere de nova linha
+
+
+def mostrar_tarefas(tarefas):
+    for indice, valor in enumerate(tarefas):
+        print(f'Tarefa {indice}: {valor}')
 
 

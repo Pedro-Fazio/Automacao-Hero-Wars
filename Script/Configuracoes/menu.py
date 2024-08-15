@@ -13,14 +13,34 @@ import Componentes_Hero_Wars.Eventos_Especiais.eventos_especiais as Eventos_Espe
 import Componentes_Hero_Wars.Missoes_Diarias.missoes_diarias as Missoes_Diarias
 
 def menu():
-    print('\nEscolha uma das opções:\n1 - Criar rotina\n2 - Escolher rotina\n')
+    print('\nEscolha uma das opções:\n1 - Criar rotina\n2 - Escolher rotina\n' +
+    '3 - Fazer tarefa especifica')
     escolha = input('Opção escolhida: ').strip()
 
+    tarefas = [    
+        'arena',
+        'grande_arena',
+        'vidente_astral',
+        'presentes',
+        'dirigivel',
+        'terralem',
+        'atrio_animico',
+        'torre',
+        'masmorra',
+        'mensagens',
+        'eventos_especiais',
+        'missoes_diarias'
+    ]
+
     if escolha == "1":
-        Rotina.cria_rotina()
+        Rotina.cria_rotina(tarefas)
     elif escolha == "2":
         dadosRotina = Rotina.escolhe_rotina()
         executa_rotina(dadosRotina)
+    elif escolha == "3":
+        Rotina.mostrar_tarefas(tarefas)
+        escolha = input('Tarefa escolhida: ').strip()
+        executa_tarefa(escolha)
     else:
         print("Opção inválida. Tente novamente.")
 

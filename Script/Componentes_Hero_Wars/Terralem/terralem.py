@@ -4,17 +4,17 @@ def pegar_recompensas(coord_x, coord_y, tempo):
     # Clica em Terralém
     FS.mover_e_clicar(coord_x[0], coord_y[0], tempo[0])
 
-    _abrir_bau()
+    _abrir_bau(coord_x, coord_y, tempo)
 
     # Clica no próximo chefe
     FS.mover_e_clicar(coord_x[5], coord_y[5], tempo[5])
 
-    _abrir_bau()
+    _abrir_bau(coord_x, coord_y, tempo)
 
     # Clica no próximo chefe
     FS.mover_e_clicar(coord_x[6], coord_y[6], tempo[6])
 
-    _abrir_bau()
+    _abrir_bau(coord_x, coord_y, tempo)
 
     # Clica no X do Terralém
     FS.mover_e_clicar(coord_x[7], coord_y[7], tempo[7])

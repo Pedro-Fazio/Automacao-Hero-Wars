@@ -1,3 +1,4 @@
+import Configuracoes.Coordenadas.Gerenciador_Coordenadas as Gerenciador_Coordenadas
 import Configuracoes.rotina as Rotina
 import Componentes_Hero_Wars.Arena.arena as Arena
 import Componentes_Hero_Wars.Vidente_Astral.vidente_astral as Vidente_Astral
@@ -73,47 +74,60 @@ def executa_tarefa(tarefa):
         funcao()  # Chama a função associada à escolha
 
 def arena():
-    Arena.batalhar()
+    coord_x, coord_y, tempo = Gerenciador_Coordenadas.pegar_coordenadas('Arena.txt')
+    Arena.batalhar(coord_x, coord_y, tempo)
 
 
 def grande_arena():
-    Grande_Arena.pegar_recompensa()
+    coord_x, coord_y, tempo = Gerenciador_Coordenadas.pegar_coordenadas('Grande_Arena.txt')
+    Grande_Arena.pegar_recompensa(coord_x, coord_y, tempo)
 
 
 def vidente_astral():
-    Vidente_Astral.completar_uma_vez()
+    coord_x, coord_y, tempo = Gerenciador_Coordenadas.pegar_coordenadas('Vidente_Astral.txt')
+    Vidente_Astral.completar_uma_vez(coord_x, coord_y, tempo)
 
 
 def presentes():
-    Presentes.presentear()
+    coord_x, coord_y, tempo = Gerenciador_Coordenadas.pegar_coordenadas('Presentes.txt')
+    Presentes.presentear(coord_x, coord_y, tempo)
 
 
 def dirigivel():
-    Dirigivel.pegar_recompensa_valquiria()
+    coord_x, coord_y, tempo = Gerenciador_Coordenadas.pegar_coordenadas('Dirigivel.txt')
+    Dirigivel.pegar_recompensa_valquiria(coord_x, coord_y, tempo)
 
 
 def terralem():
-    Terralem.pegar_recompensas()
+    coord_x, coord_y, tempo = Gerenciador_Coordenadas.pegar_coordenadas('Terralem.txt')
+    Terralem.pegar_recompensas(coord_x, coord_y, tempo)
 
 
 def masmorra():
-    Masmorra.percorrer_masmorra()
+    coord_x, coord_y, tempo = Gerenciador_Coordenadas.pegar_coordenadas('Masmorra.txt')
+    Masmorra.percorrer_masmorra(coord_x, coord_y, tempo)
 
 
 def atrio_animico():
-    Atrio_Animico.resgatar_recompensa()
+    coord_x, coord_y, tempo = Gerenciador_Coordenadas.pegar_coordenadas('Atrio_Animico.txt')
+    Atrio_Animico.resgatar_recompensa(coord_x, coord_y, tempo)
 
 
 def torre():
-    Torre.completar_torre()
+    coord_x, coord_y, tempo = Gerenciador_Coordenadas.pegar_coordenadas('Torre.txt')
+    Torre.completar_torre(coord_x, coord_y, tempo)
 
 
 def mensagens():
-    Mensagens.coletar_mensagens()
+    coord_x, coord_y, tempo = Gerenciador_Coordenadas.pegar_coordenadas('Mensagens.txt')
+    Mensagens.coletar_mensagens(coord_x, coord_y, tempo)
 
 
 def eventos_especiais():
-    Eventos_Especiais.coletar_recompensas_imutaveis()
+    coord_x, coord_y, tempo = Gerenciador_Coordenadas.pegar_coordenadas('Eventos_Especiais.txt')
+    Eventos_Especiais.coletar_recompensas_imutaveis(coord_x, coord_y, tempo)
+
 
 def missoes_diarias():
-    Missoes_Diarias.coletar_diarias()
+    coord_x, coord_y, tempo = Gerenciador_Coordenadas.pegar_coordenadas('Missoes_Diarias.txt')
+    Missoes_Diarias.coletar_diarias(coord_x, coord_y, tempo)

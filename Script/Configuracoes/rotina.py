@@ -29,7 +29,7 @@ def cria_rotina(tarefas):
                 if adicionarMais == False:
                     break
 
-    
+
     print(f'Rotina "{nomeRotina}" criada com sucesso no caminho: {caminho}')
 
 
@@ -58,7 +58,7 @@ def le_dados_rotina(rotinaEscolhida):
 
     with open(caminhoArquivo, 'r') as arquivo:
         linhas = arquivo.readlines()
-    return [linha.strip() for linha in linhas]  # Remove o caractere de nova linha
+    return [linha.strip() for linha in linhas]
 
 
 def mostrar_tarefas(tarefas):

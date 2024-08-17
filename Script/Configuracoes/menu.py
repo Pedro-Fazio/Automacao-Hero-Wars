@@ -15,7 +15,7 @@ import Componentes_Hero_Wars.Missoes_Diarias.missoes_diarias as Missoes_Diarias
 
 def menu():
     print('\nEscolha uma das opções:\n1 - Criar rotina\n2 - Escolher rotina\n' +
-    '3 - Fazer tarefa especifica')
+    '3 - Fazer tarefa especifica\n4 - Configurar coordenadas')
     escolha = input('Opção escolhida: ').strip()
 
     tarefas = [    
@@ -42,6 +42,8 @@ def menu():
         Rotina.mostrar_tarefas(tarefas)
         escolha = input('Tarefa escolhida: ').strip()
         executa_tarefa(escolha)
+    elif escolha == "4":
+        Gerenciador_Coordenadas.configurar_coordenadas()
     else:
         print("Opção inválida. Tente novamente.")
 

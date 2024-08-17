@@ -1,3 +1,7 @@
+import Componentes_Hero_Wars.Atrio_Animico.atrio_animico as Atrio_Animico
+import Util.funcoes_suporte as FS
+import os
+
 def pegar_coordenadas(nome_arquivo):
     caminhoArquivo = f'Configuracoes/Coordenadas/Arquivos_Coordenadas/{nome_arquivo}'
 
@@ -14,5 +18,10 @@ def pegar_coordenadas(nome_arquivo):
                 tempo.append(int(valores[2]))
 
     return coord_x, coord_y, tempo
+
+
+def configurar_coordenadas():
+    print("\nVamos começar configurando as coordenadas do Atrio Animico")
+    Atrio_Animico.configurar_atrio_animico()
 
 

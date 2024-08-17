@@ -1,4 +1,5 @@
 import Util.funcoes_suporte as FS
+import os
 
 def resgatar_recompensa(coord_x, coord_y, tempo):
     # Clica no Átrio Anímico
@@ -18,3 +19,53 @@ def resgatar_recompensa(coord_x, coord_y, tempo):
 
     # Clica no X do Átrio Anímico
     FS.mover_e_clicar(coord_x[5], coord_y[5], tempo[5])
+
+
+def configurar_atrio_animico():
+    caminho_pasta = 'Configuracoes/Coordenadas/Coordenadas_Teste'
+    caminho_arquivo = f'{caminho_pasta}/Atrio_Animico.txt'
+    time_sleeps = ['3', '1', '1', '3', '2', '1']
+
+    # Cria o diretório se ele não existir
+    if not os.path.exists(caminho_pasta):
+        os.makedirs(caminho_pasta)
+
+    coordenadas_x = []
+    coordenadas_y = []
+
+    print("\nClique no Átrio Anímico")
+    x, y = FS.captura_clique_coordenadas()
+    coordenadas_x.append(x)
+    coordenadas_y.append(y)
+
+    print("\nClique em Resgatar")
+    x, y = FS.captura_clique_coordenadas()
+    coordenadas_x.append(x)
+    coordenadas_y.append(y)
+
+    print("\nClique em Invocar")
+    x, y = FS.captura_clique_coordenadas()
+    coordenadas_x.append(x)
+    coordenadas_y.append(y)
+
+    print("\nClique na tela para pular animação de invocação")
+    x, y = FS.captura_clique_coordenadas()
+    coordenadas_x.append(x)
+    coordenadas_y.append(y)
+
+    print("\nClique em Ótimo!")
+    x, y = FS.captura_clique_coordenadas()
+    coordenadas_x.append(x)
+    coordenadas_y.append(y)
+
+    print("\nClique no X do Átrio Anímico")
+    x, y = FS.captura_clique_coordenadas()
+    coordenadas_x.append(x)
+    coordenadas_y.append(y)
+
+    # Escreve as coordenadas em um arquivo
+    with open(caminho_arquivo, 'w') as arquivo:
+        for i in range(len(coordenadas_x)):
+            arquivo.write(f"{coordenadas_x[i]}, {coordenadas_y[i]}, {time_sleeps[i]}\n")
+
+    print("Coordenadas foram salvas em", caminho_arquivo)

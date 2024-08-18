@@ -124,7 +124,7 @@ def dirigivel():
 
 def terralem():
     print("\nVamos configurar as coordenadas do Terralem")
-    #Terralem.configurar_coordenadas()
+    Terralem.configurar_coordenadas()
     FS.desenhar_linha()
 
 

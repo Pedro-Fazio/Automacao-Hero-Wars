@@ -115,7 +115,7 @@ def configurar_coordenadas():
 
 
     print('Agora vá completando a torre até a minha próxima orientação.')
-    for _ in range(10):
+    for _ in range(27):
         x, y = FS.captura_clique_coordenadas()
 
 
@@ -135,7 +135,7 @@ def configurar_coordenadas():
     coordenadas_y.append(y)
 
     print('Agora vá completando a torre até a minha próxima orientação.')
-    for _ in range(3):
+    for _ in range(9):
         x, y = FS.captura_clique_coordenadas()
 
 

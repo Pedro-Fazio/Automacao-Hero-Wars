@@ -165,7 +165,7 @@ def configurar_coordenadas():
 
 
     print('Agora vá completando a masmorra até a minha próxima orientação.')
-    for _ in range(3):
+    for _ in range(6):
         x, y = FS.captura_clique_coordenadas()
 
 
@@ -186,7 +186,7 @@ def configurar_coordenadas():
 
 
     print('Agora vá completando a masmorra até a minha próxima orientação.')
-    for _ in range(4):
+    for _ in range(9):
         x, y = FS.captura_clique_coordenadas()
 
 
@@ -217,7 +217,7 @@ def configurar_coordenadas():
 
 
     print('Agora vá completando a masmorra até a minha próxima orientação.')
-    for _ in range(4):
+    for _ in range(9):
         x, y = FS.captura_clique_coordenadas()
 
 

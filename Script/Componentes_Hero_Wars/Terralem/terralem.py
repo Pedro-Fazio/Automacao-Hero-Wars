@@ -22,7 +22,7 @@ def pegar_recompensas(coord_x, coord_y, tempo):
 
 
 def _abrir_bau(coord_x, coord_y, tempo):
-    # Clica em Abrir Baús
+    # Clica em Resgatar Recompensa
     FS.mover_e_clicar(coord_x[1], coord_y[1], tempo[1])
 
     # Clica em Abrir
@@ -52,7 +52,7 @@ def configurar_coordenadas():
     coordenadas_x.append(x)
     coordenadas_y.append(y)
 
-    print("\nClique em Abrir Baús")
+    print("\nClique em Resgatar Recompensa")
     x, y = FS.captura_clique_coordenadas()
     coordenadas_x.append(x)
     coordenadas_y.append(y)

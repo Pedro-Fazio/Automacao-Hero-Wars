@@ -130,7 +130,7 @@ def terralem():
 
 def masmorra():
     print("\nVamos configurar as coordenadas da Masmorra")
-    #Masmorra.configurar_coordenadas()
+    Masmorra.configurar_coordenadas()
     FS.desenhar_linha()
 
 

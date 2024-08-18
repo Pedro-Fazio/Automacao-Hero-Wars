@@ -106,7 +106,7 @@ def grande_arena():
 
 def vidente_astral():
     print("\nVamos configurar as coordenadas do Vidente Astral")
-    #Vidente_Astral.configurar_coordenadas()
+    Vidente_Astral.configurar_coordenadas()
     FS.desenhar_linha()
 
 

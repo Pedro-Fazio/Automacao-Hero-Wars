@@ -148,4 +148,4 @@ def eventos_especiais():
 
 def missoes_diarias():
     print("\nVamos configurar as coordenadas das Missões Diárias")
-    #Missoes_Diarias.configurar_coordenadas()
+    Missoes_Diarias.configurar_coordenadas()

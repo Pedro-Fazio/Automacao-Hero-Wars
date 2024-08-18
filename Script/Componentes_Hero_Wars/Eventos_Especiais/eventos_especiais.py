@@ -17,7 +17,7 @@ def coletar_recompensas_imutaveis(coord_x, coord_y, tempo):
 
 def configurar_coordenadas():
     caminho_pasta = 'Configuracoes/Coordenadas/Coordenadas_Teste'
-    caminho_arquivo = f'{caminho_pasta}/Dirigivel.txt'
+    caminho_arquivo = f'{caminho_pasta}/Eventos_Especiais.txt'
     time_sleeps = ['1', '2', '1', '1']
 
     # Cria o diretório se ele não existir

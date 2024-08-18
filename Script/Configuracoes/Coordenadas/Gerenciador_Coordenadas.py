@@ -98,7 +98,7 @@ def arena():
 
 def grande_arena():
     print("\nVamos configurar as coordenadas da Grande Arena")
-    #Grande_Arena.configurar_coordenadas()
+    Grande_Arena.configurar_coordenadas()
 
 
 def vidente_astral():
@@ -143,7 +143,7 @@ def mensagens():
 
 def eventos_especiais():
     print("\nVamos configurar as coordenadas dos Eventos Especiais")
-    #Eventos_Especiais.configurar_coordenadas()
+    Eventos_Especiais.configurar_coordenadas()
 
 
 def missoes_diarias():

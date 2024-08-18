@@ -1,4 +1,5 @@
 import Util.funcoes_suporte as FS
+import os
 
 def completar_torre(coord_x, coord_y, tempo):
     # Clica na Torre
@@ -67,3 +68,125 @@ def coletar_recompensa_alternativo(coord_x, coord_y, tempo):
 
     # Clica em Continuar
     FS.mover_e_clicar(coord_x[8], coord_y[8], tempo[8])
+
+
+def configurar_coordenadas():
+    caminho_pasta = 'Configuracoes/Coordenadas/Coordenadas_Teste'
+    caminho_arquivo = f'{caminho_pasta}/Torre.txt'
+    time_sleeps = ['3', '2', '2', '1', '1', '1', '1', '1', '1',
+                '1', '1', '1', '1', '2', '1', '1', '1', '1']
+
+    # Cria o diretório se ele não existir
+    if not os.path.exists(caminho_pasta):
+        os.makedirs(caminho_pasta)
+
+    coordenadas_x = []
+    coordenadas_y = []
+
+    print("\nClique na Torre")
+    x, y = FS.captura_clique_coordenadas()
+    coordenadas_x.append(x)
+    coordenadas_y.append(y)
+
+    print("\nClique em Conclusão Instantânea")
+    x, y = FS.captura_clique_coordenadas()
+    coordenadas_x.append(x)
+    coordenadas_y.append(y)
+
+    print("\nClique em Escolher Baús")
+    x, y = FS.captura_clique_coordenadas()
+    coordenadas_x.append(x)
+    coordenadas_y.append(y)
+
+    print("\nClique no baú")
+    x, y = FS.captura_clique_coordenadas()
+    coordenadas_x.append(x)
+    coordenadas_y.append(y)
+
+    print("\nClique em Abrir")
+    x, y = FS.captura_clique_coordenadas()
+    coordenadas_x.append(x)
+    coordenadas_y.append(y)
+
+    print("\nClique em Continuar")
+    x, y = FS.captura_clique_coordenadas()
+    coordenadas_x.append(x)
+    coordenadas_y.append(y)
+
+
+    print('Agora vá completando a torre até a minha próxima orientação.')
+    for _ in range(10):
+        x, y = FS.captura_clique_coordenadas()
+
+
+    print("\nClique no baú")
+    x, y = FS.captura_clique_coordenadas()
+    coordenadas_x.append(x)
+    coordenadas_y.append(y)
+
+    print("\nClique em Abrir")
+    x, y = FS.captura_clique_coordenadas()
+    coordenadas_x.append(x)
+    coordenadas_y.append(y)
+
+    print("\nClique em Continuar")
+    x, y = FS.captura_clique_coordenadas()
+    coordenadas_x.append(x)
+    coordenadas_y.append(y)
+
+    print('Agora vá completando a torre até a minha próxima orientação.')
+    for _ in range(3):
+        x, y = FS.captura_clique_coordenadas()
+
+
+    print("\nClique no baú principal")
+    x, y = FS.captura_clique_coordenadas()
+    coordenadas_x.append(x)
+    coordenadas_y.append(y)
+
+    print("\nClique em Abrir")
+    x, y = FS.captura_clique_coordenadas()
+    coordenadas_x.append(x)
+    coordenadas_y.append(y)
+
+    print("\nClique no X do baú principal")
+    x, y = FS.captura_clique_coordenadas()
+    coordenadas_x.append(x)
+    coordenadas_y.append(y)
+
+    print("\nClique no ícone de caveira")
+    x, y = FS.captura_clique_coordenadas()
+    coordenadas_x.append(x)
+    coordenadas_y.append(y)
+
+    print("\nClique em Troque moedas de crânio")
+    x, y = FS.captura_clique_coordenadas()
+    coordenadas_x.append(x)
+    coordenadas_y.append(y)
+
+    print("\nClique em Pontos de Torre")
+    x, y = FS.captura_clique_coordenadas()
+    coordenadas_x.append(x)
+    coordenadas_y.append(y)
+
+    print("\nClique em Coletar Tudo")
+    x, y = FS.captura_clique_coordenadas()
+    coordenadas_x.append(x)
+    coordenadas_y.append(y)
+
+    print("\nClique no X dos Pontos de Torre")
+    x, y = FS.captura_clique_coordenadas()
+    coordenadas_x.append(x)
+    coordenadas_y.append(y)
+
+    print("\nClique no X da Torre")
+    x, y = FS.captura_clique_coordenadas()
+    coordenadas_x.append(x)
+    coordenadas_y.append(y)
+
+    # Escreve as coordenadas em um arquivo
+    with open(caminho_arquivo, 'w') as arquivo:
+        for i in range(len(coordenadas_x)):
+            arquivo.write(f"{coordenadas_x[i]}, {coordenadas_y[i]}, {time_sleeps[i]}\n")
+
+    print("Coordenadas foram salvas em", caminho_arquivo)

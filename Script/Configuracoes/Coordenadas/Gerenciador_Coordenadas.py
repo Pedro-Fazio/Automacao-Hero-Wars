@@ -142,7 +142,7 @@ def atrio_animico():
 
 def torre():
     print("\nVamos configurar as coordenadas da Torre")
-    #Torre.configurar_coordenadas()
+    Torre.configurar_coordenadas()
     FS.desenhar_linha()
 
 

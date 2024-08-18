@@ -1,4 +1,5 @@
 import Configuracoes.rotina as Rotina
+import Util.funcoes_suporte as FS
 import Componentes_Hero_Wars.Arena.arena as Arena
 import Componentes_Hero_Wars.Vidente_Astral.vidente_astral as Vidente_Astral
 import Componentes_Hero_Wars.Presentes.presentes as Presentes
@@ -94,58 +95,70 @@ def configurar_coordenada_especifica(tarefa):
 def arena():
     print("\nVamos configurar as coordenadas da Arena")
     #Arena.configurar_coordenadas()
+    FS.desenhar_linha()
 
 
 def grande_arena():
     print("\nVamos configurar as coordenadas da Grande Arena")
     Grande_Arena.configurar_coordenadas()
+    FS.desenhar_linha()
 
 
 def vidente_astral():
     print("\nVamos configurar as coordenadas do Vidente Astral")
     #Vidente_Astral.configurar_coordenadas()
+    FS.desenhar_linha()
 
 
 def presentes():
     print("\nVamos configurar as coordenadas dos Presentes")
     Presentes.configurar_coordenadas()
+    FS.desenhar_linha()
 
 
 def dirigivel():
     print("\nVamos configurar as coordenadas do Dirigivel")
     Dirigivel.configurar_coordenadas()
+    FS.desenhar_linha()
 
 
 def terralem():
     print("\nVamos configurar as coordenadas do Terralem")
     #Terralem.configurar_coordenadas()
+    FS.desenhar_linha()
 
 
 def masmorra():
     print("\nVamos configurar as coordenadas da Masmorra")
     #Masmorra.configurar_coordenadas()
+    FS.desenhar_linha()
 
 
 def atrio_animico():
     print("\nVamos configurar as coordenadas do Atrio Animico")
     Atrio_Animico.configurar_coordenadas()
+    FS.desenhar_linha()
 
 
 def torre():
     print("\nVamos configurar as coordenadas da Torre")
     #Torre.configurar_coordenadas()
+    FS.desenhar_linha()
 
 
 def mensagens():
     print("\nVamos configurar as coordenadas das Mensagens")
-    #Mensagens.configurar_coordenadas()
+    Mensagens.configurar_coordenadas()
+    FS.desenhar_linha()
 
 
 def eventos_especiais():
     print("\nVamos configurar as coordenadas dos Eventos Especiais")
     Eventos_Especiais.configurar_coordenadas()
+    FS.desenhar_linha()
 
 
 def missoes_diarias():
     print("\nVamos configurar as coordenadas das Missões Diárias")
     Missoes_Diarias.configurar_coordenadas()
+    FS.desenhar_linha()

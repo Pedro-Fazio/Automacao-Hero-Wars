@@ -14,6 +14,10 @@ def mover_e_clicar(coordenadaX, coordenadaY, timeSleep):
     pyautogui.click(coordenadaX, coordenadaY, duration=1)
     time.sleep(timeSleep)
 
+def desenhar_linha():
+    print('\n------------------------------------------------------------' +
+        '----------------------------------------------------------------\n')
+
 
 # Função para capturar as coordenadas quando o mouse é clicado
 def captura_clique_coordenadas():

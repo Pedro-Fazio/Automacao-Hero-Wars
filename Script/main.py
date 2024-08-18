@@ -10,7 +10,6 @@ def abrir_navegador(coordenadaX, coordenadaY):
     pyautogui.click(coordenadaX, coordenadaY)
 
 
-
 # Chamada da main para iniciar o código
 if __name__ == "__main__":
     main()

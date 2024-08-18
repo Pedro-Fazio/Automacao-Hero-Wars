@@ -92,6 +92,7 @@ def configurar_coordenada_especifica(tarefa):
     if funcao:
         funcao()  # Chama a função associada à escolha
 
+
 def arena():
     print("\nVamos configurar as coordenadas da Arena")
     Arena.configurar_coordenadas()

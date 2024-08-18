@@ -75,6 +75,7 @@ def executa_tarefa(tarefa):
     if funcao:
         funcao()  # Chama a função associada à escolha
 
+
 def arena():
     coord_x, coord_y, tempo = Gerenciador_Coordenadas.pegar_coordenadas('Arena.txt')
     Arena.batalhar(coord_x, coord_y, tempo)

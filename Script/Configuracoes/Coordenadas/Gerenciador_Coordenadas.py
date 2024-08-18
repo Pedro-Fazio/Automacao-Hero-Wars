@@ -94,7 +94,7 @@ def configurar_coordenada_especifica(tarefa):
 
 def arena():
     print("\nVamos configurar as coordenadas da Arena")
-    #Arena.configurar_coordenadas()
+    Arena.configurar_coordenadas()
     FS.desenhar_linha()
 
 

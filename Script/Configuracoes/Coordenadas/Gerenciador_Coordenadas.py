@@ -108,7 +108,7 @@ def vidente_astral():
 
 def presentes():
     print("\nVamos configurar as coordenadas dos Presentes")
-    #Presentes.configurar_coordenadas()
+    Presentes.configurar_coordenadas()
 
 
 def dirigivel():

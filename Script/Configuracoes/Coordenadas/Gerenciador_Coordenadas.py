@@ -1,6 +1,16 @@
 import Configuracoes.rotina as Rotina
-import Componentes_Hero_Wars.Atrio_Animico.atrio_animico as Atrio_Animico
+import Componentes_Hero_Wars.Arena.arena as Arena
+import Componentes_Hero_Wars.Vidente_Astral.vidente_astral as Vidente_Astral
+import Componentes_Hero_Wars.Presentes.presentes as Presentes
 import Componentes_Hero_Wars.Dirigivel.dirigivel as Dirigivel
+import Componentes_Hero_Wars.Grande_Arena.grande_arena as Grande_Arena
+import Componentes_Hero_Wars.Terralem.terralem as Terralem
+import Componentes_Hero_Wars.Masmorra.masmorra as Masmorra
+import Componentes_Hero_Wars.Atrio_Animico.atrio_animico as Atrio_Animico
+import Componentes_Hero_Wars.Torre.torre as Torre
+import Componentes_Hero_Wars.Mensagens.mensagens as Mensagens
+import Componentes_Hero_Wars.Eventos_Especiais.eventos_especiais as Eventos_Especiais
+import Componentes_Hero_Wars.Missoes_Diarias.missoes_diarias as Missoes_Diarias
 
 def pegar_coordenadas(nome_arquivo):
     caminhoArquivo = f'Configuracoes/Coordenadas/Arquivos_Coordenadas/{nome_arquivo}'
@@ -82,50 +92,60 @@ def configurar_coordenada_especifica(tarefa):
         funcao()  # Chama a função associada à escolha
 
 def arena():
-    print('Não feito ainda.')
+    print("\nVamos configurar as coordenadas da Arena")
+    #Arena.configurar_coordenadas()
 
 
 def grande_arena():
-    print('Não feito ainda.')
+    print("\nVamos configurar as coordenadas da Grande Arena")
+    #Grande_Arena.configurar_coordenadas()
 
 
 def vidente_astral():
-    print('Não feito ainda.')
+    print("\nVamos configurar as coordenadas do Vidente Astral")
+    #Vidente_Astral.configurar_coordenadas()
 
 
 def presentes():
-    print('Não feito ainda.')
+    print("\nVamos configurar as coordenadas dos Presentes")
+    #Presentes.configurar_coordenadas()
 
 
 def dirigivel():
-    print("\nVamos começar configurando as coordenadas do Dirigivel")
+    print("\nVamos configurar as coordenadas do Dirigivel")
     Dirigivel.configurar_coordenadas()
 
 
 def terralem():
-    print('Não feito ainda.')
+    print("\nVamos configurar as coordenadas do Terralem")
+    #Terralem.configurar_coordenadas()
 
 
 def masmorra():
-    print('Não feito ainda.')
+    print("\nVamos configurar as coordenadas da Masmorra")
+    #Masmorra.configurar_coordenadas()
 
 
 def atrio_animico():
-    print("\nVamos começar configurando as coordenadas do Atrio Animico")
+    print("\nVamos configurar as coordenadas do Atrio Animico")
     Atrio_Animico.configurar_coordenadas()
 
 
 def torre():
-    print('Não feito ainda.')
+    print("\nVamos configurar as coordenadas da Torre")
+    #Torre.configurar_coordenadas()
 
 
 def mensagens():
-    print('Não feito ainda.')
+    print("\nVamos configurar as coordenadas das Mensagens")
+    #Mensagens.configurar_coordenadas()
 
 
 def eventos_especiais():
-    print('Não feito ainda.')
+    print("\nVamos configurar as coordenadas dos Eventos Especiais")
+    #Eventos_Especiais.configurar_coordenadas()
 
 
 def missoes_diarias():
-    print('Não feito ainda.')
+    print("\nVamos configurar as coordenadas das Missões Diárias")
+    #Missoes_Diarias.configurar_coordenadas()

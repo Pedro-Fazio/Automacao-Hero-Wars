@@ -18,7 +18,7 @@ def menu():
     '3 - Fazer tarefa especifica\n4 - Configurar coordenadas')
     escolha = input('Opção escolhida: ').strip()
 
-    tarefas = [    
+    tarefas = [
         'arena',
         'grande_arena',
         'vidente_astral',

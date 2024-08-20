@@ -29,7 +29,10 @@ def percorrer_masmorra(coord_x, coord_y, tempo):
     # Clica em Para a Batalha!
     FS.mover_e_clicar(coord_x[8], coord_y[8], tempo[8])
 
-    for _ in range(4):
+    # Clica em Aceitar o Destino!
+    FS.mover_e_clicar(coord_x[9], coord_y[9], tempo[9])
+
+    for _ in range(3):
         batalhar(coord_x, coord_y, tempo)
 
     batalhar_escolhendo_adversario(coord_x, coord_y, tempo)
@@ -48,51 +51,51 @@ def percorrer_masmorra(coord_x, coord_y, tempo):
     batalhar_escolhendo_adversario(coord_x, coord_y, tempo)
 
     # Clica no X da Masmorra
-    FS.mover_e_clicar(coord_x[19], coord_y[19], tempo[19])
-
-    # Clica no X da Ilha da Guilda
     FS.mover_e_clicar(coord_x[20], coord_y[20], tempo[20])
 
-    # Clica em Para a Cidade
+    # Clica no X da Ilha da Guilda
     FS.mover_e_clicar(coord_x[21], coord_y[21], tempo[21])
+
+    # Clica em Para a Cidade
+    FS.mover_e_clicar(coord_x[22], coord_y[22], tempo[22])
 
 
 def batalhar(coord_x, coord_y, tempo):
     # Clica em Para a Batalha!
-    FS.mover_e_clicar(coord_x[9], coord_y[9], tempo[9])
+    FS.mover_e_clicar(coord_x[10], coord_y[10], tempo[10])
 
     # Clica em Aceitar o Destino!
-    FS.mover_e_clicar(coord_x[10], coord_y[10], tempo[10])
+    FS.mover_e_clicar(coord_x[11], coord_y[11], tempo[11])
 
 
 def batalhar_escolhendo_adversario(coord_x, coord_y, tempo):
     # Clica em Para a Batalha!
-    FS.mover_e_clicar(coord_x[11], coord_y[11], tempo[11])
-
-    # Clica para lutar contra a primeira equipe
     FS.mover_e_clicar(coord_x[12], coord_y[12], tempo[12])
 
-    # Clica em Aceitar o Destino!
+    # Clica para lutar contra a primeira equipe
     FS.mover_e_clicar(coord_x[13], coord_y[13], tempo[13])
+
+    # Clica em Aceitar o Destino!
+    FS.mover_e_clicar(coord_x[14], coord_y[14], tempo[14])
 
 
 def batalhar_escolhendo_adversario_variacao(coord_x, coord_y, tempo):
     # Clica em Para a Batalha!
-    FS.mover_e_clicar(coord_x[14], coord_y[14], tempo[14])
-
-    # Clica para lutar contra a primeira equipe
     FS.mover_e_clicar(coord_x[15], coord_y[15], tempo[15])
 
-    # Clica em Aceitar o Destino!
+    # Clica para lutar contra a primeira equipe
     FS.mover_e_clicar(coord_x[16], coord_y[16], tempo[16])
+
+    # Clica em Aceitar o Destino!
+    FS.mover_e_clicar(coord_x[17], coord_y[17], tempo[17])
 
 
 def batalhar_variacao(coord_x, coord_y, tempo):
     # Clica em Para a Batalha!
-    FS.mover_e_clicar(coord_x[17], coord_y[17], tempo[17])
+    FS.mover_e_clicar(coord_x[18], coord_y[18], tempo[18])
 
     # Clica em Aceitar o Destino!
-    FS.mover_e_clicar(coord_x[18], coord_y[18], tempo[18])
+    FS.mover_e_clicar(coord_x[19], coord_y[19], tempo[19])
 
 
 def configurar_coordenadas():
@@ -153,6 +156,11 @@ def configurar_coordenadas():
     coordenadas_x.append(x)
     coordenadas_y.append(y)
 
+    print("\nClique em Aceitar o Destino!")
+    x, y = FS.captura_clique_coordenadas()
+    coordenadas_x.append(x)
+    coordenadas_y.append(y)
+
     print("\nClique em Para a Batalha!")
     x, y = FS.captura_clique_coordenadas()
     coordenadas_x.append(x)
@@ -165,7 +173,7 @@ def configurar_coordenadas():
 
 
     print('Agora vá completando a masmorra até a minha próxima orientação.')
-    for _ in range(6):
+    for _ in range(4):
         x, y = FS.captura_clique_coordenadas()
 
 

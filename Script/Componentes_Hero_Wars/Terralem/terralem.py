@@ -25,10 +25,10 @@ def _abrir_bau(coord_x, coord_y, tempo):
     # Clica em Resgatar Recompensa
     FS.mover_e_clicar(coord_x[1], coord_y[1], tempo[1])
 
-    # Clica em Abrir
+    # Clica em Abrir baús
     FS.mover_e_clicar(coord_x[2], coord_y[2], tempo[2])
 
-    # Clica no X do janela do baú aberto
+    # Clica em Abrir
     FS.mover_e_clicar(coord_x[3], coord_y[3], tempo[3])
 
     # Clica no X da janela Abrir Baús
@@ -57,12 +57,12 @@ def configurar_coordenadas():
     coordenadas_x.append(x)
     coordenadas_y.append(y)
 
-    print("\nClique em Abrir")
+    print("\nClique em Abrir baús")
     x, y = FS.captura_clique_coordenadas()
     coordenadas_x.append(x)
     coordenadas_y.append(y)
 
-    print("\nClique no X do janela do baú aberto")
+    print("\nClique em Abrir")
     x, y = FS.captura_clique_coordenadas()
     coordenadas_x.append(x)
     coordenadas_y.append(y)

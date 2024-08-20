@@ -14,8 +14,8 @@ import Componentes_Hero_Wars.Eventos_Especiais.eventos_especiais as Eventos_Espe
 import Componentes_Hero_Wars.Missoes_Diarias.missoes_diarias as Missoes_Diarias
 
 def pegar_coordenadas(nome_arquivo):
-    #caminhoArquivo = f'Configuracoes/Coordenadas/Arquivos_Coordenadas/{nome_arquivo}'
-    caminhoArquivo = f'Configuracoes/Coordenadas/Coordenadas_Teste/{nome_arquivo}'
+    caminhoArquivo = f'Configuracoes/Coordenadas/Arquivos_Coordenadas/{nome_arquivo}'
+    #caminhoArquivo = f'Configuracoes/Coordenadas/Coordenadas_Teste/{nome_arquivo}'
 
     coord_x = []
     coord_y = []

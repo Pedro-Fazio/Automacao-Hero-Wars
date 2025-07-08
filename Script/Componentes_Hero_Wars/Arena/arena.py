@@ -9,7 +9,7 @@ def batalhar(coord_x, coord_y, tempo):
         _lutar_uma_vez(coord_x, coord_y, tempo)
 
     # Clica no X da Arena
-    FS.mover_e_clicar(coord_x[4], coord_y[4], tempo[4])
+    FS.mover_e_clicar(coord_x[6], coord_y[6], tempo[6])
 
 
 
@@ -21,7 +21,13 @@ def _lutar_uma_vez(coord_x, coord_y, tempo):
     FS.mover_e_clicar(coord_x[2], coord_y[2], tempo[2])
 
     # Clica em OK
-    FS.mover_e_clicar(coord_x[3], coord_y[3], tempo[3])
+    # FS.mover_e_clicar(coord_x[3], coord_y[3], tempo[3])
+
+    # Clica em Pause
+    FS.mover_e_clicar(coord_x[4], coord_y[4], tempo[4])
+
+    # Clica em Pular Batalha
+    FS.mover_e_clicar(coord_x[5], coord_y[5], tempo[5])
 
 
 def configurar_coordenadas():

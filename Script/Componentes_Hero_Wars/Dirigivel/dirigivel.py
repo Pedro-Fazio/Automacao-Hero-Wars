@@ -14,8 +14,23 @@ def pegar_recompensa_valquiria(coord_x, coord_y, tempo):
     # Clica no X do Benefício da Valquíria
     FS.mover_e_clicar(coord_x[3], coord_y[3], tempo[3])
 
-    # Clica no X do Dirigível
+    # Clica em Expedições
     FS.mover_e_clicar(coord_x[4], coord_y[4], tempo[4])
+
+    # Clica em Resgatar Recompensas
+    FS.mover_e_clicar(coord_x[5], coord_y[5], tempo[5])
+
+    # Clica em Resgatar Recompensas
+    FS.mover_e_clicar(coord_x[6], coord_y[6], tempo[6])
+
+    # Clica em Resgatar Recompensas
+    FS.mover_e_clicar(coord_x[7], coord_y[7], tempo[7])
+
+    # Clica no X do Mapa da Expedição
+    FS.mover_e_clicar(coord_x[8], coord_y[8], tempo[8])
+
+    # Clica no X do Dirigível
+    FS.mover_e_clicar(coord_x[9], coord_y[9], tempo[9])
 
 
 def configurar_coordenadas():

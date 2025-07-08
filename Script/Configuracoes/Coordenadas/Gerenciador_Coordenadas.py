@@ -13,8 +13,12 @@ import Componentes_Hero_Wars.Mensagens.mensagens as Mensagens
 import Componentes_Hero_Wars.Eventos_Especiais.eventos_especiais as Eventos_Especiais
 import Componentes_Hero_Wars.Missoes_Diarias.missoes_diarias as Missoes_Diarias
 
+def verificar_coordenadas():
+    x, y = FS.captura_clique_coordenadas()
+
 def pegar_coordenadas(nome_arquivo):
-    caminhoArquivo = f'Configuracoes/Coordenadas/Arquivos_Coordenadas/{nome_arquivo}'
+    caminhoArquivo = f'Configuracoes/Coordenadas/Arquivos_Coordenadas_Desktop/{nome_arquivo}'
+    #caminhoArquivo = f'Configuracoes/Coordenadas/Arquivos_Coordenadas_Notebook/{nome_arquivo}'
     #caminhoArquivo = f'Configuracoes/Coordenadas/Coordenadas_Teste/{nome_arquivo}'
 
     coord_x = []

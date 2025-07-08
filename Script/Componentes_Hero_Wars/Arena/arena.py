@@ -30,6 +30,7 @@ def _lutar_uma_vez(coord_x, coord_y, tempo):
     FS.mover_e_clicar(coord_x[5], coord_y[5], tempo[5])
 
 
+
 def configurar_coordenadas():
     caminho_pasta = 'Configuracoes/Coordenadas/Coordenadas_Teste'
     caminho_arquivo = f'{caminho_pasta}/Arena.txt'

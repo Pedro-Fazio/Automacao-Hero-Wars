@@ -20,10 +20,10 @@ def pegar_recompensa_valquiria(coord_x, coord_y, tempo):
     # Clica em Resgatar Recompensas
     FS.mover_e_clicar(coord_x[5], coord_y[5], tempo[5])
 
-    # Clica em Resgatar Recompensas
+    # Clica em Coletar
     FS.mover_e_clicar(coord_x[6], coord_y[6], tempo[6])
 
-    # Clica em Resgatar Recompensas
+    # Clica em Alocar Heróis
     FS.mover_e_clicar(coord_x[7], coord_y[7], tempo[7])
 
     # Clica no X do Mapa da Expedição

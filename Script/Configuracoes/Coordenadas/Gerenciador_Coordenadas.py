@@ -12,6 +12,7 @@ import Componentes_Hero_Wars.Torre.torre as Torre
 import Componentes_Hero_Wars.Mensagens.mensagens as Mensagens
 import Componentes_Hero_Wars.Eventos_Especiais.eventos_especiais as Eventos_Especiais
 import Componentes_Hero_Wars.Missoes_Diarias.missoes_diarias as Missoes_Diarias
+import Componentes_Hero_Wars.Missoes_Guilda.missoes_guilda as Missoes_Guilda
 
 def verificar_coordenadas():
     x, y = FS.captura_clique_coordenadas()
@@ -53,7 +54,8 @@ def configurar_coordenadas():
         'masmorra',
         'mensagens',
         'eventos_especiais',
-        'missoes_diarias'
+        'missoes_diarias',
+        'missoes_guilda'
     ]
 
     if escolha == "1":
@@ -131,6 +133,12 @@ def configurar_coordenadas_completo():
 
     print('\n------------------------------------------------------------' +
         '----------------------------------------------------------------\n')
+    
+    print("\nAgora a configuração das coordenadas das Missões Diárias")
+    Missoes_Guilda.configurar_coordenadas()
+
+    print('\n------------------------------------------------------------' +
+        '----------------------------------------------------------------\n')
 
 
 def configurar_coordenada_especifica(tarefa):
@@ -146,7 +154,8 @@ def configurar_coordenada_especifica(tarefa):
         '8': masmorra,
         '9': mensagens,
         '10': eventos_especiais,
-        '11': missoes_diarias
+        '11': missoes_diarias,
+        '12': missoes_guilda
     }
 
     funcao = switch.get(tarefa)
@@ -224,4 +233,10 @@ def eventos_especiais():
 def missoes_diarias():
     print("\nVamos configurar as coordenadas das Missões Diárias")
     Missoes_Diarias.configurar_coordenadas()
+    FS.desenhar_linha()
+    
+
+def missoes_guilda():
+    print("\nVamos configurar as coordenadas das Missões da Guilda")
+    Missoes_Guilda.configurar_coordenadas()
     FS.desenhar_linha()

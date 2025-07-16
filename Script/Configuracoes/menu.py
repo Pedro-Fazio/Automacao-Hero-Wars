@@ -12,6 +12,7 @@ import Componentes_Hero_Wars.Torre.torre as Torre
 import Componentes_Hero_Wars.Mensagens.mensagens as Mensagens
 import Componentes_Hero_Wars.Eventos_Especiais.eventos_especiais as Eventos_Especiais
 import Componentes_Hero_Wars.Missoes_Diarias.missoes_diarias as Missoes_Diarias
+import Componentes_Hero_Wars.Missoes_Guilda.missoes_guilda as Missoes_Guilda
 
 def menu():
     print('\nEscolha uma das opções:\n1 - Criar rotina\n2 - Escolher rotina\n' +
@@ -30,7 +31,8 @@ def menu():
         'masmorra',
         'mensagens',
         'eventos_especiais',
-        'missoes_diarias'
+        'missoes_diarias',
+        'missoes_guilda'
     ]
 
     if escolha == "1":
@@ -69,7 +71,8 @@ def executa_tarefa(tarefa):
         '8': masmorra,
         '9': mensagens,
         '10': eventos_especiais,
-        '11': missoes_diarias
+        '11': missoes_diarias,
+        '12': missoes_guilda
     }
 
     funcao = switch.get(tarefa)
@@ -136,3 +139,8 @@ def eventos_especiais():
 def missoes_diarias():
     coord_x, coord_y, tempo = Gerenciador_Coordenadas.pegar_coordenadas('Missoes_Diarias.txt')
     Missoes_Diarias.coletar_diarias(coord_x, coord_y, tempo)
+    
+
+def missoes_guilda():
+    coord_x, coord_y, tempo = Gerenciador_Coordenadas.pegar_coordenadas('Missoes_Guilda.txt')
+    Missoes_Guilda.coletar_missoes_guilda(coord_x, coord_y, tempo)

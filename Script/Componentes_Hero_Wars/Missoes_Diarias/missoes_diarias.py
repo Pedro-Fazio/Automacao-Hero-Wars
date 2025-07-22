@@ -5,7 +5,7 @@ def coletar_diarias(coord_x, coord_y, tempo):
     # Clica em Missões Diárias
     FS.mover_e_clicar(coord_x[0], coord_y[0], tempo[0])
 
-    for _ in range(20):
+    for _ in range(10):
         _coletar_recompensa(coord_x, coord_y, tempo)
 
     # Clicar no X de Missões Diárias

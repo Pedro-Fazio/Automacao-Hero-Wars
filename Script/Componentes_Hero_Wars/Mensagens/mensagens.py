@@ -14,7 +14,7 @@ def coletar_mensagens(coord_x, coord_y, tempo):
     # Clica em Coletar Tudo
     FS.mover_e_clicar(coord_x[3], coord_y[3], tempo[3])
 
-    for _ in range(15):
+    for _ in range(10):
         _coletar_mensagem(coord_x, coord_y, tempo)
 
     # Clica no X das Mensagens

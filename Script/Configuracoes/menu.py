@@ -143,4 +143,5 @@ def missoes_diarias():
 
 def missoes_guilda():
     coord_x, coord_y, tempo = Gerenciador_Coordenadas.pegar_coordenadas('Missoes_Guilda.txt')
-    Missoes_Guilda.coletar_missoes_guilda(coord_x, coord_y, tempo)
+    ## Missoes_Guilda.coletar_missoes_guilda(coord_x, coord_y, tempo)
+    Missoes_Guilda.tabletop(coord_x, coord_y, tempo)

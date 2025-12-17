@@ -5,15 +5,16 @@ def batalhar(coord_x, coord_y, tempo):
     # Clica na Arena
     FS.mover_e_clicar(coord_x[0], coord_y[0], tempo[0])
 
-    for _ in range(5):
-        _lutar_uma_vez(coord_x, coord_y, tempo)
+    for i in range(5):
+        ultima_vez = (i == 4)
+        _lutar_uma_vez(coord_x, coord_y, tempo, ultima_vez)
 
     # Clica no X da Arena
     FS.mover_e_clicar(coord_x[6], coord_y[6], tempo[6])
 
 
 
-def _lutar_uma_vez(coord_x, coord_y, tempo):
+def _lutar_uma_vez(coord_x, coord_y, tempo, ultima_vez = False):
     # Clica para atacar o primeiro jogador
     FS.mover_e_clicar(coord_x[1], coord_y[1], tempo[1])
 
@@ -27,7 +28,8 @@ def _lutar_uma_vez(coord_x, coord_y, tempo):
     FS.mover_e_clicar(coord_x[4], coord_y[4], tempo[4])
 
     # Clica em Pular Batalha
-    FS.mover_e_clicar(coord_x[5], coord_y[5], tempo[5])
+    pular_tempo = tempo[4] if ultima_vez else tempo[5]
+    FS.mover_e_clicar(coord_x[5], coord_y[5], pular_tempo)
 
 
 

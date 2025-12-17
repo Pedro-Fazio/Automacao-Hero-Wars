@@ -1,5 +1,23 @@
 import Util.funcoes_suporte as FS
 import os
+import random
+
+
+def tabletop(coord_x, coord_y, tempo):
+    for _ in range(1000):
+        # Clica no Color Tint
+        FS.mover_e_clicar(2940, 645, 0)
+        
+        # Gera coordenadas aleatórias dentro do intervalo
+        x = random.randint(2200, 2480)
+        y = random.randint(290, 570)
+
+        # Clica na cor
+        FS.mover_e_clicar(x, y, 0)
+    
+        # Clica em Apply
+        FS.mover_e_clicar(2290, 760, 0)
+    
 
 def coletar_missoes_guilda(coord_x, coord_y, tempo):
     # Clica em Missões Diárias
@@ -8,24 +26,26 @@ def coletar_missoes_guilda(coord_x, coord_y, tempo):
     # Clica em Missões da Guilda
     FS.mover_e_clicar(coord_x[1], coord_y[1], tempo[1])
 
-    for _ in range(45):
+    for _ in range(10):
         _coletar_recompensa(coord_x, coord_y, tempo)
         
-    # Clicar no X em algum possível evento do Navegar
+    # Coletar primeiro baú
     FS.mover_e_clicar(coord_x[3], coord_y[3], tempo[3])
     
-    # Clicar no X em algum possível evento do Navegar
+    # Coletar segundo baú
     FS.mover_e_clicar(coord_x[4], coord_y[4], tempo[4])
     
-    # Clicar no X em algum possível evento do Navegar
+    # Coletar terceiro baú
     FS.mover_e_clicar(coord_x[5], coord_y[5], tempo[5])
-
-
-    # Clicar no X de Missões da Guilda
+    
+    # Coletar quarto baú
     FS.mover_e_clicar(coord_x[6], coord_y[6], tempo[6])
 
-    # Clicar no X de Missões Diárias
+    # Clicar no X de Missões da Guilda
     FS.mover_e_clicar(coord_x[7], coord_y[7], tempo[7])
+
+    # Clicar no X de Missões Diárias
+    FS.mover_e_clicar(coord_x[8], coord_y[8], tempo[8])
 
 
 def _coletar_recompensa(coord_x, coord_y, tempo):

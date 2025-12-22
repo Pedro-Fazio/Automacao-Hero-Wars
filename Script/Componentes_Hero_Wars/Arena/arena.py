@@ -13,7 +13,6 @@ def batalhar(coord_x, coord_y, tempo):
     FS.mover_e_clicar(coord_x[6], coord_y[6], tempo[6])
 
 
-
 def _lutar_uma_vez(coord_x, coord_y, tempo, ultima_vez = False):
     # Clica para atacar o primeiro jogador
     FS.mover_e_clicar(coord_x[1], coord_y[1], tempo[1])

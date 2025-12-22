@@ -1,23 +1,5 @@
 import Util.funcoes_suporte as FS
 import os
-import random
-
-
-def tabletop(coord_x, coord_y, tempo):
-    for _ in range(1000):
-        # Clica no Color Tint
-        FS.mover_e_clicar(2940, 645, 0)
-        
-        # Gera coordenadas aleatórias dentro do intervalo
-        x = random.randint(2200, 2480)
-        y = random.randint(290, 570)
-
-        # Clica na cor
-        FS.mover_e_clicar(x, y, 0)
-    
-        # Clica em Apply
-        FS.mover_e_clicar(2290, 760, 0)
-    
 
 def coletar_missoes_guilda(coord_x, coord_y, tempo):
     # Clica em Missões Diárias

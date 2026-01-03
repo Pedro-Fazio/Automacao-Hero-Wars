@@ -13,6 +13,9 @@ def resgatar_recompensa(coord_x, coord_y, tempo):
 
     # Clica na tela para pular animação de invocação
     FS.mover_e_clicar(coord_x[3], coord_y[3], tempo[3])
+    
+    # Clica na tela para pular animação de invocação
+    FS.mover_e_clicar(coord_x[3], coord_y[3], tempo[3])
 
     # Clica em Ótimo!
     FS.mover_e_clicar(coord_x[4], coord_y[4], tempo[4])

@@ -2,6 +2,7 @@ import pyautogui
 import time
 from pynput.mouse import Listener
 import threading
+import sys
 
 mouse_clicked = False
 click_x = 0

@@ -1,0 +1,11 @@
+# Ignorar arquivos compilados do Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Ignorar arquivos de ambiente virtual
+venv/
+env/
+
+# Ignorar configurações do VS Code
+.vscode/

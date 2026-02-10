@@ -14,8 +14,9 @@ import Componentes_Hero_Wars.Eventos_Especiais.eventos_especiais as Eventos_Espe
 import Componentes_Hero_Wars.Missoes_Diarias.missoes_diarias as Missoes_Diarias
 import Componentes_Hero_Wars.Missoes_Guilda.missoes_guilda as Missoes_Guilda
 import time
+import threading
+import sys
 
-# --- LISTA DE TAREFAS (Global para ser usada no menu e na execução) ---
 LISTA_TAREFAS = [
     'Arena',
     'Grande Arena',
@@ -32,103 +33,148 @@ LISTA_TAREFAS = [
     'Missoes Guilda'
 ]
 
+def formatar_tempo(segundos):
+    """Converte segundos em MM:SS"""
+    m = int(segundos // 60)
+    s = int(segundos % 60)
+    return f"{m:02d}:{s:02d}"
 
-def monitorar_tarefa(nome_tarefa, funcao_executavel):
-    """Executa uma tarefa e cronometra o tempo gasto."""
-    print(f"\n[INFO] Iniciando tarefa: {nome_tarefa.upper()}")
-    # print(f"Timer: Executando...", end="", flush=True) 
+def monitorar_tarefa(nome_tarefa, funcao_executavel, inicio_rotina_global=None):
+    """
+    Executa uma tarefa e mostra um timer rodando em tempo real no terminal.
+    Se inicio_rotina_global for passado, mostra também o tempo total da rotina.
+    """
+    print(f"\n>>> Iniciando: {nome_tarefa.upper()}")
     
-    inicio = time.time()
+    inicio_tarefa = time.time()
+    evento_parar = threading.Event()
+
+    # --- Função que roda em paralelo (Thread) ---
+    def _timer_visual():
+        while not evento_parar.is_set():
+            agora = time.time()
+            tempo_tarefa = agora - inicio_tarefa
+            str_tarefa = formatar_tempo(tempo_tarefa)
+            
+            msg = f"\r   [⏳ EXECUTANDO] {nome_tarefa}: {str_tarefa}"
+            
+            # Se estiver rodando numa rotina, mostra o tempo total acumulado
+            if inicio_rotina_global:
+                tempo_total = agora - inicio_rotina_global
+                str_total = formatar_tempo(tempo_total)
+                msg += f" | 🌍 Tempo Total Rotina: {str_total}"
+            
+            # Imprime sobrescrevendo a linha (\r) e flush forçado
+            sys.stdout.write(msg)
+            sys.stdout.flush()
+            
+            # Atualiza a cada 0.5 segundos (menos que isso pisca demais)
+            time.sleep(0.5)
+
+    # Inicia a thread do relógio
+    t = threading.Thread(target=_timer_visual)
+    t.start()
     
-    # Executa a função da tarefa (ex: arena(), masmorra())
+    # Executa a tarefa real (Bot)
     try:
         funcao_executavel()
     except Exception as e:
         print(f"\n[ERRO] Falha ao executar {nome_tarefa}: {e}")
+    finally:
+        # Garante que o timer pare, mesmo se der erro
+        evento_parar.set()
+        t.join() # Espera a thread fechar
     
     fim = time.time()
-    duracao = fim - inicio
+    duracao = fim - inicio_tarefa
     
-    # O \r faz voltar para o inicio da linha, substituindo o texto anterior se houver
-    print(f"[OK] {nome_tarefa.upper()} finalizada em {duracao:.2f} segundos.")
+    # Limpa a linha do timer e mostra o OK final
+    # Os espaços em branco no final servem para apagar restos de texto da linha anterior
+    print(f"\r[✅ OK] {nome_tarefa.upper()} finalizada em {duracao:.2f}s." + " "*20)
     return duracao
 
-
 def menu():
-    print('\nEscolha uma das opções:\n1 - Criar rotina\n2 - Escolher rotina\n' +
-    '3 - Fazer tarefa especifica\n4 - Configurar coordenadas\n5 - Verificar coordenadas')
-    escolha = input('Opção escolhida: ').strip()
+    while True: # Loop para o menu não fechar após uma ação
+        print('\n' + '='*30)
+        print('   HERO WARS BOT')
+        print('='*30)
+        print('1 - Criar rotina')
+        print('2 - Escolher rotina')
+        print('3 - Fazer tarefa especifica')
+        print('4 - Configurar coordenadas')
+        print('5 - Verificar coordenadas')
+        print('0 - Sair')
+        
+        escolha = input('\nOpção: ').strip()
 
-    if escolha == "1":
-        Rotina.cria_rotina(LISTA_TAREFAS)
-    elif escolha == "2":
-        dadosRotina = Rotina.escolhe_rotina()
-        executa_rotina(dadosRotina)
-    elif escolha == "3":
-        Rotina.mostrar_tarefas(LISTA_TAREFAS)
-        escolha = input('Tarefa escolhida: ').strip()
-        executa_tarefa(escolha)
-    elif escolha == "4":
-        Gerenciador_Coordenadas.configurar_coordenadas()
-    elif escolha == "5":
-        Gerenciador_Coordenadas.verificar_coordenadas()
-    else:
-        print("Opção inválida. Tente novamente.")
-
+        if escolha == "1":
+            Rotina.cria_rotina(LISTA_TAREFAS)
+        elif escolha == "2":
+            dadosRotina = Rotina.escolhe_rotina()
+            if dadosRotina:
+                executa_rotina(dadosRotina)
+        elif escolha == "3":
+            Rotina.mostrar_tarefas(LISTA_TAREFAS)
+            try:
+                idx = input('Número da Tarefa: ').strip()
+                executa_tarefa(idx)
+            except ValueError:
+                print("Entrada inválida.")
+        elif escolha == "4":
+            Gerenciador_Coordenadas.configurar_coordenadas()
+        elif escolha == "5":
+            Gerenciador_Coordenadas.verificar_coordenadas()
+        elif escolha == "0":
+            print("Saindo...")
+            break
+        else:
+            print("Opção inválida.")
 
 def executa_rotina(dadosRotina):
-    # Remove linhas vazias
     dadosFiltrados = [item for item in dadosRotina if item]
     
-    tempo_total = 0
-    print(f"\n{'='*40}")
-    print(f"INICIANDO ROTINA COM {len(dadosFiltrados)} TAREFAS")
-    print(f"{'='*40}")
+    qtd_tarefas = len(dadosFiltrados)
+    print(f"\n{'#'*50}")
+    print(f"   INICIANDO ROTINA COM {qtd_tarefas} TAREFAS")
+    print(f"{'#'*50}")
+    
+    # Marca o tempo zero da rotina inteira
+    inicio_rotina = time.time()
+    
+    for i, dado in enumerate(dadosFiltrados):
+        # Passamos o inicio_rotina para o executa_tarefa
+        print(f"\n--- Tarefa {i+1}/{qtd_tarefas} ---")
+        executa_tarefa(dado, inicio_rotina_global=inicio_rotina)
 
-    for dado in dadosFiltrados:
-        tempo_total += executa_tarefa(dado)
+    tempo_total = time.time() - inicio_rotina
+    str_total = formatar_tempo(tempo_total)
 
-    minutos = int(tempo_total // 60)
-    segundos = int(tempo_total % 60)
+    print(f"\n{'#'*50}")
+    print(f"   ROTINA FINALIZADA")
+    print(f"   Tempo Total: {str_total} ({tempo_total:.2f}s)")
+    print(f"{'#'*50}\n")
 
-    print(f"\n{'='*40}")
-    print(f"ROTINA COMPLETA FINALIZADA")
-    print(f"Tempo Total: {minutos}m {segundos}s ({tempo_total:.2f}s)")
-    print(f"{'='*40}\n")
-
-
-def executa_tarefa(tarefa_index_str):
+def executa_tarefa(tarefa_index_str, inicio_rotina_global=None):
     """
-    Recebe o index da tarefa (string '0', '1', etc), descobre o nome
-    e executa com monitoramento de tempo.
+    Agora aceita o parametro opcional inicio_rotina_global
     """
     switch = {
-        '0': arena,
-        '1': grande_arena,
-        '2': vidente_astral,
-        '3': presentes,
-        '4': dirigivel,
-        '5': terralem,
-        '6': atrio_animico,
-        '7': torre,
-        '8': masmorra,
-        '9': mensagens,
-        '10': eventos_especiais,
-        '11': missoes_diarias,
-        '12': missoes_guilda
+        '0': arena, '1': grande_arena, '2': vidente_astral, '3': presentes,
+        '4': dirigivel, '5': terralem, '6': atrio_animico, '7': torre,
+        '8': masmorra, '9': mensagens, '10': eventos_especiais,
+        '11': missoes_diarias, '12': missoes_guilda
     }
 
     funcao = switch.get(tarefa_index_str)
 
     if funcao:
-        # Pega o nome da lista global usando o index
         try:
             nome_da_tarefa = LISTA_TAREFAS[int(tarefa_index_str)]
         except:
             nome_da_tarefa = "Tarefa Desconhecida"
 
-        # Chama o monitorador e retorna o tempo gasto
-        return monitorar_tarefa(nome_da_tarefa, funcao)
+        # Passamos o tempo global adiante
+        return monitorar_tarefa(nome_da_tarefa, funcao, inicio_rotina_global)
     else:
         print(f"Tarefa {tarefa_index_str} não encontrada.")
         return 0
@@ -187,3 +233,6 @@ def missoes_diarias():
 def missoes_guilda():
     coord_x, coord_y, tempo = Gerenciador_Coordenadas.pegar_coordenadas('Missoes_Guilda.txt')
     Missoes_Guilda.coletar_missoes_guilda(coord_x, coord_y, tempo)
+
+if __name__ == "__main__":
+    menu()

@@ -13,6 +13,7 @@ import Componentes_Hero_Wars.Mensagens.mensagens as Mensagens
 import Componentes_Hero_Wars.Eventos_Especiais.eventos_especiais as Eventos_Especiais
 import Componentes_Hero_Wars.Missoes_Diarias.missoes_diarias as Missoes_Diarias
 import Componentes_Hero_Wars.Missoes_Guilda.missoes_guilda as Missoes_Guilda
+import Util.funcoes_suporte as Funcoes_Suporte
 import time
 import threading
 import sys
@@ -103,6 +104,7 @@ def menu():
         print('3 - Fazer tarefa especifica')
         print('4 - Configurar coordenadas')
         print('5 - Verificar coordenadas')
+        print('6 - Verificar cor da posição')
         print('0 - Sair')
         
         escolha = input('\nOpção: ').strip()
@@ -124,6 +126,8 @@ def menu():
             Gerenciador_Coordenadas.configurar_coordenadas()
         elif escolha == "5":
             Gerenciador_Coordenadas.verificar_coordenadas()
+        elif escolha == "6":
+            Funcoes_Suporte.capturar_posicao_cor()
         elif escolha == "0":
             print("Saindo...")
             break

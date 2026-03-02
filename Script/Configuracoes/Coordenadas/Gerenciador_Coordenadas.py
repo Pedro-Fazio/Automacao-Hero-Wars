@@ -70,75 +70,52 @@ def configurar_coordenadas():
 def configurar_coordenadas_completo():
     print("\nVamos começar configurando as coordenadas da Arena")
     Arena.configurar_coordenadas()
-
-    print('\n------------------------------------------------------------' +
-        '----------------------------------------------------------------')
+    FS.desenhar_linha()
 
     print("\nAgora a configuração das coordenadas da Grande Arena")
     Grande_Arena.configurar_coordenadas()
-
-    print('\n------------------------------------------------------------' +
-        '----------------------------------------------------------------')
+    FS.desenhar_linha()
 
     print("\nAgora a configuração das coordenadas do Vidente Astral")
     Vidente_Astral.configurar_coordenadas()
-
-    print('\n------------------------------------------------------------' +
-        '----------------------------------------------------------------')
+    FS.desenhar_linha()
 
     print("\nAgora a configuração das coordenadas dos Presentes")
     Presentes.configurar_coordenadas()
-
-    print('\n------------------------------------------------------------' +
-        '----------------------------------------------------------------')
+    FS.desenhar_linha()
 
     print("\nAgora a configuração das coordenadas do Dirigivel")
     Dirigivel.configurar_coordenadas()
-
-    print('\n------------------------------------------------------------' +
-        '----------------------------------------------------------------')
+    FS.desenhar_linha()
 
     print("\nAgora a configuração das coordenadas do Terralem")
     Terralem.configurar_coordenadas()
-
-    print('\n------------------------------------------------------------' +
-        '----------------------------------------------------------------')
+    FS.desenhar_linha()
 
     print("\nAgora a configuração das coordenadas da Torre")
     Torre.configurar_coordenadas()
-
-    print('\n------------------------------------------------------------' +
-        '----------------------------------------------------------------')
+    FS.desenhar_linha()
 
     print("\nAgora a configuração das coordenadas da Masmorra")
     Masmorra.configurar_coordenadas()
-
-    print('\n------------------------------------------------------------' +
-        '----------------------------------------------------------------')
+    FS.desenhar_linha()
 
     print("\nAgora a configuração das coordenadas das Mensagens")
     Mensagens.configurar_coordenadas()
-
-    print('\n------------------------------------------------------------' +
-        '----------------------------------------------------------------')
+    FS.desenhar_linha()
 
     print("\nAgora a configuração das coordenadas dos Eventos Especiais")
     Eventos_Especiais.configurar_coordenadas()
-
-    print('\n------------------------------------------------------------' +
-        '----------------------------------------------------------------')
+    FS.desenhar_linha()
 
     print("\nAgora a configuração das coordenadas das Missões Diárias")
     Missoes_Diarias.configurar_coordenadas()
-
-    print('\n------------------------------------------------------------' +
-        '----------------------------------------------------------------\n')
+    FS.desenhar_linha()
     
     print("\nAgora a configuração das coordenadas das Missões Diárias")
     Missoes_Guilda.configurar_coordenadas()
 
-    print('\n------------------------------------------------------------' +
-        '----------------------------------------------------------------\n')
+    FS.desenhar_linha()
 
 
 def configurar_coordenada_especifica(tarefa):

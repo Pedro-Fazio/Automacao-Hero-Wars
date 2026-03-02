@@ -19,8 +19,7 @@ def mover_e_clicar(coordenadaX, coordenadaY, timeSleep):
 
 
 def desenhar_linha():
-    print('\n------------------------------------------------------------' +
-        '----------------------------------------------------------------\n')
+    print('\n-'*30 + '\n')
 
 
 def captura_clique_coordenadas():

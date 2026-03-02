@@ -1,4 +1,6 @@
 import Util.funcoes_suporte as FS
+import pyautogui as PY
+import time
 import os
 
 def percorrer_masmorra(coord_x, coord_y, tempo):
@@ -135,6 +137,12 @@ def batalhar_sem_aceitar_destino(coord_x, coord_y, tempo):
     # Clicar em auto
     FS.mover_e_clicar(coord_x[23], coord_y[23], tempo[23])
 
+
+    ### AJUSTAR A COR ###
+    while not PY.pixelMatchesColor(790, 250, (255, 255, 255), tolerance=10):
+        time.sleep(1)
+
+
     # Clicar em Ok
     FS.mover_e_clicar(coord_x[24], coord_y[24], tempo[24])
 
@@ -152,6 +160,12 @@ def batalhar_sem_aceitar_destino_escolhendo_oponente(coord_x, coord_y, tempo):
     # Clicar em auto
     FS.mover_e_clicar(coord_x[28], coord_y[28], tempo[28])
 
+
+    ### AJUSTAR A COR ###
+    while not PY.pixelMatchesColor(790, 250, (255, 255, 255), tolerance=10):
+        time.sleep(1)
+
+
     # Clicar em Ok
     FS.mover_e_clicar(coord_x[29], coord_y[29], tempo[29])
 
@@ -168,6 +182,11 @@ def batalhar_sem_aceitar_destino_escolhendo_oponente_variacao(coord_x, coord_y, 
 
     # Clicar em auto
     FS.mover_e_clicar(coord_x[33], coord_y[33], tempo[33])
+
+    ### AJUSTAR A COR ###
+    while not PY.pixelMatchesColor(790, 250, (255, 255, 255), tolerance=10):
+        time.sleep(1)
+
 
     # Clicar em Ok
     FS.mover_e_clicar(coord_x[34], coord_y[34], tempo[34])

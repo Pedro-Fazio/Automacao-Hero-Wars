@@ -1,5 +1,7 @@
 import Util.funcoes_suporte as FS
 import os
+import pyautogui as PY
+import time
 
 def pegar_recompensa_valquiria(coord_x, coord_y, tempo):
     # Clica no Dirigível
@@ -27,10 +29,16 @@ def pegar_recompensa_valquiria(coord_x, coord_y, tempo):
     FS.mover_e_clicar(coord_x[7], coord_y[7], tempo[7])
 
     # Clica no X do Mapa da Expedição
-    FS.mover_e_clicar(coord_x[8], coord_y[8], tempo[8])
+    #FS.mover_e_clicar(coord_x[8], coord_y[8], tempo[8])
 
     # Clica no X do Dirigível
-    FS.mover_e_clicar(coord_x[9], coord_y[9], tempo[9])
+    #FS.mover_e_clicar(coord_x[9], coord_y[9], tempo[9])
+
+    PY.press('esc')
+    time.sleep(1)
+    
+    PY.press('esc')
+    time.sleep(1)
 
 
 def configurar_coordenadas():

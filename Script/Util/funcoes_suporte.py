@@ -11,10 +11,8 @@ mouse_clicked = False
 click_x = 0
 click_y = 0
 
-
 def mover_e_clicar(coordenadaX, coordenadaY, timeSleep):
-    pyautogui.moveTo(coordenadaX, coordenadaY, duration=1)
-    pyautogui.click(coordenadaX, coordenadaY, duration=1)
+    pyautogui.click(coordenadaX, coordenadaY, duration=0.5)
     time.sleep(timeSleep)
 
 
@@ -65,9 +63,6 @@ def parar_mouse_listener():
 listener_thread = threading.Thread(target=start_mouse_listener)
 # Define como thread daemon para encerrar com o programa principal
 listener_thread.daemon = True
-
-
-
 
 def on_release(key):
     """Função disparada quando uma tecla é solta."""

@@ -2,9 +2,6 @@ import pyautogui
 import time
 from pynput.mouse import Listener
 import threading
-import sys
-import os
-import socket
 from pynput import keyboard
 
 mouse_clicked = False
@@ -15,10 +12,8 @@ def mover_e_clicar(coordenadaX, coordenadaY, timeSleep):
     pyautogui.click(coordenadaX, coordenadaY, duration=0.5)
     time.sleep(timeSleep)
 
-
 def desenhar_linha():
     print('\n-'*30 + '\n')
-
 
 def captura_clique_coordenadas():
     global mouse_clicked, click_x, click_y

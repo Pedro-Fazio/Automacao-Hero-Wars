@@ -135,57 +135,80 @@ def menu():
             print("Opção inválida.")
 
 def executa_rotina(dadosRotina):
-    # Remove itens vazios
-    tarefas_pendentes = [item for item in dadosRotina if item]
+    dadosFiltrados = [item for item in dadosRotina if item]
     
-    # Verifica se a Arena (índice '0') está na lista
-    tem_arena = '0' in tarefas_pendentes
-    if tem_arena:
-        tarefas_pendentes.remove('0') # Tira a Arena da fila normal
-        
+    qtd_tarefas = len(dadosFiltrados)
+    print(f"\n{'#'*50}")
+    print(f"   INICIANDO ROTINA COM {qtd_tarefas} TAREFAS")
+    print(f"{'#'*50}")
+    
     inicio_rotina = time.time()
     
-    # === MODO ASSÍNCRONO (COM ARENA) ===
+    # Separa a Arena do resto das tarefas
+    tem_arena = '0' in dadosFiltrados
+    tarefas_pendentes = [t for t in dadosFiltrados if t != '0']
+    
+    # A SUA LISTA DE PRIORIDADES (Do mais demorado para o mais rápido)
+    ordem_prioridade = ['8', '7', '2', '5', '4', '6', '1', '3', '10', '9', '11', '12']
+    
+    # A Mágica: Ordena a lista de tarefas pendentes baseada na sua régua de prioridade.
+    # Tarefas longas ficam no começo [0], tarefas curtas vão pro final da fila.
+    tarefas_pendentes.sort(key=lambda x: ordem_prioridade.index(x) if x in ordem_prioridade else 99)
+
+    # === MODO ASSÍNCRONO (INTERCALAÇÃO COM ARENA) ===
     if tem_arena:
-        print("\n[MODO INTERCALAÇÃO ATIVADO] Arena detectada.")
+        print("\n[MODO INTERCALAÇÃO ATIVADO] Arena detectada. Organizando fila por peso de tempo...")
         coord_x, coord_y, tempo_arena = Gerenciador_Coordenadas.pegar_coordenadas('Arena.txt')
-        cooldown_alvo = 47
+        cooldown_alvo = float(tempo_arena[5]) # Ex: os 47 segundos
         
         for luta in range(5):
             print(f"\n--- Arena: Luta {luta+1}/5 ---")
             
-            # ATENÇÃO: Mudamos o tempo de pular TEMPORARIAMENTE para 1 segundo 
-            # na hora de clicar, porque quem vai gerenciar a espera de 47s agora é o Menu, e não a função!
+            # Executa a luta e devolve o controle IMEDIATAMENTE (1s)
             Arena.fazer_uma_luta_e_sair(coord_x, coord_y, tempo_arena, pular_tempo=1)
             
-            # Se não for a última luta, precisamos queimar 47 segundos
+            # Gerenciamento do Cooldown (Apenas nas 4 primeiras lutas)
             if luta < 4:
                 inicio_cooldown = time.time()
                 
-                # Tem alguma outra tarefa na fila? Executa ela agora!
+                # Se ainda tem tarefas pendentes, puxa A PRIMEIRA da fila (que agora é a mais demorada)
                 if tarefas_pendentes:
                     proxima_tarefa = tarefas_pendentes.pop(0)
-                    print(f" -> Aproveitando Cooldown para executar: Tarefa {proxima_tarefa}")
+                    nome_proxima = LISTA_TAREFAS[int(proxima_tarefa)]
+                    print(f" -> Aproveitando Cooldown para executar: {nome_proxima}")
+                    
                     executa_tarefa(proxima_tarefa, inicio_rotina_global=inicio_rotina)
+                else:
+                    print(" -> Nenhuma tarefa extra pendente. Apenas aguardando o tempo passar.")
                 
-                # Calcula quanto tempo passou fazendo a tarefa extra
+                # Matemática do tempo
                 tempo_gasto = time.time() - inicio_cooldown
                 tempo_restante = cooldown_alvo - tempo_gasto
                 
-                # Se a tarefa foi rápida demais, dorme o resto do tempo
                 if tempo_restante > 0:
-                    print(f" -> Tarefa extra concluída. Aguardando {tempo_restante:.1f}s do cooldown da Arena...")
+                    print(f" -> Aguardando {tempo_restante:.1f}s restantes do cooldown da Arena...")
                     time.sleep(tempo_restante)
                 else:
-                    print(f" -> Tarefa extra demorou mais que o cooldown. Arena pronta imediatamente!")
+                    print(f" -> O tempo da tarefa extra superou o cooldown. Voltando para a Arena imediatamente!")
 
-    # === MODO NORMAL (OU TAREFAS QUE SOBRARAM) ===
-    # Executa o resto das tarefas que não couberam nos intervalos da Arena
-    for tarefa in tarefas_pendentes:
-        print(f"\n--- Executando Tarefa Restante ---")
-        executa_tarefa(tarefa, inicio_rotina_global=inicio_rotina)
+    # === MODO NORMAL (TAREFAS QUE SOBRARAM) ===
+    if tarefas_pendentes:
+        if tem_arena:
+            print("\n[FINALIZANDO FILA] Executando tarefas que sobraram pós-Arena...")
+            
+        for tarefa in tarefas_pendentes:
+            nome_tarefa = LISTA_TAREFAS[int(tarefa)]
+            print(f"\n--- Executando: {nome_tarefa} ---")
+            executa_tarefa(tarefa, inicio_rotina_global=inicio_rotina)
 
-    # ... (restante do código de finalização da rotina)
+    # === FINALIZAÇÃO ===
+    tempo_total = time.time() - inicio_rotina
+    str_total = formatar_tempo(tempo_total)
+
+    print(f"\n{'#'*50}")
+    print(f"   ROTINA FINALIZADA")
+    print(f"   Tempo Total: {str_total} ({tempo_total:.2f}s)")
+    print(f"{'#'*50}\n")
 
 def executa_tarefa(tarefa_index_str, inicio_rotina_global=None):
     """

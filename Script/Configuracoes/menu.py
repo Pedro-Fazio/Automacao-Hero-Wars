@@ -151,7 +151,7 @@ def executa_rotina(dadosRotina):
     # A SUA LISTA DE PRIORIDADES (Do mais demorado para o mais rápido)
     ordem_prioridade = ['8', '7', '2', '5', '4', '6', '1', '3', '10', '9', '11', '12']
     
-    # A Mágica: Ordena a lista de tarefas pendentes baseada na sua régua de prioridade.
+    # Ordena a lista de tarefas pendentes baseada na régua de prioridade.
     # Tarefas longas ficam no começo [0], tarefas curtas vão pro final da fila.
     tarefas_pendentes.sort(key=lambda x: ordem_prioridade.index(x) if x in ordem_prioridade else 99)
 
@@ -209,6 +209,7 @@ def executa_rotina(dadosRotina):
     print(f"   ROTINA FINALIZADA")
     print(f"   Tempo Total: {str_total} ({tempo_total:.2f}s)")
     print(f"{'#'*50}\n")
+
 
 def executa_tarefa(tarefa_index_str, inicio_rotina_global=None):
     """

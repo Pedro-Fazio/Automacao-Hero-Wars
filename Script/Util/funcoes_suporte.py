@@ -9,7 +9,8 @@ click_x = 0
 click_y = 0
 
 def mover_e_clicar(coordenadaX, coordenadaY, timeSleep):
-    pyautogui.click(coordenadaX, coordenadaY, duration=0.5)
+    pyautogui.moveTo(coordenadaX, coordenadaY, duration=0.2)
+    pyautogui.click(coordenadaX, coordenadaY, duration=0.3)
     time.sleep(timeSleep)
 
 def desenhar_linha():

@@ -17,13 +17,11 @@ def coletar_mensagens(coord_x, coord_y, tempo):
     FS.mover_e_clicar(coord_x[3], coord_y[3], tempo[3])
 
     # Enquanto tiver mensagem, ele coleta.
-    ### AJUSTAR A COR ###
-    while not PY.pixelMatchesColor(3190, 370, (255, 255, 255), tolerance=10):
+    while PY.pixelMatchesColor(3150, 365, (72, 165, 26), tolerance=10):
         _coletar_mensagem(coord_x, coord_y, tempo)
 
     # Clica no X das Mensagens
     FS.mover_e_clicar(coord_x[6], coord_y[6], tempo[6])
-
 
 def _coletar_mensagem(coord_x, coord_y, tempo):
     # Clica na mensagem
@@ -31,7 +29,6 @@ def _coletar_mensagem(coord_x, coord_y, tempo):
 
     # Clica em Coletar
     FS.mover_e_clicar(coord_x[5], coord_y[5], tempo[5])
-
 
 def configurar_coordenadas():
     caminho_pasta = 'Configuracoes/Coordenadas/Coordenadas_Teste'

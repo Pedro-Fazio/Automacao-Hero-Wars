@@ -264,8 +264,7 @@ def terralem():
 
 def masmorra():
     coord_x, coord_y, tempo = Gerenciador_Coordenadas.pegar_coordenadas('Masmorra.txt')
-    #Masmorra.percorrer_masmorra(coord_x, coord_y, tempo)
-    Masmorra.percorrer_masmorra_teste_calibrador()
+    Masmorra.percorrer_masmorra(coord_x, coord_y, tempo)
 
 def atrio_animico():
     coord_x, coord_y, tempo = Gerenciador_Coordenadas.pegar_coordenadas('Atrio_Animico.txt')

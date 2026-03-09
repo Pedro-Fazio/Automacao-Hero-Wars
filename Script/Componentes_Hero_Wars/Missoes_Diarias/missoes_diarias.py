@@ -8,8 +8,7 @@ def coletar_diarias(coord_x, coord_y, tempo):
     FS.mover_e_clicar(coord_x[0], coord_y[0], tempo[0])
     
     # Enquanto houver missões para coletar, ele coleta
-    ### AJUSTAR A COR ###
-    while not PY.pixelMatchesColor(3170, 420, (255, 255, 255), tolerance=10):
+    while PY.pixelMatchesColor(3225, 420, (74, 170, 31), tolerance=10):
         _coletar_recompensa(coord_x, coord_y, tempo)
 
     # Clicar no X de Missões Diárias

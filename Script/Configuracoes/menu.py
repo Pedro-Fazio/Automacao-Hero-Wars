@@ -14,100 +14,94 @@ import Componentes_Hero_Wars.Eventos_Especiais.eventos_especiais as Eventos_Espe
 import Componentes_Hero_Wars.Missoes_Diarias.missoes_diarias as Missoes_Diarias
 import Componentes_Hero_Wars.Missoes_Guilda.missoes_guilda as Missoes_Guilda
 import Util.funcoes_suporte as Funcoes_Suporte
+
 import time
 import threading
+import Configuracoes.interface as interface
 import sys
+import pyautogui as PY
 
 LISTA_TAREFAS = [
-    'Arena',
-    'Grande Arena',
-    'Vidente Astral',
-    'Presentes',
-    'Dirigivel',
-    'Terralem',
-    'Atrio Animico',
-    'Torre',
-    'Masmorra',
-    'Mensagens',
-    'Eventos Especiais',
-    'Missoes Diarias',
-    'Missoes Guilda'
+    'Arena', 'Grande Arena', 'Vidente Astral', 'Presentes',
+    'Dirigivel', 'Terralem', 'Atrio Animico', 'Torre',
+    'Masmorra', 'Mensagens', 'Eventos Especiais', 
+    'Missoes Diarias', 'Missoes Guilda'
 ]
 
-def formatar_tempo(segundos):
-    """Converte segundos em MM:SS"""
-    m = int(segundos // 60)
-    s = int(segundos % 60)
-    return f"{m:02d}:{s:02d}"
-
-def monitorar_tarefa(nome_tarefa, funcao_executavel, inicio_rotina_global=None):
+def monitorar_tarefa(nome_tarefa, funcao_executavel, inicio_rotina_global=None, tempo_acumulado_inicial=0.0, mostrar_ok_final=True):
     """
-    Executa uma tarefa e mostra um timer rodando em tempo real no terminal.
-    Se inicio_rotina_global for passado, mostra também o tempo total da rotina.
+    Executa a tarefa mostrando um spinner profissional e o tempo rodando.
+    Possui suporte para pausar e retomar tempos (Cronômetro Acumulativo).
     """
-    print(f"\n>>> Iniciando: {nome_tarefa.upper()}")
-    
     inicio_tarefa = time.time()
     evento_parar = threading.Event()
 
-    # --- Função que roda em paralelo (Thread) ---
-    def _timer_visual():
-        while not evento_parar.is_set():
-            agora = time.time()
-            tempo_tarefa = agora - inicio_tarefa
-            str_tarefa = formatar_tempo(tempo_tarefa)
-            
-            msg = f"\r   [⏳ EXECUTANDO] {nome_tarefa}: {str_tarefa}"
-            
-            # Se estiver rodando numa rotina, mostra o tempo total acumulado
-            if inicio_rotina_global:
-                tempo_total = agora - inicio_rotina_global
-                str_total = formatar_tempo(tempo_total)
-                msg += f" | 🌍 Tempo Total Rotina: {str_total}"
-            
-            # Imprime sobrescrevendo a linha (\r) e flush forçado
-            sys.stdout.write(msg)
-            sys.stdout.flush()
-            
-            # Atualiza a cada 0.5 segundos (menos que isso pisca demais)
-            time.sleep(0.5)
+    with interface.console.status(f"[bold cyan]Preparando {nome_tarefa}...[/]", spinner="bouncingBar") as status:
+        
+        def _atualizar_status():
+            while not evento_parar.is_set():
+                agora = time.time()
+                
+                # O tempo total é o que já passou ANTES + o que está passando AGORA
+                tempo_tarefa = tempo_acumulado_inicial + (agora - inicio_tarefa)
+                str_tarefa = interface.formatar_tempo(tempo_tarefa)
+                
+                msg = f"[bold cyan]Executando {nome_tarefa}[/]: {str_tarefa}"
+                
+                if inicio_rotina_global:
+                    str_total = interface.formatar_tempo(agora - inicio_rotina_global)
+                    msg += f" | [magenta]Tempo Total: {str_total}[/]"
+                
+                status.update(msg)
+                time.sleep(0.5)
 
-    # Inicia a thread do relógio
-    t = threading.Thread(target=_timer_visual)
-    t.start()
+        t = threading.Thread(target=_atualizar_status)
+        t.start()
+        
+        try:
+            funcao_executavel()
+        except Exception as e:
+            interface.console.print(f"\n[bold red]ERRO ao executar {nome_tarefa}:[/] {e}")
+        finally:
+            evento_parar.set()
+            t.join() 
     
-    # Executa a tarefa real (Bot)
-    try:
-        funcao_executavel()
-    except Exception as e:
-        print(f"\n[ERRO] Falha ao executar {nome_tarefa}: {e}")
-    finally:
-        # Garante que o timer pare, mesmo se der erro
-        evento_parar.set()
-        t.join() # Espera a thread fechar
+    # Calcula a duração exata desta sessão e soma com o histórico
+    duracao_sessao = time.time() - inicio_tarefa
+    duracao_total = tempo_acumulado_inicial + duracao_sessao
     
-    fim = time.time()
-    duracao = fim - inicio_tarefa
-    
-    # Limpa a linha do timer e mostra o OK final
-    # Os espaços em branco no final servem para apagar restos de texto da linha anterior
-    print(f"\r[✅ OK] {nome_tarefa.upper()} finalizada em {duracao:.2f}s." + " "*20)
-    return duracao
+    # Só exibe o check verde se a tarefa acabou de verdade
+    if mostrar_ok_final:
+        interface.console.print(f"[bold green]✔ {nome_tarefa.upper()}[/] finalizada em {duracao_total:.2f}s.")
+        
+    return duracao_total
 
 def menu():
-    while True: # Loop para o menu não fechar após uma ação
-        print('\n' + '='*30)
-        print('   HERO WARS BOT')
-        print('='*30)
-        print('1 - Criar rotina')
-        print('2 - Escolher rotina')
-        print('3 - Fazer tarefa especifica')
-        print('4 - Configurar coordenadas')
-        print('5 - Verificar coordenadas')
-        print('6 - Verificar cor da posição')
-        print('0 - Sair')
-        
-        escolha = input('\nOpção: ').strip()
+    while True:
+        interface.desenhar_cabecalho()
+        interface.desenhar_menu_principal()
+
+        resposta_usuario = [None] 
+
+        def capturar_input():
+            resposta_usuario[0] = interface.console.input('\n[bold yellow]Opção (20s para encerrar): [/]').strip()
+
+        # Criamos a "Thread Fantasma"
+        thread_espera = threading.Thread(target=capturar_input)
+        thread_espera.daemon = True # significa que a thread morre se o programa principal fechar
+        thread_espera.start()
+        thread_espera.join(timeout=20.0)
+
+        # Verifica se deu o timeout e encerra o programa
+        if thread_espera.is_alive():
+            PY.press('0')
+            print("\n")
+            interface.console.print("\n[bold red]⏳ Tempo limite atingido (20 segundos). O bot será encerrado...[/]")
+            PY.press('enter')
+            return
+
+        # Se passou direto pelo if, significa que o usuário digitou algo a tempo
+        escolha = resposta_usuario[0]
 
         if escolha == "1":
             Rotina.cria_rotina(LISTA_TAREFAS)
@@ -118,10 +112,10 @@ def menu():
         elif escolha == "3":
             Rotina.mostrar_tarefas(LISTA_TAREFAS)
             try:
-                idx = input('Número da Tarefa: ').strip()
+                idx = interface.console.input('[bold yellow]Número da Tarefa: [/]').strip()
                 executa_tarefa(idx)
             except ValueError:
-                print("Entrada inválida.")
+                interface.console.print("[red]Entrada inválida.[/red]")
         elif escolha == "4":
             Gerenciador_Coordenadas.configurar_coordenadas()
         elif escolha == "5":
@@ -129,92 +123,96 @@ def menu():
         elif escolha == "6":
             Funcoes_Suporte.capturar_posicao_cor()
         elif escolha == "0":
-            print("Saindo...")
+            interface.console.print("[bold red]Encerrando os motores...[/]")
             break
         else:
-            print("Opção inválida.")
+            interface.console.print("[red]Opção inválida.[/red]")
+            time.sleep(1)
 
 def executa_rotina(dadosRotina):
     dadosFiltrados = [item for item in dadosRotina if item]
-    
     qtd_tarefas = len(dadosFiltrados)
-    print(f"\n{'#'*50}")
-    print(f"   INICIANDO ROTINA COM {qtd_tarefas} TAREFAS")
-    print(f"{'#'*50}")
+    
+    print("\n")
+    interface.mostrar_painel_info(
+        "GERENCIADOR DE ROTINA", 
+        f"Iniciando sequência com [bold white]{qtd_tarefas}[/] tarefas.", 
+        cor="magenta"
+    )
     
     inicio_rotina = time.time()
-    
-    # Separa a Arena do resto das tarefas
     tem_arena = '0' in dadosFiltrados
     tarefas_pendentes = [t for t in dadosFiltrados if t != '0']
     
-    # A SUA LISTA DE PRIORIDADES (Do mais demorado para o mais rápido)
     ordem_prioridade = ['8', '7', '2', '5', '4', '6', '1', '3', '10', '9', '11', '12']
-    
-    # Ordena a lista de tarefas pendentes baseada na régua de prioridade.
-    # Tarefas longas ficam no começo [0], tarefas curtas vão pro final da fila.
     tarefas_pendentes.sort(key=lambda x: ordem_prioridade.index(x) if x in ordem_prioridade else 99)
 
-    # === MODO ASSÍNCRONO (INTERCALAÇÃO COM ARENA) ===
+    # === MODO ASSÍNCRONO ARENA ===
     if tem_arena:
-        print("\n[MODO INTERCALAÇÃO ATIVADO] Arena detectada. Organizando fila por peso de tempo...")
+        interface.console.print("\n[bold yellow]⚡ MODO INTERCALAÇÃO ATIVADO[/] - Arena detectada. Organizando fila...")
         coord_x, coord_y, tempo_arena = Gerenciador_Coordenadas.pegar_coordenadas('Arena.txt')
-        cooldown_alvo = float(tempo_arena[5]) # Ex: os 47 segundos
+        cooldown_alvo = float(tempo_arena[5])
+        
+        tempo_acumulado_arena = 0.0 
         
         for luta in range(5):
-            print(f"\n--- Arena: Luta {luta+1}/5 ---")
+            interface.console.print(f"\n[bold blue]--- Arena: Luta {luta+1}/5 ---[/]")
             
-            # Executa a luta e devolve o controle IMEDIATAMENTE (1s)
-            Arena.fazer_uma_luta_e_sair(coord_x, coord_y, tempo_arena, pular_tempo=1)
+            tempo_acumulado_arena = monitorar_tarefa(
+                "Arena (Ataque)", 
+                lambda: Arena.fazer_uma_luta_e_sair(coord_x, coord_y, tempo_arena, pular_tempo=1),
+                inicio_rotina_global=inicio_rotina,
+                tempo_acumulado_inicial=tempo_acumulado_arena,
+                mostrar_ok_final=False # Esconde a mensagem de conclusão
+            )
             
-            # Gerenciamento do Cooldown (Apenas nas 4 primeiras lutas)
             if luta < 4:
                 inicio_cooldown = time.time()
                 
-                # Se ainda tem tarefas pendentes, puxa A PRIMEIRA da fila (que agora é a mais demorada)
+                # Executa a tarefa secundária
                 if tarefas_pendentes:
                     proxima_tarefa = tarefas_pendentes.pop(0)
                     nome_proxima = LISTA_TAREFAS[int(proxima_tarefa)]
-                    print(f" -> Aproveitando Cooldown para executar: {nome_proxima}")
+                    interface.console.print(f" [dim]-> Aproveitando Cooldown para:[/] [bold]{nome_proxima}[/]")
                     
                     executa_tarefa(proxima_tarefa, inicio_rotina_global=inicio_rotina)
                 else:
-                    print(" -> Nenhuma tarefa extra pendente. Apenas aguardando o tempo passar.")
+                    interface.console.print(" [dim]-> Nenhuma tarefa extra pendente. Aguardando...[/]")
                 
-                # Matemática do tempo
-                tempo_gasto = time.time() - inicio_cooldown
-                tempo_restante = cooldown_alvo - tempo_gasto
+                tempo_gasto_recheio = time.time() - inicio_cooldown
+                tempo_restante = cooldown_alvo - tempo_gasto_recheio
                 
                 if tempo_restante > 0:
-                    print(f" -> Aguardando {tempo_restante:.1f}s restantes do cooldown da Arena...")
-                    time.sleep(tempo_restante)
+                    interface.console.print(f" [dim]-> Pausa para completar o cooldown da Arena...[/]")
+                    interface.exibir_countdown(tempo_restante, "⏳ Cooldown da Arena")
+                    tempo_acumulado_arena += tempo_restante    
                 else:
-                    print(f" -> O tempo da tarefa extra superou o cooldown. Voltando para a Arena imediatamente!")
+                    interface.console.print(f" [bold red]-> O tempo superou o cooldown. Voltando para a Arena![/]")
 
-    # === MODO NORMAL (TAREFAS QUE SOBRARAM) ===
+        interface.console.print(f"[bold green]✔ ARENA[/] finalizada. Tempo exclusivo da tarefa: {tempo_acumulado_arena:.2f}s.")
+
+    # === MODO NORMAL ===
     if tarefas_pendentes:
         if tem_arena:
-            print("\n[FINALIZANDO FILA] Executando tarefas que sobraram pós-Arena...")
+            interface.console.print("\n[bold yellow]🚩 FINALIZANDO FILA[/] - Executando tarefas restantes...")
             
         for tarefa in tarefas_pendentes:
             nome_tarefa = LISTA_TAREFAS[int(tarefa)]
-            print(f"\n--- Executando: {nome_tarefa} ---")
+            interface.console.print(f"\n[bold blue]--- Executando: {nome_tarefa} ---[/]")
             executa_tarefa(tarefa, inicio_rotina_global=inicio_rotina)
 
     # === FINALIZAÇÃO ===
     tempo_total = time.time() - inicio_rotina
-    str_total = formatar_tempo(tempo_total)
+    str_total = interface.formatar_tempo(tempo_total)
 
-    print(f"\n{'#'*50}")
-    print(f"   ROTINA FINALIZADA")
-    print(f"   Tempo Total: {str_total} ({tempo_total:.2f}s)")
-    print(f"{'#'*50}\n")
-
+    print("\n")
+    interface.mostrar_painel_info(
+        "ROTINA FINALIZADA", 
+        f"Todas as tarefas foram concluídas.\nTempo Total: [bold green]{str_total}[/] ({tempo_total:.2f}s)", 
+        cor="green"
+    )
 
 def executa_tarefa(tarefa_index_str, inicio_rotina_global=None):
-    """
-    Agora aceita o parametro opcional inicio_rotina_global
-    """
     switch = {
         '0': arena, '1': grande_arena, '2': vidente_astral, '3': presentes,
         '4': dirigivel, '5': terralem, '6': atrio_animico, '7': torre,
@@ -230,13 +228,10 @@ def executa_tarefa(tarefa_index_str, inicio_rotina_global=None):
         except:
             nome_da_tarefa = "Tarefa Desconhecida"
 
-        # Passamos o tempo global adiante
         return monitorar_tarefa(nome_da_tarefa, funcao, inicio_rotina_global)
     else:
-        print(f"Tarefa {tarefa_index_str} não encontrada.")
+        interface.console.print(f"[red]Tarefa {tarefa_index_str} não encontrada.[/red]")
         return 0
-
-
 
 def arena():
     coord_x, coord_y, tempo = Gerenciador_Coordenadas.pegar_coordenadas('Arena.txt')

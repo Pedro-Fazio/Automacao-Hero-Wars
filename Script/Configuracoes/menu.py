@@ -143,7 +143,7 @@ def executa_rotina(dadosRotina):
     tem_arena = '0' in dadosFiltrados
     tarefas_pendentes = [t for t in dadosFiltrados if t != '0']
     
-    ordem_prioridade = ['8', '7', '2', '5', '4', '6', '1', '3', '10', '9', '11', '12']
+    ordem_prioridade = ['8', '2', '5', '4', '7', '6', '1', '3', '10', '9', '11', '12']
     tarefas_pendentes.sort(key=lambda x: ordem_prioridade.index(x) if x in ordem_prioridade else 99)
 
     # === MODO ASSÍNCRONO ARENA ===

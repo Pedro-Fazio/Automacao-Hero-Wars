@@ -88,15 +88,14 @@ def menu():
 
         # Criamos a "Thread Fantasma"
         thread_espera = threading.Thread(target=capturar_input)
-        thread_espera.daemon = True # significa que a thread morre se o programa principal fechar
+        thread_espera.daemon = True # Thread morre se o programa principal fechar
         thread_espera.start()
         thread_espera.join(timeout=20.0)
 
         # Verifica se deu o timeout e encerra o programa
         if thread_espera.is_alive():
             PY.press('0')
-            print("\n")
-            interface.console.print("\n[bold red]⏳ Tempo limite atingido (20 segundos). O bot será encerrado...[/]")
+            interface.console.print("\n\n[bold red]⏳ Tempo limite atingido (20 segundos). O bot será encerrado...[/]")
             PY.press('enter')
             return
 
@@ -163,7 +162,7 @@ def executa_rotina(dadosRotina):
                 lambda: Arena.fazer_uma_luta_e_sair(coord_x, coord_y, tempo_arena, pular_tempo=1),
                 inicio_rotina_global=inicio_rotina,
                 tempo_acumulado_inicial=tempo_acumulado_arena,
-                mostrar_ok_final=False # Esconde a mensagem de conclusão
+                mostrar_ok_final=False
             )
             
             if luta < 4:
@@ -173,8 +172,8 @@ def executa_rotina(dadosRotina):
                 if tarefas_pendentes:
                     proxima_tarefa = tarefas_pendentes.pop(0)
                     nome_proxima = LISTA_TAREFAS[int(proxima_tarefa)]
+
                     interface.console.print(f" [dim]-> Aproveitando Cooldown para:[/] [bold]{nome_proxima}[/]")
-                    
                     executa_tarefa(proxima_tarefa, inicio_rotina_global=inicio_rotina)
                 else:
                     interface.console.print(" [dim]-> Nenhuma tarefa extra pendente. Aguardando...[/]")

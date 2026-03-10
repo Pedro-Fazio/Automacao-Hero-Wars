@@ -33,6 +33,8 @@ def pegar_recompensa_valquiria(coord_x, coord_y, tempo):
 
     # Clica no X do Dirigível
     #FS.mover_e_clicar(coord_x[9], coord_y[9], tempo[9])
+    PY.press('esc')
+    time.sleep(1)
 
     PY.press('esc')
     time.sleep(1)

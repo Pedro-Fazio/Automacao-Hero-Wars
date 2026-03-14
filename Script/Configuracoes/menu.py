@@ -72,7 +72,8 @@ def monitorar_tarefa(nome_tarefa, funcao_executavel, inicio_rotina_global=None, 
     
     # Só exibe o check verde se a tarefa acabou de verdade
     if mostrar_ok_final:
-        interface.console.print(f"[bold green]✔ {nome_tarefa.upper()}[/] finalizada em {duracao_total:.2f}s.")
+        str_duracao_formatada = interface.formatar_tempo(duracao_total)
+        interface.console.print(f"[bold green]✔ {nome_tarefa.upper()}[/] finalizada em {str_duracao_formatada} ({duracao_total:.2f}s).")
         
     return duracao_total
 
@@ -168,27 +169,28 @@ def executa_rotina(dadosRotina):
             if luta < 4:
                 inicio_cooldown = time.time()
                 
-                # Executa a tarefa secundária
-                if tarefas_pendentes:
+                # Enquanto houver tarefas na fila e o tempo de cooldown ainda não tiver acabado
+                while tarefas_pendentes and (time.time() - inicio_cooldown) < cooldown_alvo:
                     proxima_tarefa = tarefas_pendentes.pop(0)
                     nome_proxima = LISTA_TAREFAS[int(proxima_tarefa)]
-
-                    interface.console.print(f" [dim]-> Aproveitando Cooldown para:[/] [bold]{nome_proxima}[/]")
+                    interface.console.print(f" [dim]-> Cooldown ativo. Encaixando tarefa:[/] [bold]{nome_proxima}[/]")
+                    
                     executa_tarefa(proxima_tarefa, inicio_rotina_global=inicio_rotina)
-                else:
-                    interface.console.print(" [dim]-> Nenhuma tarefa extra pendente. Aguardando...[/]")
                 
-                tempo_gasto_recheio = time.time() - inicio_cooldown
-                tempo_restante = cooldown_alvo - tempo_gasto_recheio
+                # Quando ele sair do while (ou porque acabaram as tarefas, ou porque o tempo estourou)
+                # É checado se ainda sobrou tempo (caso a última tarefa tenha sido muito rápida)
+                tempo_gasto = time.time() - inicio_cooldown
+                tempo_restante = cooldown_alvo - tempo_gasto
                 
                 if tempo_restante > 0:
-                    interface.console.print(f" [dim]-> Pausa para completar o cooldown da Arena...[/]")
+                    interface.console.print(f" [dim]-> Fila esgotada ou sem tempo para encaixar mais nada. Aguardando...[/]")
                     interface.exibir_countdown(tempo_restante, "⏳ Cooldown da Arena")
-                    tempo_acumulado_arena += tempo_restante    
+                    tempo_acumulado_arena += tempo_restante
                 else:
-                    interface.console.print(f" [bold red]-> O tempo superou o cooldown. Voltando para a Arena![/]")
-
-        interface.console.print(f"[bold green]✔ ARENA[/] finalizada. Tempo exclusivo da tarefa: {tempo_acumulado_arena:.2f}s.")
+                    interface.console.print(f" [bold green]-> Cooldown finalizado durante as tarefas. Retornando para a Arena![/]")
+        
+        str_arena_formatada = interface.formatar_tempo(tempo_acumulado_arena)
+        interface.console.print(f"\n[bold green]✔ ARENA[/] finalizada em {str_arena_formatada} ({tempo_acumulado_arena:.2f}s).")
 
     # === MODO NORMAL ===
     if tarefas_pendentes:

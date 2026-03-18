@@ -1,22 +1,21 @@
 import Configuracoes.Coordenadas.Gerenciador_Coordenadas as Gerenciador_Coordenadas
-import Configuracoes.rotina as Rotina
-import Componentes_Hero_Wars.Arena.arena as Arena
-import Componentes_Hero_Wars.Vidente_Astral.vidente_astral as Vidente_Astral
-import Componentes_Hero_Wars.Presentes.presentes as Presentes
-import Componentes_Hero_Wars.Dirigivel.dirigivel as Dirigivel
-import Componentes_Hero_Wars.Grande_Arena.grande_arena as Grande_Arena
-import Componentes_Hero_Wars.Terralem.terralem as Terralem
-import Componentes_Hero_Wars.Masmorra.masmorra as Masmorra
-import Componentes_Hero_Wars.Atrio_Animico.atrio_animico as Atrio_Animico
-import Componentes_Hero_Wars.Torre.torre as Torre
-import Componentes_Hero_Wars.Mensagens.mensagens as Mensagens
 import Componentes_Hero_Wars.Eventos_Especiais.eventos_especiais as Eventos_Especiais
 import Componentes_Hero_Wars.Missoes_Diarias.missoes_diarias as Missoes_Diarias
+import Componentes_Hero_Wars.Vidente_Astral.vidente_astral as Vidente_Astral
 import Componentes_Hero_Wars.Missoes_Guilda.missoes_guilda as Missoes_Guilda
+import Componentes_Hero_Wars.Atrio_Animico.atrio_animico as Atrio_Animico
+import Componentes_Hero_Wars.Grande_Arena.grande_arena as Grande_Arena
+import Componentes_Hero_Wars.Presentes.presentes as Presentes
+import Componentes_Hero_Wars.Mensagens.mensagens as Mensagens
+import Componentes_Hero_Wars.Dirigivel.dirigivel as Dirigivel
+import Componentes_Hero_Wars.Terralem.terralem as Terralem
+import Componentes_Hero_Wars.Masmorra.masmorra as Masmorra
+import Componentes_Hero_Wars.Arena.arena as Arena
+import Componentes_Hero_Wars.Torre.torre as Torre
 import Util.funcoes_suporte as Funcoes_Suporte
-import threading
 import Configuracoes.interface as interface
-import pyautogui as PY
+import Configuracoes.rotina as Rotina
+import threading
 import time
 import os
 
@@ -36,7 +35,6 @@ def monitorar_tarefa(nome_tarefa, funcao_executavel, inicio_rotina_global=None, 
     evento_parar = threading.Event()
 
     with interface.console.status(f"[bold cyan]Preparando {nome_tarefa}...[/]", spinner="bouncingBar") as status:
-        
         def _atualizar_status():
             while not evento_parar.is_set():
                 agora = time.time()
@@ -86,8 +84,6 @@ def menu():
         thread_espera.start()
         thread_espera.join(timeout=20.0)
 
-
-        # Verifica se deu o timeout e encerra o programa
         if thread_espera.is_alive():
             interface.console.print("\n\n[bold red]⏳ Tempo limite atingido (20 segundos). O bot será encerrado...[/]")
             os._exit(0)

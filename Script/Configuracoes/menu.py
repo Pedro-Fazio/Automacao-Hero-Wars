@@ -14,12 +14,11 @@ import Componentes_Hero_Wars.Eventos_Especiais.eventos_especiais as Eventos_Espe
 import Componentes_Hero_Wars.Missoes_Diarias.missoes_diarias as Missoes_Diarias
 import Componentes_Hero_Wars.Missoes_Guilda.missoes_guilda as Missoes_Guilda
 import Util.funcoes_suporte as Funcoes_Suporte
-
-import time
 import threading
 import Configuracoes.interface as interface
-import sys
 import pyautogui as PY
+import time
+import os
 
 LISTA_TAREFAS = [
     'Arena', 'Grande Arena', 'Vidente Astral', 'Presentes',
@@ -41,11 +40,8 @@ def monitorar_tarefa(nome_tarefa, funcao_executavel, inicio_rotina_global=None, 
         def _atualizar_status():
             while not evento_parar.is_set():
                 agora = time.time()
-                
-                # O tempo total é o que já passou ANTES + o que está passando AGORA
                 tempo_tarefa = tempo_acumulado_inicial + (agora - inicio_tarefa)
                 str_tarefa = interface.formatar_tempo(tempo_tarefa)
-                
                 msg = f"[bold cyan]Executando {nome_tarefa}[/]: {str_tarefa}"
                 
                 if inicio_rotina_global:
@@ -66,11 +62,9 @@ def monitorar_tarefa(nome_tarefa, funcao_executavel, inicio_rotina_global=None, 
             evento_parar.set()
             t.join() 
     
-    # Calcula a duração exata desta sessão e soma com o histórico
     duracao_sessao = time.time() - inicio_tarefa
     duracao_total = tempo_acumulado_inicial + duracao_sessao
     
-    # Só exibe o check verde se a tarefa acabou de verdade
     if mostrar_ok_final:
         str_duracao_formatada = interface.formatar_tempo(duracao_total)
         interface.console.print(f"[bold green]✔ {nome_tarefa.upper()}[/] finalizada em {str_duracao_formatada} ({duracao_total:.2f}s).")
@@ -87,20 +81,18 @@ def menu():
         def capturar_input():
             resposta_usuario[0] = interface.console.input('\n[bold yellow]Opção (20s para encerrar): [/]').strip()
 
-        # Criamos a "Thread Fantasma"
         thread_espera = threading.Thread(target=capturar_input)
         thread_espera.daemon = True # Thread morre se o programa principal fechar
         thread_espera.start()
         thread_espera.join(timeout=20.0)
 
+
         # Verifica se deu o timeout e encerra o programa
         if thread_espera.is_alive():
-            PY.press('0')
             interface.console.print("\n\n[bold red]⏳ Tempo limite atingido (20 segundos). O bot será encerrado...[/]")
-            PY.press('enter')
+            os._exit(0)
             return
 
-        # Se passou direto pelo if, significa que o usuário digitou algo a tempo
         escolha = resposta_usuario[0]
 
         if escolha == "1":
@@ -169,7 +161,6 @@ def executa_rotina(dadosRotina):
             if luta < 4:
                 inicio_cooldown = time.time()
                 
-                # Enquanto houver tarefas na fila e o tempo de cooldown ainda não tiver acabado
                 while tarefas_pendentes and (time.time() - inicio_cooldown) < cooldown_alvo:
                     proxima_tarefa = tarefas_pendentes.pop(0)
                     nome_proxima = LISTA_TAREFAS[int(proxima_tarefa)]
@@ -177,8 +168,6 @@ def executa_rotina(dadosRotina):
                     
                     executa_tarefa(proxima_tarefa, inicio_rotina_global=inicio_rotina)
                 
-                # Quando ele sair do while (ou porque acabaram as tarefas, ou porque o tempo estourou)
-                # É checado se ainda sobrou tempo (caso a última tarefa tenha sido muito rápida)
                 tempo_gasto = time.time() - inicio_cooldown
                 tempo_restante = cooldown_alvo - tempo_gasto
                 
@@ -202,7 +191,6 @@ def executa_rotina(dadosRotina):
             interface.console.print(f"\n[bold blue]--- Executando: {nome_tarefa} ---[/]")
             executa_tarefa(tarefa, inicio_rotina_global=inicio_rotina)
 
-    # === FINALIZAÇÃO ===
     tempo_total = time.time() - inicio_rotina
     str_total = interface.formatar_tempo(tempo_total)
 

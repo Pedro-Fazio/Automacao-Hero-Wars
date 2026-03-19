@@ -1,5 +1,5 @@
-import Configuracoes.Coordenadas.Gerenciador_Coordenadas as Gerenciador_Coordenadas
 import Componentes_Hero_Wars.Eventos_Especiais.eventos_especiais as Eventos_Especiais
+import Configuracoes.Coordenadas.Gerenciador_Coordenadas as Gerenciador_Coordenadas
 import Componentes_Hero_Wars.Missoes_Diarias.missoes_diarias as Missoes_Diarias
 import Componentes_Hero_Wars.Vidente_Astral.vidente_astral as Vidente_Astral
 import Componentes_Hero_Wars.Missoes_Guilda.missoes_guilda as Missoes_Guilda

@@ -160,7 +160,9 @@ def batalhar_sem_aceitar_destino_escolhendo_oponente(coord_x, coord_y, tempo):
     FS.mover_e_clicar(coord_x[29], coord_y[29], tempo[29])
 
 
-def batalhar_sem_aceitar_destino_escolhendo_oponente_variacao(coord_x, coord_y, tempo):
+def batalhar_sem_aceitar_destino_escolhendo_oponente_variacao(coord_x, coord_y, tempo, adicionaTempo):
+    tempoExtra = 2 if adicionaTempo else 0
+
     # Clicar em Para a Batalha
     FS.mover_e_clicar(coord_x[30], coord_y[30], tempo[30])
 
@@ -178,7 +180,7 @@ def batalhar_sem_aceitar_destino_escolhendo_oponente_variacao(coord_x, coord_y, 
         time.sleep(1)
 
     # Clicar em Ok
-    FS.mover_e_clicar(coord_x[34], coord_y[34], tempo[34])
+    FS.mover_e_clicar(coord_x[34], coord_y[34], tempo[34] + tempoExtra)
 
 
 def configurar_coordenadas():

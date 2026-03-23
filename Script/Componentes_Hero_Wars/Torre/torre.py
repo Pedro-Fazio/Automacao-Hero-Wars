@@ -42,12 +42,13 @@ def completar_torre(coord_x, coord_y, tempo):
     # Clica em Coletar Tudo
     FS.mover_e_clicar(coord_x[15], coord_y[15], tempo[15])
 
+    FS.fechar_com_esc(2)
+
     # Clica no X dos Pontos de Torre
-    FS.mover_e_clicar(coord_x[16], coord_y[16], tempo[16])
+    # FS.mover_e_clicar(coord_x[16], coord_y[16], tempo[16])
 
     # Clica no X da Torre
-    FS.mover_e_clicar(coord_x[17], coord_y[17], tempo[17])
-
+    # FS.mover_e_clicar(coord_x[17], coord_y[17], tempo[17])
 
 def _coletar_recompensa(coord_x, coord_y, tempo):
     # Clica no baú
@@ -58,7 +59,6 @@ def _coletar_recompensa(coord_x, coord_y, tempo):
 
     # Clica em Continuar
     FS.mover_e_clicar(coord_x[5], coord_y[5], tempo[5])
-
 
 def coletar_recompensa_alternativo(coord_x, coord_y, tempo):
     # Clica no baú

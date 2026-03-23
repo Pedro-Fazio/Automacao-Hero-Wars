@@ -45,10 +45,12 @@ def fazer_uma_luta_e_sair(coord_x, coord_y, tempo, pular_tempo):
     FS.mover_e_clicar(coord_x[4], coord_y[4], tempo[4])
     
     # Clica em Pular e espera o tempo especificado (47s ou 1s)
-    FS.mover_e_clicar(coord_x[5], coord_y[5], pular_tempo) 
+    FS.mover_e_clicar(coord_x[5], coord_y[5], pular_tempo)
+
+    FS.fechar_com_esc(1)
     
     # Clica no X da Arena (Volta para o menu principal para liberar o bot)
-    FS.mover_e_clicar(coord_x[6], coord_y[6], tempo[6])
+    # FS.mover_e_clicar(coord_x[6], coord_y[6], tempo[6])
 
 
 def configurar_coordenadas():

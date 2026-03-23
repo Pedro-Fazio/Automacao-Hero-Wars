@@ -17,8 +17,10 @@ def pegar_recompensas(coord_x, coord_y, tempo):
 
     _abrir_bau(coord_x, coord_y, tempo)
 
+    FS.fechar_com_esc(1)
+
     # Clica no X do Terralém
-    FS.mover_e_clicar(coord_x[7], coord_y[7], tempo[7])
+    # FS.mover_e_clicar(coord_x[7], coord_y[7], tempo[7])
 
 
 def _abrir_bau(coord_x, coord_y, tempo):

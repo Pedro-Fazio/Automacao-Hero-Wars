@@ -1,21 +1,33 @@
 import Util.funcoes_suporte as FS
 import os
+import pyautogui as PY
+import time
 
 def presentear(coord_x, coord_y, tempo):
     # Clica em Presentes
     FS.mover_e_clicar(coord_x[0], coord_y[0], tempo[0])
 
+    # Aguarda o botão de Enviar
+    while not PY.pixelMatchesColor(coord_x[1], coord_y[1], (71, 164, 30), tolerance=20):
+        time.sleep(1)
+
     # Clica em Enviar
     FS.mover_e_clicar(coord_x[1], coord_y[1], tempo[1])
+
+    # Aguarda o botão de Enviar os presentes
+    while not PY.pixelMatchesColor(coord_x[2], coord_y[2], (71, 164, 30), tolerance=20):
+        time.sleep(1)
 
     # Envia os presentes
     FS.mover_e_clicar(coord_x[2], coord_y[2], tempo[2])
 
     # Fecha tela de envio dos presentes
-    FS.mover_e_clicar(coord_x[3], coord_y[3], tempo[3])
+    # FS.mover_e_clicar(coord_x[3], coord_y[3], tempo[3])
 
     # Fecha tela de Presentes
-    FS.mover_e_clicar(coord_x[4], coord_y[4], tempo[4])
+    # FS.mover_e_clicar(coord_x[4], coord_y[4], tempo[4])
+
+    FS.fechar_com_esc(2)
 
 
 def configurar_coordenadas():

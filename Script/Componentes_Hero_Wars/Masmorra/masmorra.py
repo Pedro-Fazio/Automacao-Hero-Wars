@@ -66,11 +66,13 @@ def percorrer_masmorra(coord_x, coord_y, tempo):
     # Clica em Coletar
     FS.mover_e_clicar(coord_x[36], coord_y[36], tempo[36])
 
+    FS.fechar_com_esc(2)
+
     # Clica no X da Masmorra
-    FS.mover_e_clicar(coord_x[37], coord_y[37], tempo[37])
+    # FS.mover_e_clicar(coord_x[37], coord_y[37], tempo[37])
 
     # Clica no X da Ilha da Guilda
-    FS.mover_e_clicar(coord_x[38], coord_y[38], tempo[38])
+    # FS.mover_e_clicar(coord_x[38], coord_y[38], tempo[38])
 
     # Clica em Para a Cidade
     FS.mover_e_clicar(coord_x[39], coord_y[39], tempo[39])

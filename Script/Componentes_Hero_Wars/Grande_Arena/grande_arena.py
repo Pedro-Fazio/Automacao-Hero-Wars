@@ -8,8 +8,10 @@ def pegar_recompensa(coord_x, coord_y, tempo):
     # Clica em Resgatar
     FS.mover_e_clicar(coord_x[1], coord_y[1], tempo[1])
 
+    FS.fechar_com_esc(1)
+
     # Clica no X da Grande Arena
-    FS.mover_e_clicar(coord_x[2], coord_y[2], tempo[2])
+    # FS.mover_e_clicar(coord_x[2], coord_y[2], tempo[2])
 
 
 def configurar_coordenadas():

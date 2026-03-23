@@ -11,8 +11,10 @@ def coletar_recompensas_imutaveis(coord_x, coord_y, tempo):
     # Clica em Coletar
     FS.mover_e_clicar(coord_x[2], coord_y[2], tempo[2])
 
+    FS.fechar_com_esc(1)
+
     # Clica no X de Eventos Especiais
-    FS.mover_e_clicar(coord_x[3], coord_y[3], tempo[3])
+    # FS.mover_e_clicar(coord_x[3], coord_y[3], tempo[3])
 
 
 def configurar_coordenadas():

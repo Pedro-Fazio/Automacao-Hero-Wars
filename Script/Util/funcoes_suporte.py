@@ -1,4 +1,4 @@
-import pyautogui
+import pyautogui as PY
 import time
 from pynput.mouse import Listener
 import threading
@@ -9,19 +9,24 @@ click_x = 0
 click_y = 0
 
 def mover_e_clicar(coordenadaX, coordenadaY, timeSleep):
-    pyautogui.moveTo(coordenadaX, coordenadaY, duration=0.2)
-    pyautogui.click(coordenadaX, coordenadaY, duration=0.3)
+    PY.moveTo(coordenadaX, coordenadaY, duration=0.2)
+    PY.click(coordenadaX, coordenadaY, duration=0.3)
     time.sleep(timeSleep)
 
 def desenhar_linha():
     print('\n-'*30 + '\n')
+
+def fechar_com_esc(qntd_escs):
+    for _ in range(qntd_escs):
+        PY.press('esc')
+        time.sleep(0.1)
 
 def captura_clique_coordenadas():
     global mouse_clicked, click_x, click_y
     try:
         start_mouse_listener()
         while True:
-            x, y = pyautogui.position()
+            x, y = PY.position()
             posicao = f'X: {str(x).rjust(4)} Y: {str(y).rjust(4)}'
             print(posicao, end='')
             print('\b' * len(posicao), end='', flush=True)
@@ -37,20 +42,17 @@ def captura_clique_coordenadas():
     except KeyboardInterrupt:
         print('\nPrograma interrompido.')
 
-# Função chamada quando o mouse é clicado
 def on_click(pressed):
     global mouse_clicked, click_x, click_y
     if pressed:
-        click_x, click_y = pyautogui.position()
+        click_x, click_y = PY.position()
         mouse_clicked = True
 
-# Função para iniciar o listener
 def start_mouse_listener():
     global listener
     listener = Listener(on_click=on_click)
     listener.start()
 
-# Função para parar o listener
 def parar_mouse_listener():
     if listener.is_alive():
         listener.stop()
@@ -64,9 +66,9 @@ def on_release(key):
     """Função disparada quando uma tecla é solta."""
     global dados_capturados, esperando_input
     
-    # Usaremos a tecla F8 para capturar (pode mudar se quiser)
+    # Tecla F8 para capturar
     if key == keyboard.Key.f8 and esperando_input:
-        x, y = pyautogui.position()
+        x, y = PY.position()
         r, g, b = obter_cor_pixel(x, y)
         
         print(f"\n[CAPTURADO] Posição: ({x}, {y}) | Cor RGB: ({r}, {g}, {b})")
@@ -97,7 +99,7 @@ def obter_cor_pixel(x, y):
     """Retorna a cor RGB do pixel na posição x, y."""
     try:
         # pyautogui.pixel retorna uma tupla (R, G, B)
-        return pyautogui.pixel(x, y)
+        return PY.pixel(x, y)
     except Exception as e:
         print(f"Erro ao capturar pixel: {e}")
         return (0, 0, 0)

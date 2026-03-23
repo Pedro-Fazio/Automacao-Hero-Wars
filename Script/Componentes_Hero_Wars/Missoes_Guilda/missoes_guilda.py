@@ -23,11 +23,13 @@ def coletar_missoes_guilda(coord_x, coord_y, tempo):
     # Coletar quarto baú
     FS.mover_e_clicar(coord_x[6], coord_y[6], tempo[6])
 
+    FS.fechar_com_esc(2)
+
     # Clicar no X de Missões da Guilda
-    FS.mover_e_clicar(coord_x[7], coord_y[7], tempo[7])
+    # FS.mover_e_clicar(coord_x[7], coord_y[7], tempo[7])
 
     # Clicar no X de Missões Diárias
-    FS.mover_e_clicar(coord_x[8], coord_y[8], tempo[8])
+    # FS.mover_e_clicar(coord_x[8], coord_y[8], tempo[8])
 
 
 def _coletar_recompensa(coord_x, coord_y, tempo):

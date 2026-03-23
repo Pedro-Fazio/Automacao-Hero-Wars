@@ -11,8 +11,10 @@ def coletar_diarias(coord_x, coord_y, tempo):
     while PY.pixelMatchesColor(3225, 420, (74, 170, 31), tolerance=10):
         _coletar_recompensa(coord_x, coord_y, tempo)
 
+    FS.fechar_com_esc(1)
+
     # Clicar no X de Missões Diárias
-    FS.mover_e_clicar(coord_x[2], coord_y[2], tempo[2])
+    # FS.mover_e_clicar(coord_x[2], coord_y[2], tempo[2])
 
 
 def _coletar_recompensa(coord_x, coord_y, tempo):

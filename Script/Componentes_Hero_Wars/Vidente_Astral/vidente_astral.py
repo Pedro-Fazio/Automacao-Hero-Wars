@@ -14,14 +14,16 @@ def completar_uma_vez(coord_x, coord_y, tempo):
     # Clica em Abrir
     FS.mover_e_clicar(coord_x[3], coord_y[3], tempo[3])
 
+    FS.fechar_com_esc(3)
+
     # Clica no X da abertura do item
-    FS.mover_e_clicar(coord_x[4], coord_y[4], tempo[4])
+    # FS.mover_e_clicar(coord_x[4], coord_y[4], tempo[4])
 
     # Clica no X do Vidente Astral
-    FS.mover_e_clicar(coord_x[5], coord_y[5], tempo[5])
+    # FS.mover_e_clicar(coord_x[5], coord_y[5], tempo[5])
 
     # Clica no X de Asgard
-    FS.mover_e_clicar(coord_x[6], coord_y[6], tempo[6])
+    # FS.mover_e_clicar(coord_x[6], coord_y[6], tempo[6])
 
     # Clica em Para a Cidade
     FS.mover_e_clicar(coord_x[7], coord_y[7], tempo[7])

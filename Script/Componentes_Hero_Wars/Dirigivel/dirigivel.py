@@ -28,19 +28,13 @@ def pegar_recompensa_valquiria(coord_x, coord_y, tempo):
     # Clica em Alocar Heróis
     FS.mover_e_clicar(coord_x[7], coord_y[7], tempo[7])
 
+    FS.fechar_com_esc(2)
+    
     # Clica no X do Mapa da Expedição
     #FS.mover_e_clicar(coord_x[8], coord_y[8], tempo[8])
 
     # Clica no X do Dirigível
     #FS.mover_e_clicar(coord_x[9], coord_y[9], tempo[9])
-    PY.press('esc')
-    time.sleep(0.5)
-
-    PY.press('esc')
-    time.sleep(0.5)
-    
-    PY.press('esc')
-
 
 def configurar_coordenadas():
     caminho_pasta = 'Configuracoes/Coordenadas/Coordenadas_Teste'

@@ -12,27 +12,11 @@ def resgatar_recompensa(coord_x, coord_y, tempo):
 
     # Clica em Invocar
     FS.mover_e_clicar(coord_x[2], coord_y[2], tempo[2])
-    
-    PY.press('esc')
-    time.sleep(0.2)
 
-    PY.press('esc')
-    time.sleep(0.2)
-    
-    PY.press('esc')
-    time.sleep(0.2)
-    
-    PY.press('esc')
-    time.sleep(0.2)
-
-    PY.press('esc')
-    time.sleep(0.2)
+    FS.fechar_com_esc(6)
     
     # Clica na tela para pular animação de invocação
     #FS.mover_e_clicar(coord_x[3], coord_y[3], tempo[3])
-    
-    # Clica na tela para pular animação de invocação
-    #FS.mover_e_clicar(coord_x[3], coord_y[3]+10, tempo[3])
 
     # Clica em Ótimo!
     #FS.mover_e_clicar(coord_x[4], coord_y[4], tempo[4])

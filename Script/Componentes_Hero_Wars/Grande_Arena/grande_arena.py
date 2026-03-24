@@ -13,7 +13,6 @@ def pegar_recompensa(coord_x, coord_y, tempo):
     # Clica no X da Grande Arena
     # FS.mover_e_clicar(coord_x[2], coord_y[2], tempo[2])
 
-
 def configurar_coordenadas():
     caminho_pasta = 'Configuracoes/Coordenadas/Coordenadas_Teste'
     caminho_arquivo = f'{caminho_pasta}/Grande_Arena.txt'

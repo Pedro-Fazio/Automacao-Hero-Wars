@@ -9,8 +9,8 @@ click_x = 0
 click_y = 0
 
 def mover_e_clicar(coordenadaX, coordenadaY, timeSleep):
-    PY.moveTo(coordenadaX, coordenadaY, duration=0.2)
-    PY.click(coordenadaX, coordenadaY, duration=0.3)
+    PY.moveTo(coordenadaX, coordenadaY, duration=0.1)
+    PY.click(coordenadaX, coordenadaY, duration=0.2)
     time.sleep(timeSleep)
 
 def desenhar_linha():
@@ -20,6 +20,19 @@ def fechar_com_esc(qntd_escs):
     for _ in range(qntd_escs):
         PY.press('esc')
         time.sleep(0.1)
+
+def aguardar_cor_aparecer(x, y, cor_rgb, timeout_segundos=10, tolerancia=20):
+    inicio = time.time()
+    print(f" [dim]Aguardando cor {cor_rgb} na posição ({x}, {y})...[/]")
+    
+    while (time.time() - inicio) < timeout_segundos:
+        if PY.pixelMatchesColor(x, y, cor_rgb, tolerance=tolerancia):
+            return True
+        else:
+            time.sleep(0.5)
+        
+    print(f" [bold yellow][ALERTA] Cor não encontrada após {timeout_segundos}s. Continuando o fluxo...[/]")
+    return False
 
 def captura_clique_coordenadas():
     global mouse_clicked, click_x, click_y
@@ -63,7 +76,6 @@ listener_thread = threading.Thread(target=start_mouse_listener)
 listener_thread.daemon = True
 
 def on_release(key):
-    """Função disparada quando uma tecla é solta."""
     global dados_capturados, esperando_input
     
     # Tecla F8 para capturar
@@ -82,7 +94,6 @@ def on_release(key):
         return False
 
 def capturar_posicao_cor():
-    """Inicia o listener do teclado e espera o usuário apertar F8."""
     global dados_capturados, esperando_input
     dados_capturados = None
     esperando_input = True

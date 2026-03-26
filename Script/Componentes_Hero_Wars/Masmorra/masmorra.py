@@ -87,7 +87,7 @@ def batalhar(coord_x, coord_y, tempo):
 
 
 def batalhar_escolhendo_adversario(coord_x, coord_y, tempo, adicionaTempo):
-    tempoExtra = 2 if adicionaTempo else 0
+    tempoExtra = 2.5 if adicionaTempo else 0
 
     # Clica em Para a Batalha!
     FS.mover_e_clicar(coord_x[12], coord_y[12], tempo[12])
@@ -100,7 +100,7 @@ def batalhar_escolhendo_adversario(coord_x, coord_y, tempo, adicionaTempo):
 
 
 def batalhar_escolhendo_adversario_variacao(coord_x, coord_y, tempo, adicionaTempo):
-    tempoExtra = 2 if adicionaTempo else 0
+    tempoExtra = 2.5 if adicionaTempo else 0
 
     # Clica em Para a Batalha!
     FS.mover_e_clicar(coord_x[15], coord_y[15], tempo[15])
@@ -163,7 +163,7 @@ def batalhar_sem_aceitar_destino_escolhendo_oponente(coord_x, coord_y, tempo):
 
 
 def batalhar_sem_aceitar_destino_escolhendo_oponente_variacao(coord_x, coord_y, tempo, adicionaTempo):
-    tempoExtra = 2 if adicionaTempo else 0
+    tempoExtra = 0.5 if adicionaTempo else 0
 
     # Clicar em Para a Batalha
     FS.mover_e_clicar(coord_x[30], coord_y[30], tempo[30])

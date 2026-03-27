@@ -1,4 +1,4 @@
-# 🤖 Hero Wars: Dominion Era - Advanced Automation Engine
+# 🤖 Hero Wars: Dominion Era - Automation Engine
 
 Um bot de automação de alto desempenho desenvolvido em Python para o jogo *Hero Wars* (Desktop/Web). 
 

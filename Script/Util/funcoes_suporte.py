@@ -8,6 +8,10 @@ mouse_clicked = False
 click_x = 0
 click_y = 0
 
+def clicar_e_aguardar_proximo(x_atual, y_atual, tempo_limite, x_proximo, y_proximo, cor_rgb, offset_x=0, offset_y=0):
+    mover_e_clicar(x_atual, y_atual, 0)
+    aguardar_cor_aparecer(x_proximo + offset_x, y_proximo + offset_y, cor_rgb, timeout_segundos=tempo_limite)
+
 def mover_e_clicar(coordenadaX, coordenadaY, timeSleep):
     PY.moveTo(coordenadaX, coordenadaY, duration=0.1)
     PY.click(coordenadaX, coordenadaY, duration=0.2)
@@ -29,7 +33,7 @@ def aguardar_cor_aparecer(x, y, cor_rgb, timeout_segundos=10, tolerancia=20):
         if PY.pixelMatchesColor(x, y, cor_rgb, tolerance=tolerancia):
             return True
         else:
-            time.sleep(0.5)
+            time.sleep(0.2)
         
     print(f" [bold yellow][ALERTA] Cor não encontrada após {timeout_segundos}s. Continuando o fluxo...[/]")
     return False

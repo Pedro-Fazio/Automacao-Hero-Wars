@@ -26,11 +26,12 @@ def coletar_mensagens(coord_x, coord_y, tempo):
     # FS.mover_e_clicar(coord_x[6], coord_y[6], tempo[6])
 
 def _coletar_mensagem(coord_x, coord_y, tempo):
-    # Clica na mensagem
-    FS.mover_e_clicar(coord_x[4], coord_y[4], tempo[4])
-
-    # Aguarda o botão de Coletar
-    FS.aguardar_cor_aparecer(coord_x[5] + 10, coord_y[5], (71, 164, 30), 5)
+    # Clica na mensagem [4] e fica esperando o botão Coletar [5] ficar verde
+    FS.clicar_e_aguardar_proximo(
+        coord_x[4], coord_y[4], tempo[4],
+        coord_x[5], coord_y[5], (71, 164, 30),
+        offset_x=20, offset_y=0
+    )
 
     # Clica em Coletar
     FS.mover_e_clicar(coord_x[5], coord_y[5], tempo[5])

@@ -1,39 +1,39 @@
 # 🤖 Hero Wars: Dominion Era - Automation Engine
 
-Um bot de automação de alto desempenho desenvolvido em Python para o jogo *Hero Wars* (Desktop/Web). 
+A high-performance automation bot developed in Python for the game *Hero Wars* (Desktop/Web). 
 
-Diferente de scripts de macro tradicionais (que dependem de tempos de espera estáticos e cegos), este projeto utiliza uma **Arquitetura Assíncrona de Escalonamento Guloso (Greedy Scheduling)** e **Verificação Dinâmica de Pixels** para maximizar a eficiência, reduzindo o tempo ocioso da máquina a zero.
+Unlike traditional macro scripts (which rely on blind, static wait times), this project utilizes an **Asynchronous Greedy Scheduling Architecture** and **Dynamic Pixel Verification** to maximize efficiency, reducing machine idle time to zero.
 
-## 🚀 Principais Funcionalidades e Arquitetura
+## 🚀 Key Features & Architecture
 
-* **⚡ Intercalação Inteligente de Cooldown (Assíncrona):** O bot não espera de braços cruzados. Durante os 47 segundos de recarga obrigatória entre as lutas da Arena, a engine entra em modo de escalonamento dinâmico, executando tarefas menores (Vidente Astral, Presentes, Torre, etc.) e retornando cirurgicamente para a Arena no exato momento em que o combate é liberado.
-* **👁️ Verificação Visual Dinâmica (Pixel Matching):** Substituição de `time.sleep()` rígidos por funções de "Cão de Guarda" (Watchdog) que monitoram a tela em tempo real. O bot detecta transições de botões (ex: botões de "Atacar" ou "Coletar" ficando verdes) para avançar milissegundos após a liberação do jogo, derrubando o tempo total de rotinas longas como a Masmorra.
-* **🧩 Particionamento Inteligente de Tarefas:** Tarefas extensas (como a Masmorra) são divididas logicamente pelo motor principal. O bot pode entrar na Masmorra, executar o modo Automático, sair para a Cidade para cumprir uma luta pendente da Arena, e retornar para o modo Manual da Masmorra de forma autônoma, sem perder o estado da aplicação.
-* **🖥️ Interface Rica de Linha de Comando (CLI):** UI de terminal desenvolvida com a biblioteca `rich`, fornecendo feedback em tempo real, painéis informativos, temporizadores formatados e barras de progresso profissionais para monitoramento da rotina.
-* **📍 Gerenciador de Coordenadas Nativo:** Ferramenta embutida que utiliza "Hooks" globais do mouse (`pynput`) para mapear coordenadas da tela (X, Y) e calibrar tempos, salvando a configuração automaticamente em arquivos de texto sem a necessidade de softwares externos.
+* **⚡ Smart Cooldown Interleaving (Asynchronous):** The bot doesn't sit idle. During the mandatory 47-second cooldown between Arena fights, the engine enters a dynamic scheduling mode, executing smaller tasks (Astral Seer, Gifts, Tower, etc.) and surgically returning to the Arena at the exact moment combat is unlocked.
+* **👁️ Dynamic Visual Verification (Pixel Matching):** Replaces rigid `time.sleep()` calls with real-time "Watchdog" screen monitoring functions. The bot detects UI transitions (e.g., "Attack" or "Collect" buttons turning green) to proceed milliseconds after the game allows, drastically slashing the total runtime of long routines like the Dungeon.
+* **🧩 Intelligent Task Partitioning (State Management):** Lengthy tasks are logically partitioned by the main engine. The bot can enter the Dungeon, execute Auto mode, exit to the City to complete a pending Arena fight, and autonomously return to the Dungeon's Manual mode without losing the application state.
+* **🖥️ Rich Command-Line Interface (CLI):** A terminal UI built with the `rich` library, providing real-time feedback, information panels, formatted timers, and professional progress bars for routine monitoring.
+* **📍 Built-in Coordinate Manager:** A native tool that uses global mouse hooks (`pynput`) to map screen coordinates (X, Y) and calibrate timings. It automatically saves configurations to text files without requiring external mapping software.
 
-## 🛠️ Tecnologias Utilizadas
+## 🛠️ Tech Stack & Tools
 
 * **Python 3.10+**
-* **PyAutoGUI:** Controle de interface (Mouse/Teclado) e Captura de Tela.
-* **Pynput:** Escuta global de eventos físicos do mouse para mapeamento.
-* **Rich:** Renderização avançada de componentes no terminal.
-* **Threading:** Gerenciamento de timeouts, inputs de interrupção seguros e painéis assíncronos.
+* **PyAutoGUI:** GUI automation (Mouse/Keyboard control) and Screen Capturing.
+* **Pynput:** Global listening of physical mouse events for coordinate mapping.
+* **Rich:** Advanced terminal component rendering.
+* **Threading:** Management of timeouts, safe interrupt inputs, and asynchronous UI panels.
 
-## 📁 Estrutura do Projeto
+## 📁 Project Structure
 
 ```text
 📦 Automacao-Hero-Wars
- ┣ 📂 Componentes_Hero_Wars/      # Módulos isolados de cada tarefa (Lego)
+ ┣ 📂 Componentes_Hero_Wars/      # Isolated task modules (Component Architecture)
  ┃ ┣ 📂 Arena
  ┃ ┣ 📂 Masmorra
  ┃ ┣ 📂 Torre
  ┃ ┗ ...
  ┣ 📂 Configuracoes/
- ┃ ┣ 📂 Coordenadas/              # Arquivos .txt contendo (X, Y, Tempo) gerados pelo usuário
- ┃ ┣ 📜 interface.py              # Motor visual do terminal (Rich)
- ┃ ┗ 📜 rotina.py                 # Lógica de seleção de tarefas e filas
+ ┃ ┣ 📂 Coordenadas/              # .txt files containing user-generated (X, Y, Delay) mappings
+ ┃ ┣ 📜 interface.py              # Visual terminal engine (Rich)
+ ┃ ┗ 📜 rotina.py                 # Task selection logic and queue management
  ┣ 📂 Util/
- ┃ ┗ 📜 funcoes_suporte.py        # Core Engine: Cliques humanizados, Pixel Matching, Crop Tool
- ┣ 📜 menu.py                     # Ponto de Entrada (Main Loop e Escalonador)
- ┗ 📜 requirements.txt            # Contrato de dependências
+ ┃ ┗ 📜 funcoes_suporte.py        # Core Engine: Humanized clicks, Pixel Matching, Crop Tool
+ ┣ 📜 menu.py                     # Entry Point (Main Loop and Task Scheduler)
+ ┗ 📜 requirements.txt            # Dependency contract

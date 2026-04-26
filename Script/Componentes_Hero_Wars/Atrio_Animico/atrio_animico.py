@@ -5,13 +5,13 @@ import time
 
 def resgatar_recompensa(coord_x, coord_y, tempo):
     # Clica no Átrio Anímico
-    FS.mover_e_clicar(coord_x[0], coord_y[0], tempo[0])
+    FS.clicar_e_aguardar_proximo(coord_x[0], coord_y[0], tempo[0], 2170, 790, (50, 205, 50), offset_x=0, offset_y=0)
 
     # Clica em Resgatar
-    FS.mover_e_clicar(coord_x[1], coord_y[1], tempo[1])
+    FS.clicar_e_aguardar_proximo(coord_x[1], coord_y[1], tempo[1], 2170, 790, (50, 205, 50), offset_x=0, offset_y=0)
 
     # Clica em Invocar
-    FS.mover_e_clicar(coord_x[2], coord_y[2], tempo[2])
+    FS.clicar_e_aguardar_proximo(coord_x[1], coord_y[1], tempo[1], 2170, 790, (50, 205, 50), offset_x=0, offset_y=0)
 
     FS.fechar_com_esc(6)
     

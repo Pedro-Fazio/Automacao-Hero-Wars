@@ -3,10 +3,10 @@ import os
 
 def pegar_recompensa(coord_x, coord_y, tempo):
     # Clica na Grande Arena
-    FS.mover_e_clicar(coord_x[0], coord_y[0], tempo[0])
+    FS.clicar_e_aguardar_proximo(coord_x[0], coord_y[0], tempo[0], 2440, 650, (76, 175, 42), offset_x=0, offset_y=0)
 
     # Clica em Resgatar
-    FS.mover_e_clicar(coord_x[1], coord_y[1], tempo[1])
+    FS.clicar_e_aguardar_proximo(coord_x[1], coord_y[1], tempo[1], 2440, 650, (0, 0, 0), offset_x=0, offset_y=0)
 
     FS.fechar_com_esc(1)
 

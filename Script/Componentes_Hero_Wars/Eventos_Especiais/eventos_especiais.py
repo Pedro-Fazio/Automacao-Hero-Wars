@@ -3,10 +3,10 @@ import os
 
 def coletar_recompensas_imutaveis(coord_x, coord_y, tempo):
     # Clica em Eventos Especiais
-    FS.mover_e_clicar(coord_x[0], coord_y[0], tempo[0])
+    FS.clicar_e_aguardar_proximo(coord_x[0], coord_y[0], tempo[0], 2790, 250, (135, 10, 10), offset_x=0, offset_y=0)
 
     # Clica em Promoção de Visual
-    FS.mover_e_clicar(coord_x[1], coord_y[1], tempo[1])
+    FS.clicar_e_aguardar_proximo(coord_x[1], coord_y[1], tempo[1], 2920, 690, (78, 169, 38), offset_x=0, offset_y=0)
 
     # Clica em Coletar
     FS.mover_e_clicar(coord_x[2], coord_y[2], tempo[2])

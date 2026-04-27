@@ -5,7 +5,7 @@ import time
 
 def coletar_diarias(coord_x, coord_y, tempo):
     # Clica em Missões Diárias
-    FS.mover_e_clicar(coord_x[0], coord_y[0], tempo[0])
+    FS.clicar_e_aguardar_proximo(coord_x[0], coord_y[0], tempo[0], 3150, 370, (45, 29, 23), offset_x=0, offset_y=0)
     
     # Enquanto houver missões para coletar, ele coleta
     while PY.pixelMatchesColor(3225, 420, (74, 170, 31), tolerance=10):

@@ -5,16 +5,10 @@ import time
 
 def presentear(coord_x, coord_y, tempo):
     # Clica em Presentes
-    FS.mover_e_clicar(coord_x[0], coord_y[0], tempo[0])
-
-    # Aguarda o botão de Enviar
-    FS.aguardar_cor_aparecer(coord_x[1] + 10, coord_y[1], (71, 164, 30), 5)
+    FS.clicar_e_aguardar_proximo(coord_x[0], coord_y[0], tempo[0], 2760, 730, (68, 168, 36), offset_x=0, offset_y=0)
 
     # Clica em Enviar
-    FS.mover_e_clicar(coord_x[1], coord_y[1], tempo[1])
-
-    # Aguarda o botão de Enviar os presentes
-    FS.aguardar_cor_aparecer(coord_x[2] + 10, coord_y[2], (71, 164, 30), 5)
+    FS.clicar_e_aguardar_proximo(coord_x[1], coord_y[1], tempo[1], 2890, 620, (78, 167, 43), offset_x=0, offset_y=0)
 
     # Envia os presentes
     FS.mover_e_clicar(coord_x[2], coord_y[2], tempo[2])

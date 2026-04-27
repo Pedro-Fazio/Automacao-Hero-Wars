@@ -5,28 +5,28 @@ import time
 
 def pegar_recompensa_valquiria(coord_x, coord_y, tempo):
     # Clica no Dirigível
-    FS.mover_e_clicar(coord_x[0], coord_y[0], tempo[0])
+    FS.clicar_e_aguardar_proximo(coord_x[0], coord_y[0], tempo[0], 2070, 880, (219, 171, 105), offset_x=0, offset_y=0)
 
     # Clica no baú do Benefício Valquíria
-    FS.mover_e_clicar(coord_x[1], coord_y[1], tempo[1])
+    FS.clicar_e_aguardar_proximo(coord_x[1], coord_y[1], tempo[1], 2940, 710, (73, 174, 44), offset_x=0, offset_y=0)
 
     # Clica em Coletar
-    FS.mover_e_clicar(coord_x[2], coord_y[2], tempo[2])
+    FS.clicar_e_aguardar_proximo(coord_x[2], coord_y[2], tempo[2], 2940, 710, (13, 71, 76), offset_x=0, offset_y=0)
 
     # Clica no X do Benefício da Valquíria
-    FS.mover_e_clicar(coord_x[3], coord_y[3], tempo[3])
+    FS.clicar_e_aguardar_proximo(coord_x[3], coord_y[3], tempo[3], 2070, 880, (219, 171, 105), offset_x=0, offset_y=0)
 
     # Clica em Expedições
-    FS.mover_e_clicar(coord_x[4], coord_y[4], tempo[4])
+    FS.clicar_e_aguardar_proximo(coord_x[4], coord_y[4], tempo[4], 2510, 180, (61, 31, 10), offset_x=0, offset_y=0)
 
     # Clica em Resgatar Recompensas
-    FS.mover_e_clicar(coord_x[5], coord_y[5], tempo[5])
+    FS.clicar_e_aguardar_proximo(coord_x[5], coord_y[5], tempo[5], 2940, 830, (93, 195, 46), offset_x=0, offset_y=0)
 
     # Clica em Coletar
-    FS.mover_e_clicar(coord_x[6], coord_y[6], tempo[6])
+    FS.clicar_e_aguardar_proximo(coord_x[6], coord_y[6], tempo[6], 2800, 940, (71, 164, 30), offset_x=0, offset_y=0)
 
     # Clica em Alocar Heróis
-    FS.mover_e_clicar(coord_x[7], coord_y[7], tempo[7])
+    FS.clicar_e_aguardar_proximo(coord_x[6], coord_y[6], tempo[6], 2800, 940, (122, 122, 122), offset_x=0, offset_y=0)
 
     FS.fechar_com_esc(2)
     

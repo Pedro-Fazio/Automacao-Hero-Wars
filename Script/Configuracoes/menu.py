@@ -65,7 +65,7 @@ def monitorar_tarefa(nome_tarefa, funcao_executavel, inicio_rotina_global=None, 
     
     if mostrar_ok_final:
         str_duracao_formatada = interface.formatar_tempo(duracao_total)
-        interface.console.print(f"[bold green]✔ {nome_tarefa.upper()}[/] finalizada em {str_duracao_formatada} ({duracao_total:.2f}s).")
+        interface.console.print(f"\n[bold green]✔ {nome_tarefa.upper()}[/] finalizada em {str_duracao_formatada} ({duracao_total:.2f}s).")
         
     return duracao_total
 

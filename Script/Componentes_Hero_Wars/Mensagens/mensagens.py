@@ -5,7 +5,7 @@ import pyautogui as PY
 
 def coletar_mensagens(coord_x, coord_y, tempo):
     # Clica em Mensagens
-    FS.mover_e_clicar(coord_x[0], coord_y[0], tempo[0])
+    FS.clicar_e_aguardar_proximo(coord_x[0], coord_y[0], tempo[0], 2900, 870, (108, 177, 34), offset_x=0, offset_y=0)
 
     # Clica em Coletar Tudo
     FS.mover_e_clicar(coord_x[1], coord_y[1], tempo[1])

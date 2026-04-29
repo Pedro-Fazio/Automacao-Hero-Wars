@@ -6,7 +6,7 @@ def pegar_recompensa(coord_x, coord_y, tempo):
     FS.clicar_e_aguardar_proximo(coord_x[0], coord_y[0], tempo[0], 2440, 650, (76, 175, 42), offset_x=0, offset_y=0)
 
     # Clica em Resgatar
-    FS.clicar_e_aguardar_proximo(coord_x[1], coord_y[1], tempo[1], 2440, 650, (0, 0, 0), offset_x=0, offset_y=0)
+    FS.mover_e_clicar(coord_x[1], coord_y[1], tempo[1])
 
     FS.fechar_com_esc(1)
 

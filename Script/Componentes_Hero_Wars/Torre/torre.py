@@ -3,13 +3,13 @@ import os
 
 def completar_torre(coord_x, coord_y, tempo):
     # Clica na Torre
-    FS.mover_e_clicar(coord_x[0], coord_y[0], tempo[0])
+    FS.clicar_e_aguardar_proximo(coord_x[0], coord_y[0], tempo[0], 3175, 975, (108, 65, 155), offset_x=0, offset_y=0)
 
     # Clica em Conclusão Instantânea
-    FS.mover_e_clicar(coord_x[1], coord_y[1], tempo[1])
+    FS.clicar_e_aguardar_proximo(coord_x[1], coord_y[1], tempo[1], 2550, 770, (108, 61, 31), offset_x=0, offset_y=0)
 
     # Clica em Coletar Baús automáticamente
-    FS.mover_e_clicar(coord_x[2], coord_y[2], tempo[2])
+    FS.clicar_e_aguardar_proximo(coord_x[2], coord_y[2], tempo[2], 3395, 533, (108, 43, 19), offset_x=0, offset_y=0)
     """
     for _ in range(10):
         _coletar_recompensa(coord_x, coord_y, tempo)
@@ -31,13 +31,13 @@ def completar_torre(coord_x, coord_y, tempo):
     """
 
     # Clica no ícone de caveira
-    FS.mover_e_clicar(coord_x[12], coord_y[12], tempo[12])
+    FS.clicar_e_aguardar_proximo(coord_x[12], coord_y[12], tempo[12], 2730, 725, (108, 49, 218), offset_x=0, offset_y=0)
 
     # Clica em Troque moedas de crânio
-    FS.mover_e_clicar(coord_x[13], coord_y[13], tempo[13])
+    FS.clicar_e_aguardar_proximo(coord_x[13], coord_y[13], tempo[13], 3395, 533, (108, 43, 19), offset_x=0, offset_y=0)
 
     # Clica em Pontos de Torre
-    FS.mover_e_clicar(coord_x[14], coord_y[14], tempo[14])
+    FS.clicar_e_aguardar_proximo(coord_x[14], coord_y[14], tempo[14], 2770, 910, (58, 79, 100), offset_x=0, offset_y=0)
 
     # Clica em Coletar Tudo
     FS.mover_e_clicar(coord_x[15], coord_y[15], tempo[15])

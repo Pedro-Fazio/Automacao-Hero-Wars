@@ -3,7 +3,7 @@ import os
 
 def batalhar(coord_x, coord_y, tempo):
     # Clica na Arena
-    FS.mover_e_clicar(coord_x[0], coord_y[0], tempo[0])
+    FS.clicar_e_aguardar_proximo(coord_x[0], coord_y[0], tempo[0], 2510, 670, (57, 102, 196), offset_x=0, offset_y=0)
 
     for i in range(5):
         ultima_vez = (i == 4)

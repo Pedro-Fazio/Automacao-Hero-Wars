@@ -3,6 +3,7 @@ import time
 from pynput.mouse import Listener
 import threading
 from pynput import keyboard
+import Configuracoes.interface as interface
 
 mouse_clicked = False
 click_x = 0
@@ -13,7 +14,7 @@ def clicar_e_aguardar_proximo(x_atual, y_atual, tempo_limite, x_proximo, y_proxi
     aguardar_cor_aparecer(x_proximo + offset_x, y_proximo + offset_y, cor_rgb, timeout_segundos=tempo_limite)
 
 def mover_e_clicar(coordenadaX, coordenadaY, timeSleep):
-    PY.moveTo(coordenadaX, coordenadaY, duration=0.1)
+    PY.moveTo(coordenadaX, coordenadaY, duration=0.2)
     PY.click(coordenadaX, coordenadaY, duration=0.2)
     time.sleep(timeSleep)
 
@@ -27,15 +28,16 @@ def fechar_com_esc(qntd_escs):
 
 def aguardar_cor_aparecer(x, y, cor_rgb, timeout_segundos=10, tolerancia=20):
     inicio = time.time()
-    print(f" [dim]Aguardando cor {cor_rgb} na posição ({x}, {y})...[/]")
+    interface.console.print(f'\n[bold blue][INFO] Aguardando cor {cor_rgb} na posição ({x}, {y})...[/bold blue]')
     
     while (time.time() - inicio) < timeout_segundos:
         if PY.pixelMatchesColor(x, y, cor_rgb, tolerance=tolerancia):
+            interface.console.print('[bold green][SUCESSO] Cor encontrada![/bold green]')
             return True
         else:
             time.sleep(0.2)
-        
-    print(f" [bold yellow][ALERTA] Cor não encontrada após {timeout_segundos}s. Continuando o fluxo...[/]")
+            
+    interface.console.print(f'[bold yellow][ALERTA] Cor não encontrada após {timeout_segundos}s. Continuando o fluxo...[/bold yellow]')
     return False
 
 def captura_clique_coordenadas():

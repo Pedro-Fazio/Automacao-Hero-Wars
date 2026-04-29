@@ -28,7 +28,7 @@ def pegar_recompensa_valquiria(coord_x, coord_y, tempo):
     # Clica em Alocar Heróis
     FS.clicar_e_aguardar_proximo(coord_x[6], coord_y[6], tempo[6], 2800, 940, (122, 122, 122), offset_x=0, offset_y=0)
 
-    FS.fechar_com_esc(2)
+    FS.fechar_com_esc(4)
     
     # Clica no X do Mapa da Expedição
     #FS.mover_e_clicar(coord_x[8], coord_y[8], tempo[8])

@@ -3,7 +3,7 @@ import os
 
 def pegar_recompensas(coord_x, coord_y, tempo):
     # Clica em Terralém
-    FS.mover_e_clicar(coord_x[0], coord_y[0], tempo[0])
+    FS.clicar_e_aguardar_proximo(coord_x[0], coord_y[0], tempo[0], 3350, 260, (58, 68, 125), offset_x=0, offset_y=0)
 
     _abrir_bau(coord_x, coord_y, tempo)
 
@@ -22,20 +22,18 @@ def pegar_recompensas(coord_x, coord_y, tempo):
     # Clica no X do Terralém
     # FS.mover_e_clicar(coord_x[7], coord_y[7], tempo[7])
 
-
 def _abrir_bau(coord_x, coord_y, tempo):
     # Clica em Resgatar Recompensa
-    FS.mover_e_clicar(coord_x[1], coord_y[1], tempo[1])
+    FS.clicar_e_aguardar_proximo(coord_x[1], coord_y[1], tempo[1], 2800, 700, (58, 64, 250), offset_x=0, offset_y=0)
 
     # Clica em Abrir baús
-    FS.mover_e_clicar(coord_x[2], coord_y[2], tempo[2])
+    FS.clicar_e_aguardar_proximo(coord_x[2], coord_y[2], tempo[2], 2820, 740, (58, 61, 27), offset_x=0, offset_y=0)
 
     # Clica em Abrir
     FS.mover_e_clicar(coord_x[3], coord_y[3], tempo[3])
 
     # Clica no X da janela Abrir Baús
     FS.mover_e_clicar(coord_x[4], coord_y[4], tempo[4])
-
 
 def configurar_coordenadas():
     caminho_pasta = 'Configuracoes/Coordenadas/Coordenadas_Teste'

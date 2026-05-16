@@ -26,7 +26,7 @@ def pegar_recompensa_valquiria(coord_x, coord_y, tempo):
     FS.clicar_e_aguardar_proximo(coord_x[6], coord_y[6], tempo[6], 2800, 940, (71, 164, 30), offset_x=0, offset_y=0)
 
     # Clica em Alocar Heróis
-    FS.clicar_e_aguardar_proximo(coord_x[6], coord_y[6], tempo[6], 2800, 940, (122, 122, 122), offset_x=0, offset_y=0)
+    FS.clicar_e_aguardar_proximo(coord_x[7], coord_y[7], tempo[7], 2800, 940, (122, 122, 122), offset_x=0, offset_y=0)
 
     FS.fechar_com_esc(4)
     

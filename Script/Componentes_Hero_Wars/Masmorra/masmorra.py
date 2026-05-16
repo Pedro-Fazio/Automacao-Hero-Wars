@@ -77,55 +77,50 @@ def percorrer_masmorra(coord_x, coord_y, tempo):
     # Clica em Para a Cidade
     FS.mover_e_clicar(coord_x[39], coord_y[39], tempo[39])
 
-
 def batalhar(coord_x, coord_y, tempo):
     # Clica em Para a Batalha!
-    FS.mover_e_clicar(coord_x[10], coord_y[10], tempo[10])
+    FS.clicar_e_aguardar_proximo(coord_x[10], coord_y[10], tempo[10], 2910, 770, (76, 187, 23), offset_x=0, offset_y=0)
 
     # Clica em Aceitar o Destino!
     FS.mover_e_clicar(coord_x[11], coord_y[11], tempo[11])
-
 
 def batalhar_escolhendo_adversario(coord_x, coord_y, tempo, adicionaTempo):
     tempoExtra = 2.5 if adicionaTempo else 0
 
     # Clica em Para a Batalha!
-    FS.mover_e_clicar(coord_x[12], coord_y[12], tempo[12])
+    FS.clicar_e_aguardar_proximo(coord_x[12], coord_y[12], tempo[12], 2630, 800, (62, 172, 36), offset_x=0, offset_y=0)
 
     # Clica para lutar contra a primeira equipe
-    FS.mover_e_clicar(coord_x[13], coord_y[13], tempo[13])
+    FS.clicar_e_aguardar_proximo(coord_x[13], coord_y[13], tempo[13], 2910, 770, (76, 187, 23), offset_x=0, offset_y=0)
 
     # Clica em Aceitar o Destino!
     FS.mover_e_clicar(coord_x[14], coord_y[14], tempo[14] + tempoExtra)
-
 
 def batalhar_escolhendo_adversario_variacao(coord_x, coord_y, tempo, adicionaTempo):
     tempoExtra = 2.5 if adicionaTempo else 0
 
     # Clica em Para a Batalha!
-    FS.mover_e_clicar(coord_x[15], coord_y[15], tempo[15])
+    FS.clicar_e_aguardar_proximo(coord_x[15], coord_y[15], tempo[15], 2630, 800, (62, 172, 36), offset_x=0, offset_y=0)
 
     # Clica para lutar contra a primeira equipe
-    FS.mover_e_clicar(coord_x[16], coord_y[16], tempo[16])
+    FS.clicar_e_aguardar_proximo(coord_x[16], coord_y[16], tempo[16], 2910, 770, (76, 187, 23), offset_x=0, offset_y=0)
 
     # Clica em Aceitar o Destino!
     FS.mover_e_clicar(coord_x[17], coord_y[17], tempo[17] + tempoExtra)
 
-
 def batalhar_variacao(coord_x, coord_y, tempo):
     # Clica em Para a Batalha!
-    FS.mover_e_clicar(coord_x[18], coord_y[18], tempo[18])
+    FS.clicar_e_aguardar_proximo(coord_x[18], coord_y[18], tempo[18], 2910, 770, (76, 187, 23), offset_x=0, offset_y=0)
 
     # Clica em Aceitar o Destino!
     FS.mover_e_clicar(coord_x[19], coord_y[19], tempo[19])
 
-
 def batalhar_sem_aceitar_destino(coord_x, coord_y, tempo):
     # Clicar em Para a Batalha
-    FS.mover_e_clicar(coord_x[20], coord_y[20], tempo[20])
+    FS.clicar_e_aguardar_proximo(coord_x[20], coord_y[20], tempo[20], 2880, 780, (67, 176, 42), offset_x=0, offset_y=0)
 
     # Clicar em Atacar
-    FS.mover_e_clicar(coord_x[21], coord_y[21], tempo[21])
+    FS.clicar_e_aguardar_proximo(coord_x[21], coord_y[21], tempo[21], 3400, 950, (67, 176, 42), offset_x=0, offset_y=0)
 
     # Clicar em Para a Batalha!
     FS.mover_e_clicar(coord_x[22], coord_y[22], tempo[22])
@@ -140,13 +135,12 @@ def batalhar_sem_aceitar_destino(coord_x, coord_y, tempo):
     # Clicar em Ok
     FS.mover_e_clicar(coord_x[24], coord_y[24], tempo[24])
 
-
 def batalhar_sem_aceitar_destino_escolhendo_oponente(coord_x, coord_y, tempo):
     # Clicar em Para a Batalha
-    FS.mover_e_clicar(coord_x[25], coord_y[25], tempo[25])
+    FS.clicar_e_aguardar_proximo(coord_x[25], coord_y[25], tempo[25], 2570, 780, (67, 176, 42), offset_x=0, offset_y=0)
 
     # Clicar para lutar contra a primeira equipe
-    FS.mover_e_clicar(coord_x[26], coord_y[26], tempo[26])
+    FS.clicar_e_aguardar_proximo(coord_x[26], coord_y[26], tempo[26], 3400, 930, (67, 176, 42), offset_x=0, offset_y=0)
 
     # Clicar em Para a Batalha!
     FS.mover_e_clicar(coord_x[27], coord_y[27], tempo[27])
@@ -161,15 +155,14 @@ def batalhar_sem_aceitar_destino_escolhendo_oponente(coord_x, coord_y, tempo):
     # Clicar em Ok
     FS.mover_e_clicar(coord_x[29], coord_y[29], tempo[29])
 
-
 def batalhar_sem_aceitar_destino_escolhendo_oponente_variacao(coord_x, coord_y, tempo, adicionaTempo):
     tempoExtra = 0.5 if adicionaTempo else 0
 
     # Clicar em Para a Batalha
-    FS.mover_e_clicar(coord_x[30], coord_y[30], tempo[30])
+    FS.clicar_e_aguardar_proximo(coord_x[30], coord_y[30], tempo[30], 2570, 780, (67, 176, 42), offset_x=0, offset_y=0)
 
     # Clicar para lutar contra a primeira equipe
-    FS.mover_e_clicar(coord_x[31], coord_y[31], tempo[31])
+    FS.clicar_e_aguardar_proximo(coord_x[31], coord_y[31], tempo[31], 3400, 930, (67, 176, 42), offset_x=0, offset_y=0)
 
     # Clicar em Para a Batalha!
     FS.mover_e_clicar(coord_x[32], coord_y[32], tempo[32])
@@ -183,7 +176,6 @@ def batalhar_sem_aceitar_destino_escolhendo_oponente_variacao(coord_x, coord_y, 
 
     # Clicar em Ok
     FS.mover_e_clicar(coord_x[34], coord_y[34], tempo[34] + tempoExtra)
-
 
 def configurar_coordenadas():
     caminho_pasta = 'Configuracoes/Coordenadas/Coordenadas_Teste'

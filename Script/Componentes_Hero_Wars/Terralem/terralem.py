@@ -3,7 +3,7 @@ import os
 
 def pegar_recompensas(coord_x, coord_y, tempo):
     # Clica em Terralém
-    FS.clicar_e_aguardar_proximo(coord_x[0], coord_y[0], tempo[0], 3350, 260, (58, 68, 125), offset_x=0, offset_y=0)
+    FS.clicar_e_aguardar_proximo(coord_x[0], coord_y[0], tempo[0], 3350, 260, (45, 140, 235), offset_x=0, offset_y=0)
 
     _abrir_bau(coord_x, coord_y, tempo)
 
@@ -24,10 +24,10 @@ def pegar_recompensas(coord_x, coord_y, tempo):
 
 def _abrir_bau(coord_x, coord_y, tempo):
     # Clica em Resgatar Recompensa
-    FS.clicar_e_aguardar_proximo(coord_x[1], coord_y[1], tempo[1], 2800, 700, (58, 64, 250), offset_x=0, offset_y=0)
+    FS.clicar_e_aguardar_proximo(coord_x[1], coord_y[1], tempo[1], 2800, 700, (76, 175, 50), offset_x=0, offset_y=0)
 
     # Clica em Abrir baús
-    FS.clicar_e_aguardar_proximo(coord_x[2], coord_y[2], tempo[2], 2820, 740, (58, 61, 27), offset_x=0, offset_y=0)
+    FS.clicar_e_aguardar_proximo(coord_x[2], coord_y[2], tempo[2], 2820, 740, (68, 179, 50), offset_x=0, offset_y=0)
 
     # Clica em Abrir
     FS.mover_e_clicar(coord_x[3], coord_y[3], tempo[3])

@@ -11,7 +11,7 @@ def resgatar_recompensa(coord_x, coord_y, tempo):
     FS.clicar_e_aguardar_proximo(coord_x[1], coord_y[1], tempo[1], 2170, 790, (50, 205, 50), offset_x=0, offset_y=0)
 
     # Clica em Invocar
-    FS.clicar_e_aguardar_proximo(coord_x[1], coord_y[1], tempo[1], 2170, 790, (50, 205, 50), offset_x=0, offset_y=0)
+    FS.clicar_e_aguardar_proximo(coord_x[2], coord_y[2], tempo[2], 2170, 790, (50, 205, 50), offset_x=0, offset_y=0)
 
     FS.fechar_com_esc(6)
     

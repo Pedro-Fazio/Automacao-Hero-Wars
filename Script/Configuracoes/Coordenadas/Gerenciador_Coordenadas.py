@@ -30,9 +30,9 @@ def pegar_coordenadas(nome_arquivo):
         for linha in arquivo:
             valores = linha.strip().split(', ')
             if len(valores) == 3:
-                coord_x.append(int(valores[0]))
-                coord_y.append(int(valores[1]))
-                tempo.append(int(valores[2]))
+                coord_x.append(float(valores[0]))
+                coord_y.append(float(valores[1]))
+                tempo.append(float(valores[2]))
 
     return coord_x, coord_y, tempo
 

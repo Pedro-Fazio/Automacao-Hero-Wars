@@ -117,6 +117,14 @@ def menu():
             interface.console.print("[red]Opção inválida.[/red]")
             time.sleep(1)
 
+def obter_nome_tarefa(id_tarefa):
+    if id_tarefa == '8_1': return "Masmorra (Parte 1)"
+    if id_tarefa == '8_2': return "Masmorra (Parte 2)"
+    try:
+        return LISTA_TAREFAS[int(id_tarefa)]
+    except:
+        return "Tarefa Desconhecida"
+
 def executa_rotina(dadosRotina):
     dadosFiltrados = [item for item in dadosRotina if item]
     qtd_tarefas = len(dadosFiltrados)
@@ -132,7 +140,12 @@ def executa_rotina(dadosRotina):
     tem_arena = '0' in dadosFiltrados
     tarefas_pendentes = [t for t in dadosFiltrados if t != '0']
     
-    ordem_prioridade = ['8', '2', '5', '4', '7', '6', '1', '3', '10', '9', '11', '12']
+    # MÁGICA DA DIVISÃO: Se a Masmorra está na fila, divide ela em duas tarefas virtuais
+    if '8' in tarefas_pendentes:
+        idx = tarefas_pendentes.index('8')
+        tarefas_pendentes[idx:idx+1] = ['8_1', '8_2']
+    
+    ordem_prioridade = ['8_1', '2', '5', '4', '7', '6', '1', '3', '10', '9', '11', '12', '8_2']
     tarefas_pendentes.sort(key=lambda x: ordem_prioridade.index(x) if x in ordem_prioridade else 99)
 
     # === MODO ASSÍNCRONO ARENA ===
@@ -159,7 +172,7 @@ def executa_rotina(dadosRotina):
                 
                 while tarefas_pendentes and (time.time() - inicio_cooldown) < cooldown_alvo:
                     proxima_tarefa = tarefas_pendentes.pop(0)
-                    nome_proxima = LISTA_TAREFAS[int(proxima_tarefa)]
+                    nome_proxima = obter_nome_tarefa(proxima_tarefa)
                     interface.console.print(f" [dim]-> Cooldown ativo. Encaixando tarefa:[/] [bold]{nome_proxima}[/]")
                     
                     executa_tarefa(proxima_tarefa, inicio_rotina_global=inicio_rotina)
@@ -183,7 +196,7 @@ def executa_rotina(dadosRotina):
             interface.console.print("\n[bold yellow]🚩 FINALIZANDO FILA[/] - Executando tarefas restantes...")
             
         for tarefa in tarefas_pendentes:
-            nome_tarefa = LISTA_TAREFAS[int(tarefa)]
+            nome_tarefa = obter_nome_tarefa(tarefa)
             interface.console.print(f"\n[bold blue]--- Executando: {nome_tarefa} ---[/]")
             executa_tarefa(tarefa, inicio_rotina_global=inicio_rotina)
 
@@ -201,18 +214,17 @@ def executa_tarefa(tarefa_index_str, inicio_rotina_global=None):
     switch = {
         '0': arena, '1': grande_arena, '2': vidente_astral, '3': presentes,
         '4': dirigivel, '5': terralem, '6': atrio_animico, '7': torre,
-        '8': masmorra, '9': mensagens, '10': eventos_especiais,
+        '8': masmorra_completa, # Para o menu individual
+        '8_1': masmorra_pt1,    # Injetado pela fila assíncrona
+        '8_2': masmorra_pt2,    # Injetado pela fila assíncrona
+        '9': mensagens, '10': eventos_especiais,
         '11': missoes_diarias, '12': missoes_guilda
     }
 
     funcao = switch.get(tarefa_index_str)
 
     if funcao:
-        try:
-            nome_da_tarefa = LISTA_TAREFAS[int(tarefa_index_str)]
-        except:
-            nome_da_tarefa = "Tarefa Desconhecida"
-
+        nome_da_tarefa = obter_nome_tarefa(tarefa_index_str)
         return monitorar_tarefa(nome_da_tarefa, funcao, inicio_rotina_global)
     else:
         interface.console.print(f"[red]Tarefa {tarefa_index_str} não encontrada.[/red]")
@@ -242,9 +254,17 @@ def terralem():
     coord_x, coord_y, tempo = Gerenciador_Coordenadas.pegar_coordenadas('Terralem.txt')
     Terralem.pegar_recompensas(coord_x, coord_y, tempo)
 
-def masmorra():
+def masmorra_completa():
     coord_x, coord_y, tempo = Gerenciador_Coordenadas.pegar_coordenadas('Masmorra.txt')
     Masmorra.percorrer_masmorra(coord_x, coord_y, tempo)
+
+def masmorra_pt1():
+    coord_x, coord_y, tempo = Gerenciador_Coordenadas.pegar_coordenadas('Masmorra.txt')
+    Masmorra.masmorra_parte_1(coord_x, coord_y, tempo)
+
+def masmorra_pt2():
+    coord_x, coord_y, tempo = Gerenciador_Coordenadas.pegar_coordenadas('Masmorra.txt')
+    Masmorra.masmorra_parte_2(coord_x, coord_y, tempo)
 
 def atrio_animico():
     coord_x, coord_y, tempo = Gerenciador_Coordenadas.pegar_coordenadas('Atrio_Animico.txt')

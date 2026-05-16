@@ -4,33 +4,28 @@ import time
 import os
 
 def percorrer_masmorra(coord_x, coord_y, tempo):
+    masmorra_parte_1(coord_x, coord_y, tempo, sair_no_final=False)
+    masmorra_parte_2(coord_x, coord_y, tempo, entrar_no_inicio=False)
+    
+def masmorra_parte_1(coord_x, coord_y, tempo, sair_no_final=True):
     # Clica em Guilda
     FS.mover_e_clicar(coord_x[0], coord_y[0], tempo[0])
-
     # Clica em Ilha da Guilda
     FS.mover_e_clicar(coord_x[1], coord_y[1], tempo[1])
-
     # Clica em Masmorra
     FS.mover_e_clicar(coord_x[2], coord_y[2], tempo[2])
-
     # Clica na cartinha das Provas do Oráculo
     FS.mover_e_clicar(coord_x[3], coord_y[3], tempo[3])
-
     # Clica em Confirmar para recompensa nivel 100
     FS.mover_e_clicar(coord_x[4], coord_y[4], tempo[4])
-
     # Clica em Confirmar para recompensa nivel 1000
     FS.mover_e_clicar(coord_x[5], coord_y[5], tempo[5])
-
     # Clica em Confirmar para recompensa nivel 2000
     FS.mover_e_clicar(coord_x[6], coord_y[6], tempo[6])
-
     # Clica no X das Provas do Oráculo
     FS.mover_e_clicar(coord_x[7], coord_y[7], tempo[7])
-
     # Clica em Para a Batalha!
     FS.mover_e_clicar(coord_x[8], coord_y[8], tempo[8])
-
     # Clica em Aceitar o Destino!
     FS.mover_e_clicar(coord_x[9], coord_y[9], tempo[9])
 
@@ -52,6 +47,22 @@ def percorrer_masmorra(coord_x, coord_y, tempo):
 
     batalhar_escolhendo_adversario(coord_x, coord_y, tempo, True)
 
+    # FLAG DE CONTROLE: Só sai se for a versão fatiada
+    if sair_no_final:
+        FS.fechar_com_esc(1) 
+        FS.mover_e_clicar(coord_x[39], coord_y[39], tempo[39]) # Para a Cidade
+
+
+def masmorra_parte_2(coord_x, coord_y, tempo, entrar_no_inicio=True):
+    # FLAG DE CONTROLE: Só navega até a Masmorra se for a versão fatiada
+    if entrar_no_inicio:
+        # Clica em Guilda
+        FS.mover_e_clicar(coord_x[0], coord_y[0], tempo[0])
+        # Clica em Ilha da Guilda
+        FS.mover_e_clicar(coord_x[1], coord_y[1], tempo[1])
+        # Clica em Masmorra
+        FS.mover_e_clicar(coord_x[2], coord_y[2], tempo[2])
+
     batalhar_sem_aceitar_destino(coord_x, coord_y, tempo)
     batalhar_sem_aceitar_destino_escolhendo_oponente(coord_x, coord_y, tempo)
 
@@ -62,18 +73,10 @@ def percorrer_masmorra(coord_x, coord_y, tempo):
 
     # Clica na bolinha Ativar
     FS.mover_e_clicar(coord_x[35], coord_y[35], tempo[35])
-
     # Clica em Coletar
     FS.mover_e_clicar(coord_x[36], coord_y[36], tempo[36])
 
     FS.fechar_com_esc(2)
-
-    # Clica no X da Masmorra
-    # FS.mover_e_clicar(coord_x[37], coord_y[37], tempo[37])
-
-    # Clica no X da Ilha da Guilda
-    # FS.mover_e_clicar(coord_x[38], coord_y[38], tempo[38])
-
     # Clica em Para a Cidade
     FS.mover_e_clicar(coord_x[39], coord_y[39], tempo[39])
 

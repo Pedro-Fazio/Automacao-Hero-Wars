@@ -47,9 +47,8 @@ def masmorra_parte_1(coord_x, coord_y, tempo, sair_no_final=True):
 
     batalhar_escolhendo_adversario(coord_x, coord_y, tempo, True)
 
-    # FLAG DE CONTROLE: Só sai se for a versão fatiada
     if sair_no_final:
-        FS.fechar_com_esc(1) 
+        FS.fechar_com_esc(2) 
         FS.mover_e_clicar(coord_x[39], coord_y[39], tempo[39]) # Para a Cidade
 
 

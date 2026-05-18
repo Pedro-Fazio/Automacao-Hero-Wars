@@ -14,6 +14,9 @@ def clicar_e_aguardar_proximo(x_atual, y_atual, tempo_limite, x_proximo, y_proxi
     aguardar_cor_aparecer(x_proximo + offset_x, y_proximo + offset_y, cor_rgb, timeout_segundos=tempo_limite)
 
 def mover_e_clicar(coordenadaX, coordenadaY, timeSleep):
+    coordenadaX = int(coordenadaX)
+    coordenadaY = int(coordenadaY)
+    
     PY.moveTo(coordenadaX, coordenadaY, duration=0.2)
     PY.click(coordenadaX, coordenadaY, duration=0.2)
     time.sleep(timeSleep)
@@ -27,6 +30,9 @@ def fechar_com_esc(qntd_escs):
         time.sleep(0.1)
 
 def aguardar_cor_aparecer(x, y, cor_rgb, timeout_segundos=10, tolerancia=20):
+    x = int(x)
+    y = int(y)
+    
     inicio = time.time()
     interface.console.print(f'\n[bold blue][INFO] Aguardando cor {cor_rgb} na posição ({x}, {y})...[/bold blue]')
     
@@ -36,7 +42,7 @@ def aguardar_cor_aparecer(x, y, cor_rgb, timeout_segundos=10, tolerancia=20):
             return True
         else:
             time.sleep(0.2)
-            
+              
     interface.console.print(f'[bold yellow][ALERTA] Cor não encontrada após {timeout_segundos}s. Continuando o fluxo...[/bold yellow]')
     return False
 

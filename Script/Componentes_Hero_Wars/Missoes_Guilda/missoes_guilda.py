@@ -1,16 +1,17 @@
 import Util.funcoes_suporte as FS
 import os
 import pyautogui as PY
+import time
 
-def coletar_missoes_guilda(coord_x, coord_y, tempo):
+def coletar_missoes_guilda(coord_x, coord_y, tempo):   
     # Clica em Missões Diárias
     FS.clicar_e_aguardar_proximo(coord_x[0], coord_y[0], tempo[0], 3150, 370, (45, 29, 23), offset_x=0, offset_y=0)
     
     # Clica em Missões da Guilda
     FS.clicar_e_aguardar_proximo(coord_x[1], coord_y[1], tempo[1], 2530, 200, (108, 158, 244), offset_x=0, offset_y=0)
 
-    for _ in range(10):
-        _coletar_recompensa(coord_x, coord_y, tempo)
+    #for _ in range(10):
+    #    _coletar_recompensa(coord_x, coord_y, tempo)
         
     # Coletar primeiro baú
     FS.mover_e_clicar(coord_x[3], coord_y[3], tempo[3])
@@ -27,10 +28,10 @@ def coletar_missoes_guilda(coord_x, coord_y, tempo):
     FS.fechar_com_esc(2)
 
     # Clicar no X de Missões da Guilda
-    # FS.mover_e_clicar(coord_x[7], coord_y[7], tempo[7])
+    #FS.mover_e_clicar(coord_x[7], coord_y[7], tempo[7])
 
     # Clicar no X de Missões Diárias
-    # FS.mover_e_clicar(coord_x[8], coord_y[8], tempo[8])
+    #FS.mover_e_clicar(coord_x[8], coord_y[8], tempo[8])
 
 
 def _coletar_recompensa(coord_x, coord_y, tempo):

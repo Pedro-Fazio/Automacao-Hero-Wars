@@ -128,7 +128,7 @@ def batalhar_sem_aceitar_destino(coord_x, coord_y, tempo):
     FS.mover_e_clicar(coord_x[22], coord_y[22], tempo[22])
 
     # Clicar em auto
-    FS.mover_e_clicar(coord_x[23], coord_y[23], tempo[23])
+    # FS.mover_e_clicar(coord_x[23], coord_y[23], tempo[23])
 
     # Aguarda a batalha concluir
     while not PY.pixelMatchesColor(2905, 860, (71, 164, 30), tolerance=20):
@@ -148,7 +148,7 @@ def batalhar_sem_aceitar_destino_escolhendo_oponente(coord_x, coord_y, tempo):
     FS.mover_e_clicar(coord_x[27], coord_y[27], tempo[27])
 
     # Clicar em auto
-    FS.mover_e_clicar(coord_x[28], coord_y[28], tempo[28])
+    # FS.mover_e_clicar(coord_x[28], coord_y[28], tempo[28])
 
     # Aguarda a batalha concluir
     while not PY.pixelMatchesColor(2905, 860, (71, 164, 30), tolerance=20):
@@ -170,7 +170,7 @@ def batalhar_sem_aceitar_destino_escolhendo_oponente_variacao(coord_x, coord_y, 
     FS.mover_e_clicar(coord_x[32], coord_y[32], tempo[32])
 
     # Clicar em auto
-    FS.mover_e_clicar(coord_x[33], coord_y[33], tempo[33])
+    # FS.mover_e_clicar(coord_x[33], coord_y[33], tempo[33])
 
     # Aguarda a batalha concluir
     while not PY.pixelMatchesColor(2905, 860, (71, 164, 30), tolerance=20):

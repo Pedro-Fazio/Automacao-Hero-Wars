@@ -17,7 +17,7 @@ def coletar_mensagens(coord_x, coord_y, tempo):
     FS.mover_e_clicar(coord_x[3], coord_y[3], tempo[3])
 
     # Enquanto tiver mensagem, ele coleta.
-    while PY.pixelMatchesColor(3150, 365, (72, 165, 26), tolerance=10):
+    while PY.pixelMatchesColor(3150, 385, (72, 165, 26), tolerance=10):
         _coletar_mensagem(coord_x, coord_y, tempo)
 
     FS.fechar_com_esc(1)
